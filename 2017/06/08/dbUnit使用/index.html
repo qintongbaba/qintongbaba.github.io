@@ -89,13 +89,14 @@
     </p>
   <p class="article-time">
     <time datetime="2017-06-08T02:19:38.000Z" itemprop="datePublished">2017-06-08</time>
-    更新日期:<time datetime="2017-06-09T07:59:13.000Z" itemprop="dateModified">2017-06-09</time>
+    更新日期:<time datetime="2017-06-26T15:18:22.000Z" itemprop="dateModified">2017-06-26</time>
     
   </p>
 </header>
     <div class="entry">
 		
-        <p>​    DbUnit(<a href="http://dbunit.sourceforge.net/" target="_blank" rel="external">http://dbunit.sourceforge.net/</a> )是专门针对数据库测试框架Junit的一个扩展。本文介绍了使用DbUnit工具让我们在使用Junit测试的时候，不会对数据库造成破坏。本文将会简单的介绍使用dbUnit进行备份和恢复数据操作。</p>
+        <p>[TOC]</p>
+<p>​    DbUnit(<a href="http://dbunit.sourceforge.net/" target="_blank" rel="external">http://dbunit.sourceforge.net/</a> )是专门针对数据库测试框架Junit的一个扩展。本文介绍了使用DbUnit工具让我们在使用Junit测试的时候，不会对数据库造成破坏。本文将会简单的介绍使用dbUnit进行备份和恢复数据操作。</p>
 <p>使用DbUnit的步骤:(Maven方式)</p>
 <h2 id="1-添加maven依赖"><a href="#1-添加maven依赖" class="headerlink" title="1.添加maven依赖"></a>1.添加maven依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.dbunit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dbunit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.25<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="2-使用DbUnit进行插入测试数据"><a href="#2-使用DbUnit进行插入测试数据" class="headerlink" title="2.使用DbUnit进行插入测试数据"></a>2.使用DbUnit进行插入测试数据</h3><h3 id="a-创建测试数据-提供数据配置文件dataset-xml-其中t-user为表名，属性为列名"><a href="#a-创建测试数据-提供数据配置文件dataset-xml-其中t-user为表名，属性为列名" class="headerlink" title="a.创建测试数据(提供数据配置文件dataset.xml,其中t_user为表名，属性为列名)"></a>a.创建测试数据(提供数据配置文件dataset.xml,其中t_user为表名，属性为列名)</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dataset</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">t_user</span> <span class="attr">id</span>=<span class="string">"1"</span> <span class="attr">username</span>=<span class="string">"admin"</span> <span class="attr">password</span>=<span class="string">"123"</span> <span class="attr">nickname</span>=<span class="string">"admin_123"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dataset</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -208,7 +209,7 @@ with(document)0[
   
     <li><a href="/categories/Java/">Java</a><small>1</small></li>
   
-    <li><a href="/categories/Java-Web/">Java Web</a><small>1</small></li>
+    <li><a href="/categories/Java-Web/">Java Web</a><small>4</small></li>
   
     <li><a href="/categories/Markdown/">Markdown</a><small>1</small></li>
   
@@ -222,7 +223,7 @@ with(document)0[
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/dbUnit/" style="font-size: 10px;">dbUnit</a> <a href="/tags/java-web/" style="font-size: 10px;">java-web</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a>
+    <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/dbUnit/" style="font-size: 10px;">dbUnit</a> <a href="/tags/java-web/" style="font-size: 20px;">java-web</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a>
   </div>
 </div>
 

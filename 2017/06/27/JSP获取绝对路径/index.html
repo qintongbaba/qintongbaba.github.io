@@ -15,7 +15,7 @@
 	})();
 	</script>
   
-  <title>http常见的请求头和响应头 | Qintong BaBa</title>
+  <title>JSP获取绝对路径 | Qintong BaBa</title>
   <meta name="author" content="Wu Qinghua">
   
   <meta name="description" content="纪录学习的点滴">
@@ -23,7 +23,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="http常见的请求头和响应头"/>
+  <meta property="og:title" content="JSP获取绝对路径"/>
   <meta property="og:site_name" content="Qintong BaBa"/>
 
   
@@ -81,124 +81,27 @@
   <div class="post-content">
     <header class="article-info clearfix">
   <h1 itemprop="name">
-	http常见的请求头和响应头
+	JSP获取绝对路径
   </h1>
   <p class="article-author">By
     
       <a href="https://qintongbaba.github.io" title="Wu Qinghua">Wu Qinghua</a>
     </p>
   <p class="article-time">
-    <time datetime="2017-06-26T14:20:51.000Z" itemprop="datePublished">2017-06-26</time>
-    更新日期:<time datetime="2017-06-26T14:58:29.000Z" itemprop="dateModified">2017-06-26</time>
+    <time datetime="2017-06-27T00:33:59.000Z" itemprop="datePublished">2017-06-27</time>
+    更新日期:<time datetime="2017-06-27T00:39:19.000Z" itemprop="dateModified">2017-06-27</time>
     
   </p>
 </header>
     <div class="entry">
 		
-        <p>[TOC]</p>
-<h3 id="1-常见的HTTP请求头部"><a href="#1-常见的HTTP请求头部" class="headerlink" title="1.常见的HTTP请求头部"></a>1.常见的HTTP请求头部</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">请求头部</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Accept-Charset</td>
-<td style="text-align:center">用于指定客户端接受的字符集</td>
-</tr>
-<tr>
-<td style="text-align:left">Accept-Encoding</td>
-<td style="text-align:center">用于指定可接受的内容编码，如Accept-Encoding:gzip,deflate</td>
-</tr>
-<tr>
-<td style="text-align:left">Accept-Language</td>
-<td style="text-align:center">用于指定一种自然语言，如Accept-Language:zh-cn</td>
-</tr>
-<tr>
-<td style="text-align:left">User-Agent</td>
-<td style="text-align:center">客户端将它的操作系统、浏览器和其他属性告诉服务器</td>
-</tr>
-<tr>
-<td style="text-align:left">Host</td>
-<td style="text-align:center">用于指定被请求资源的Internet主机和端口号,如Host:www.taobao.com</td>
-</tr>
-<tr>
-<td style="text-align:left">Connection</td>
-<td style="text-align:center">当前连接是否保持，如Connection:Keep-Alive</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-常见的HTTP响应头"><a href="#2-常见的HTTP响应头" class="headerlink" title="2.常见的HTTP响应头"></a>2.常见的HTTP响应头</h3><table>
-<thead>
-<tr>
-<th>响应头部</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Server</td>
-<td style="text-align:center">使用的服务器名称，如Server:Apache/1.3.6(Unix)</td>
-</tr>
-<tr>
-<td>Content-Type</td>
-<td style="text-align:center">用来指明发送给接收者的实体正文的媒体类型，如Content-Type:text/html;charset=GBK</td>
-</tr>
-<tr>
-<td>Content-Encoding</td>
-<td style="text-align:center">与请求报头Accept-Encoding对应，告诉浏览器服务端采用什么压缩编码</td>
-</tr>
-<tr>
-<td>Content-Langeage</td>
-<td style="text-align:center">描述资源所使用的自然语言</td>
-</tr>
-<tr>
-<td>Content-Length</td>
-<td style="text-align:center">指明实体正文的长度，用以字节方式存储的十进制数字表示</td>
-</tr>
-<tr>
-<td>Keep-Alive</td>
-<td style="text-align:center">保持连接的时间，如Keep-Alive:timeout=5,max=120</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-常见的HTTP状态码"><a href="#3-常见的HTTP状态码" class="headerlink" title="3.常见的HTTP状态码"></a>3.常见的HTTP状态码</h3><table>
-<thead>
-<tr>
-<th>状态码</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>200</td>
-<td style="text-align:center">客户端请求成功</td>
-</tr>
-<tr>
-<td>302</td>
-<td style="text-align:center">临时跳转，跳转地址使用Location指定</td>
-</tr>
-<tr>
-<td>400</td>
-<td style="text-align:center">客户端请求有语法错误，不能被服务器识别</td>
-</tr>
-<tr>
-<td>403</td>
-<td style="text-align:center">服务器接受到请求，但是拒绝提供服务</td>
-</tr>
-<tr>
-<td>404</td>
-<td style="text-align:center">请求资源不存在</td>
-</tr>
-<tr>
-<td>500</td>
-<td style="text-align:center">服务器发生不可预期的错误</td>
-</tr>
-</tbody>
-</table>
-
+        <p>在JavaWeb开发中，常使用绝对路径的方式来引入JavaScript和CSS文件，这样可以避免因为目录变动导致引入文件找不到的情况，常用的做法如下：</p>
+<p>一、使用${pageContext.request.contextPath}</p>
+<p>　　代码” ${pageContext.request.contextPath}”的作用是取出部署的应用程序名，这样不管如何部署，所用路径都是正确的。</p>
+<p>例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--使用绝对路径的方式引入CSS文件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> </span></div><div class="line">      <span class="attr">href</span>=<span class="string">"$&#123;pageContext.request.contextPath&#125;/themes/default/css/ueditor.css"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>/&gt;</div><div class="line"><span class="comment">&lt;!--使用绝对路径的方式引入JavaScript脚本--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> </span></div><div class="line">        <span class="attr">src</span>=<span class="string">"$&#123;pageContext.request.contextPath&#125;/ueditor1_3_6-gbk-jsp/ueditor.config.js"</span>&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>使用&lt;%=request.getContextPath()%&gt;和使用${pageContext.request.contextPath}达到同样的效果</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> </span></div><div class="line">        <span class="attr">src</span>=<span class="string">"&lt;%=request.getContextPath()%&gt;/ueditor1_3_6-gbk-jsp/ueditor.all.js"</span>&gt;<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
     </div>
     <footer>
         
@@ -258,10 +161,10 @@ with(document)0[
 
  <nav id="pagination" >
     
-    <a href="/2017/06/26/MAC将根目录文件夹的权限赋给用户/" class="alignleft prev" title="MAC将根目录文件夹的权限赋给用户">MAC将根目录文件夹的权限赋给用户</a>
+    <a href="/2017/06/27/JavaWeb学习总结-一-JavaWeb开发入门/" class="alignleft prev" title="JavaWeb学习总结(一)--JavaWeb开发入门">JavaWeb学习总结(一)--JavaWeb开发入门</a>
     
     
-    <a href="/2017/06/08/dbUnit使用/" class="alignright next" title="dbUnit使用">dbUnit使用</a>
+    <a href="/2017/06/26/MAC将根目录文件夹的权限赋给用户/" class="alignright next" title="MAC将根目录文件夹的权限赋给用户">MAC将根目录文件夹的权限赋给用户</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -271,7 +174,7 @@ with(document)0[
 	
 	<section id="comment">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="2017/06/26/http常见的请求头和响应头/" data-title="http常见的请求头和响应头" data-url="https://qintongbaba.github.io/2017/06/26/http常见的请求头和响应头/"></div>
+		<div class="ds-thread" data-thread-key="2017/06/27/JSP获取绝对路径/" data-title="JSP获取绝对路径" data-url="https://qintongbaba.github.io/2017/06/27/JSP获取绝对路径/"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">
