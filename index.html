@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -109,7 +109,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -132,7 +132,7 @@
   <title> Qintong BaBa </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -197,7 +197,17 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -207,7 +217,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            归档
           </a>
         </li>
       
@@ -217,15 +227,59 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -287,9 +341,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T12:42:29+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T12:42:29+08:00">
                 2017-06-30
               </time>
             
@@ -302,6 +356,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/30/JavaWeb学习总结-十三-使用session防止表单重复提交/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/30/JavaWeb学习总结-十三-使用session防止表单重复提交/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -407,9 +472,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T12:41:51+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T12:41:51+08:00">
                 2017-06-30
               </time>
             
@@ -428,7 +493,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -444,6 +509,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/30/JavaWeb学习总结-十二-Session/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/30/JavaWeb学习总结-十二-Session/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -469,7 +545,8 @@
       
         
           
-            <h2 id="一、Session简单介绍"><a href="#一、Session简单介绍" class="headerlink" title="一、Session简单介绍"></a>一、Session简单介绍</h2><p>　　在WEB开发中，服务器可以为每个用户浏览器创建一个会话对象（session对象），注意：一个浏览器独占一个session对象(默认情况下)。因此，在需要保存用户数据时，服务器程序可以把用户数据写到用户浏览器独占的session中，当用户使用浏览器访问其它程序时，其它程序可以从用户的session中取出该用户的数据，为用户服务。</p>
+            <p>[TOC]</p>
+<h2 id="一、Session简单介绍"><a href="#一、Session简单介绍" class="headerlink" title="一、Session简单介绍"></a>一、Session简单介绍</h2><p>　　在WEB开发中，服务器可以为每个用户浏览器创建一个会话对象（session对象），注意：一个浏览器独占一个session对象(默认情况下)。因此，在需要保存用户数据时，服务器程序可以把用户数据写到用户浏览器独占的session中，当用户使用浏览器访问其它程序时，其它程序可以从用户的session中取出该用户的数据，为用户服务。</p>
 <h2 id="二、Session和Cookie的主要区别"><a href="#二、Session和Cookie的主要区别" class="headerlink" title="二、Session和Cookie的主要区别"></a>二、Session和Cookie的主要区别</h2><ul>
 <li>Cookie是把用户的数据写给用户的浏览器。</li>
 <li>Session技术把用户的数据写到用户独占的session中。</li>
@@ -584,9 +661,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T12:41:31+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T12:41:31+08:00">
                 2017-06-30
               </time>
             
@@ -605,7 +682,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -621,6 +698,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/30/JavaWeb学习总结-十一-使用Cookie进行会话管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/30/JavaWeb学习总结-十一-使用Cookie进行会话管理/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -646,7 +734,8 @@
       
         
           
-            <h2 id="一、会话的概念"><a href="#一、会话的概念" class="headerlink" title="一、会话的概念"></a>一、会话的概念</h2><p>　　会话可简单理解为：用户开一个浏览器，点击多个超链接，访问服务器多个web资源，然后关闭浏览器，整个过程称之为一个会话。<br>　　有状态会话：一个同学来过教室，下次再来教室，我们会知道这个同学曾经来过，这称之为有状态会话。</p>
+            <p>[TOC]</p>
+<h2 id="一、会话的概念"><a href="#一、会话的概念" class="headerlink" title="一、会话的概念"></a>一、会话的概念</h2><p>　　会话可简单理解为：用户开一个浏览器，点击多个超链接，访问服务器多个web资源，然后关闭浏览器，整个过程称之为一个会话。<br>　　有状态会话：一个同学来过教室，下次再来教室，我们会知道这个同学曾经来过，这称之为有状态会话。</p>
 <h2 id="二、会话过程中要解决的一些问题？"><a href="#二、会话过程中要解决的一些问题？" class="headerlink" title="二、会话过程中要解决的一些问题？"></a>二、会话过程中要解决的一些问题？</h2><p>　　每个用户在使用浏览器与服务器进行会话的过程中，不可避免各自会产生一些数据，程序要想办法为每个用户保存这些数据。</p>
 <h2 id="三、保存会话数据的两种技术"><a href="#三、保存会话数据的两种技术" class="headerlink" title="三、保存会话数据的两种技术"></a>三、保存会话数据的两种技术</h2><h3 id="3-1、Cookie"><a href="#3-1、Cookie" class="headerlink" title="3.1、Cookie"></a>3.1、Cookie</h3><p>　　Cookie是客户端技术，程序把每个用户的数据以cookie的形式写给用户各自的浏览器。当用户使用浏览器再去访问服务器中的web资源时，就会带着各自的数据去。这样，web资源处理的就是用户各自的数据了。</p>
 <h3 id="3-2、Session"><a href="#3-2、Session" class="headerlink" title="3.2、Session"></a>3.2、Session</h3><p>　　Session是服务器端技术，利用这个技术，服务器在运行时可以为每一个用户的浏览器创建一个其独享的session对象，由于session为用户浏览器独享，所以用户在访问服务器的web资源时，可以把各自的数据放在各自的session中，当用户再去访问服务器中的其它web资源时，其它web资源再从用户各自的session中取出数据为用户服务。</p>
@@ -832,9 +921,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T12:40:53+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T12:40:53+08:00">
                 2017-06-30
               </time>
             
@@ -847,6 +936,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/30/JavaWeb学习总结-十-HttpServletRequest/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/30/JavaWeb学习总结-十-HttpServletRequest/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -952,9 +1052,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T12:40:23+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T12:40:23+08:00">
                 2017-06-30
               </time>
             
@@ -965,8 +1065,41 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/30/JavaWeb学习总结-九-通过Servlet生成验证码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/30/JavaWeb学习总结-九-通过Servlet生成验证码/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1072,9 +1205,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T12:39:45+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T12:39:45+08:00">
                 2017-06-30
               </time>
             
@@ -1093,7 +1226,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1109,6 +1242,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/30/JavaWeb学习总结-七-HttpServletResponse-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/30/JavaWeb学习总结-七-HttpServletResponse-二/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1134,7 +1278,8 @@
       
         
           
-            <h2 id="一、HttpServletResponse常见应用——生成验证码"><a href="#一、HttpServletResponse常见应用——生成验证码" class="headerlink" title="一、HttpServletResponse常见应用——生成验证码"></a>一、HttpServletResponse常见应用——生成验证码</h2><h3 id="1-1、生成随机图片用作验证码"><a href="#1-1、生成随机图片用作验证码" class="headerlink" title="1.1、生成随机图片用作验证码"></a>1.1、生成随机图片用作验证码</h3><p>　　生成图片主要用到了一个<strong>BufferedImage</strong>类，</p>
+            <p>[TOC]</p>
+<h2 id="一、HttpServletResponse常见应用——生成验证码"><a href="#一、HttpServletResponse常见应用——生成验证码" class="headerlink" title="一、HttpServletResponse常见应用——生成验证码"></a>一、HttpServletResponse常见应用——生成验证码</h2><h3 id="1-1、生成随机图片用作验证码"><a href="#1-1、生成随机图片用作验证码" class="headerlink" title="1.1、生成随机图片用作验证码"></a>1.1、生成随机图片用作验证码</h3><p>　　生成图片主要用到了一个<strong>BufferedImage</strong>类，</p>
 <p>　　<img src="data:image/png;base64,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" alt="img"></p>
 <p><strong>生成随机图片范例：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> org.wuqinghua.java.ch04;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.imageio.ImageIO;</div><div class="line"><span class="keyword">import</span> javax.servlet.ServletException;</div><div class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</div><div class="line"><span class="keyword">import</span> java.awt.*;</div><div class="line"><span class="keyword">import</span> java.awt.image.BufferedImage;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.Random;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by wuqinghua on 17/7/2.</div><div class="line"> */</div><div class="line"><span class="meta">@WebServlet</span>(urlPatterns = <span class="string">"/responseDemo05"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseDemo05</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</div><div class="line">        <span class="comment">//设置浏览器每隔5秒刷新一次</span></div><div class="line">        resp.setHeader(<span class="string">"refresh"</span>, <span class="string">"5"</span>);</div><div class="line"></div><div class="line">        <span class="comment">//1.在内存中创建一张图片</span></div><div class="line">        BufferedImage image = <span class="keyword">new</span> BufferedImage(<span class="number">100</span>, <span class="number">25</span>, BufferedImage.TYPE_INT_RGB);</div><div class="line"></div><div class="line">        <span class="comment">//2.绘制图片   获取画笔</span></div><div class="line">        Graphics2D g = (Graphics2D) image.getGraphics();</div><div class="line">        g.setColor(Color.WHITE);<span class="comment">//设置图片的背景色</span></div><div class="line">        g.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">25</span>);<span class="comment">//填充背景</span></div><div class="line"></div><div class="line">        <span class="comment">//3.向图片上写数值</span></div><div class="line">        g.setColor(Color.BLUE);</div><div class="line">        g.setFont(<span class="keyword">new</span> Font(<span class="keyword">null</span>, Font.BOLD, <span class="number">20</span>));</div><div class="line">        g.drawString(makeNum(),<span class="number">0</span>,<span class="number">20</span>);</div><div class="line"></div><div class="line">        <span class="comment">//4.设置浏览器以图片方式打开</span></div><div class="line">        resp.setHeader(<span class="string">"content-type"</span>,<span class="string">"image/jpeg"</span>);</div><div class="line"></div><div class="line">        <span class="comment">//5.设置浏览器不缓存图片</span></div><div class="line">        resp.setDateHeader(<span class="string">"expries"</span>,-<span class="number">1</span>);</div><div class="line">        resp.setHeader(<span class="string">"Cache-Control"</span>,<span class="string">"no-cache"</span>);</div><div class="line">        resp.setHeader(<span class="string">"Pragma"</span>,<span class="string">"no-cache"</span>);</div><div class="line"></div><div class="line">        <span class="comment">//6.将图片写到浏览器</span></div><div class="line">        ImageIO.write(image,<span class="string">"jpg"</span>,resp.getOutputStream());</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">makeNum</span><span class="params">()</span> </span>&#123;</div><div class="line">        Random random = <span class="keyword">new</span> Random();</div><div class="line">        String num = random.nextInt(<span class="number">9999999</span>) + <span class="string">""</span>;</div><div class="line">        StringBuffer buffer = <span class="keyword">new</span> StringBuffer();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span> - num.length(); i++) &#123;</div><div class="line">            buffer.append(<span class="string">"0"</span>);</div><div class="line">        &#125;</div><div class="line">        num = buffer.toString() + num;</div><div class="line">        <span class="keyword">return</span> num;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1228,9 +1373,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T12:39:38+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T12:39:38+08:00">
                 2017-06-30
               </time>
             
@@ -1249,7 +1394,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1265,6 +1410,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/30/JavaWeb学习总结-七-HttpServletResponse-一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/30/JavaWeb学习总结-七-HttpServletResponse-一/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1290,7 +1446,8 @@
       
         
           
-            <p>Web服务器收到客户端的http请求，会针对每一次请求，分别创建一个用于代表请求的request对象、和代表响应的response对象。<br>request和response对象即然代表请求和响应，那我们要获取客户机提交过来的数据，只需要找request对象就行了。要向客户机输出数据，只需要找response对象就行了。</p>
+            <p>[TOC]</p>
+<p>Web服务器收到客户端的http请求，会针对每一次请求，分别创建一个用于代表请求的request对象、和代表响应的response对象。<br>request和response对象即然代表请求和响应，那我们要获取客户机提交过来的数据，只需要找request对象就行了。要向客户机输出数据，只需要找response对象就行了。</p>
 <h2 id="一、HttpServletResponse对象介绍"><a href="#一、HttpServletResponse对象介绍" class="headerlink" title="一、HttpServletResponse对象介绍"></a>一、HttpServletResponse对象介绍</h2><p>　　<img src="data:image/png;base64,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" alt="img"></p>
 <p>　　HttpServletResponse对象代表服务器的响应。这个对象中封装了向客户端发送数据、发送响应头，发送响应状态码的方法。查看HttpServletResponse的API，可以看到这些相关的方法。</p>
 <h3 id="1-1、负责向客户端-浏览器-发送数据的相关方法"><a href="#1-1、负责向客户端-浏览器-发送数据的相关方法" class="headerlink" title="1.1、负责向客户端(浏览器)发送数据的相关方法"></a>1.1、负责向客户端(浏览器)发送数据的相关方法</h3><p>　　<img src="data:image/png;base64,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" alt="img"></p>
@@ -1443,9 +1600,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T08:36:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T08:36:21+08:00">
                 2017-06-30
               </time>
             
@@ -1464,7 +1621,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1480,6 +1637,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/30/JavaWeb学习总结-六-Servlet开发-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/30/JavaWeb学习总结-六-Servlet开发-二/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1617,9 +1785,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-29T14:02:06+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T14:02:06+08:00">
                 2017-06-29
               </time>
             
@@ -1638,7 +1806,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1654,6 +1822,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/29/JavaWeb学习总结-五-Servlet开发-一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/29/JavaWeb学习总结-五-Servlet开发-一/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1679,7 +1858,8 @@
       
         
           
-            <h2 id="一、Servlet简介"><a href="#一、Servlet简介" class="headerlink" title="一、Servlet简介"></a>一、Servlet简介</h2><p>　　Servlet是sun公司提供的一门用于开发动态web资源的技术。<br>　　Sun公司在其API中提供了一个servlet接口，用户若想用发一个动态web资源(即开发一个Java程序向浏览器输出数据)，需要完成以下2个步骤：<br>　　1、编写一个Java类，实现servlet接口。<br>　　2、把开发好的Java类部署到web服务器中。<br>　　按照一种约定俗成的称呼习惯，通常我们也把实现了servlet接口的java程序，称之为Servlet</p>
+            <p>[TOC]</p>
+<h2 id="一、Servlet简介"><a href="#一、Servlet简介" class="headerlink" title="一、Servlet简介"></a>一、Servlet简介</h2><p>　　Servlet是sun公司提供的一门用于开发动态web资源的技术。<br>　　Sun公司在其API中提供了一个servlet接口，用户若想用发一个动态web资源(即开发一个Java程序向浏览器输出数据)，需要完成以下2个步骤：<br>　　1、编写一个Java类，实现servlet接口。<br>　　2、把开发好的Java类部署到web服务器中。<br>　　按照一种约定俗成的称呼习惯，通常我们也把实现了servlet接口的java程序，称之为Servlet</p>
 <h2 id="二、Servlet的运行过程"><a href="#二、Servlet的运行过程" class="headerlink" title="二、Servlet的运行过程"></a>二、Servlet的运行过程</h2><p>Servlet程序是由WEB服务器调用，web服务器收到客户端的Servlet访问请求后：<br>　　①Web服务器首先检查是否已经装载并创建了该Servlet的实例对象。如果是，则直接执行第④步，否则，执行第②步。<br>　　②装载并创建该Servlet的一个实例对象。<br>　　③调用Servlet实例对象的init()方法。<br>　　④创建一个用于封装HTTP请求消息的HttpServletRequest对象和一个代表HTTP响应消息的HttpServletResponse对象，然后调用Servlet的service()方法并将请求和响应对象作为参数传递进去。<br>　　⑤WEB应用程序被停止或重新启动之前，Servlet引擎将卸载Servlet，并在卸载之前调用Servlet的destroy()方法。<br><img src="data:image/png;base64,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" alt="img"></p>
 <p><img src="data:image/png;base64,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" alt="img"></p>
 <p><img src="data:image/png;base64,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" alt="img"></p>
@@ -1825,9 +2005,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-28T12:59:03+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T12:59:03+08:00">
                 2017-06-28
               </time>
             
@@ -1846,7 +2026,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1862,6 +2042,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/JavaWeb学习总结-四-Http协议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/JavaWeb学习总结-四-Http协议/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -2007,7 +2198,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">18</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -2016,10 +2207,10 @@
             
             
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Kategorien</span>
-              
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
           
 
@@ -2027,10 +2218,10 @@
             
             
             <div class="site-state-item site-state-tags">
-              
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">Tags</span>
-              
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
@@ -2079,11 +2270,11 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
@@ -2173,6 +2364,14 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://qintongbaba.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
 
 
 
@@ -2202,6 +2401,132 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
 
 
 
