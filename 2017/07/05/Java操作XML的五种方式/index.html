@@ -1,0 +1,982 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="xml," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+1、了解XML​        XML，即可扩展标记语言（Extensible Markup Language），标准通用标记语言的子集，一种用于标记电子文件使其具有结构性的标记语言。它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。 它非常适合万维网传输，提供统一的方法来描述和交换独立于应用程序或供应商的结构化数据。它和JSON都是一种数据交换格式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java操作XML的五种方式">
+<meta property="og:url" content="https://qintongbaba.github.io/2017/07/05/Java操作XML的五种方式/index.html">
+<meta property="og:site_name" content="Qintong BaBa">
+<meta property="og:description" content="[TOC]
+1、了解XML​        XML，即可扩展标记语言（Extensible Markup Language），标准通用标记语言的子集，一种用于标记电子文件使其具有结构性的标记语言。它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。 它非常适合万维网传输，提供统一的方法来描述和交换独立于应用程序或供应商的结构化数据。它和JSON都是一种数据交换格式。">
+<meta property="og:image" content="http://img.blog.csdn.net/20140501222742750?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYW5kaWVfZ3Vv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-07-07T05:05:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java操作XML的五种方式">
+<meta name="twitter:description" content="[TOC]
+1、了解XML​        XML，即可扩展标记语言（Extensible Markup Language），标准通用标记语言的子集，一种用于标记电子文件使其具有结构性的标记语言。它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。 它非常适合万维网传输，提供统一的方法来描述和交换独立于应用程序或供应商的结构化数据。它和JSON都是一种数据交换格式。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20140501222742750?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYW5kaWVfZ3Vv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qintongbaba.github.io/2017/07/05/Java操作XML的五种方式/"/>
+
+
+
+
+
+  <title> Java操作XML的五种方式 | Qintong BaBa </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qintong BaBa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一天进步一点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2017/07/05/Java操作XML的五种方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wu Qinghua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qintong BaBa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java操作XML的五种方式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-05T08:42:55+08:00">
+                2017-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/05/Java操作XML的五种方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/07/05/Java操作XML的五种方式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h2 id="1、了解XML"><a href="#1、了解XML" class="headerlink" title="1、了解XML"></a>1、了解XML</h2><p>​        XML，即可扩展标记语言（Extensible Markup Language），标准通用标记语言的子集，一种用于标记电子文件使其具有结构性的标记语言。它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。 它非常适合万维网传输，提供统一的方法来描述和交换独立于应用程序或供应商的结构化数据。它和JSON都是一种数据交换格式。</p>
+<p>作用：解析XML文档，创建XML文档。</p>
+<h2 id="2、什么是可扩展标记语言？"><a href="#2、什么是可扩展标记语言？" class="headerlink" title="2、什么是可扩展标记语言？"></a>2、什么是可扩展标记语言？</h2><blockquote>
+<p>· 可扩展标记语言是一种很像超文本标记语言的标记语言。</p>
+<p>· 它的设计宗旨是传输数据，而不是显示数据。</p>
+<p>· 它的标签没有被预定义。您需要自行定义标签。</p>
+<p>· 它被设计为具有自我描述性。</p>
+<p>· 它是W3C的推荐标准。</p>
+</blockquote>
+<h2 id="3、解析XML文档的五种方式：-五种方法解析XML文档：Dom、SAX、JDOM、dom4j-、degister"><a href="#3、解析XML文档的五种方式：-五种方法解析XML文档：Dom、SAX、JDOM、dom4j-、degister" class="headerlink" title="3、解析XML文档的五种方式： 五种方法解析XML文档：Dom、SAX、JDOM、dom4j 、degister"></a>3、解析XML文档的五种方式： 五种方法解析XML文档：Dom、SAX、JDOM、dom4j 、degister</h2><h4 id="准备xml文件"><a href="#准备xml文件" class="headerlink" title="准备xml文件"></a>准备xml文件</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line">&lt;languages cat="it"&gt;</div><div class="line">    &lt;lang id="1"&gt;</div><div class="line">        &lt;name&gt;Java&lt;/name&gt;</div><div class="line">        &lt;ide&gt;Eclipse&lt;/ide&gt;</div><div class="line">    &lt;/lang&gt;</div><div class="line">    &lt;lang id="2"&gt;</div><div class="line">        &lt;name&gt;Swift&lt;/name&gt;</div><div class="line">        &lt;ide&gt;Xcode&lt;/ide&gt;</div><div class="line">    &lt;/lang&gt;</div><div class="line">    &lt;lang id="3"&gt;</div><div class="line">        &lt;name&gt;c#&lt;/name&gt;</div><div class="line">        &lt;ide&gt;Visual Studio&lt;/ide&gt;</div><div class="line">    &lt;/lang&gt;</div><div class="line">&lt;/languages&gt;</div></pre></td></tr></table></figure>
+<h3 id="3-1、DOM"><a href="#3-1、DOM" class="headerlink" title="3.1、DOM"></a>3.1、DOM</h3><p>第一种：DOM的全称是Document Object Model，也即文档对象模型。在应用程序中，基于DOM的XML分析器将一个XML文档转换成一个对象模型的集合（通常称DOM树），应用程序正是通过对这个对象模型的操作，来实现对XML文档数据的操作。通过DOM接口，应用程序可以在任何时候访问XML文档中的任何一部分数据，因此，这种利用DOM接口的机制也被称作随机访问机制。</p>
+<h4 id="3-1-1-dom读取xml文件"><a href="#3-1-1-dom读取xml文件" class="headerlink" title="3.1.1 dom读取xml文件"></a>3.1.1 dom读取xml文件</h4><p>​    读取代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readXML</span><span class="params">()</span> <span class="keyword">throws</span> ParserConfigurationException, IOException, SAXException </span>&#123;</div><div class="line">        <span class="comment">//1.获取DocumentBuilder工厂实例</span></div><div class="line">        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</div><div class="line">        <span class="comment">//2.获取解析器</span></div><div class="line">        DocumentBuilder builder = dbf.newDocumentBuilder();</div><div class="line">        <span class="comment">//3.解析文件</span></div><div class="line">        Document document = builder.parse(<span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"xml/languages.xml"</span>));</div><div class="line"></div><div class="line">        <span class="comment">//获取根元素</span></div><div class="line">        Element root = document.getDocumentElement();</div><div class="line">        <span class="comment">//获取属性</span></div><div class="line">        String cat = root.getAttribute(<span class="string">"cat"</span>);</div><div class="line">        System.out.println(<span class="string">"根元素为："</span>+root.getNodeName()+<span class="string">" 属性cat:"</span>+cat);</div><div class="line"></div><div class="line">        <span class="comment">//获取所有名字为lang的标签</span></div><div class="line">        NodeList langs = root.getElementsByTagName(<span class="string">"lang"</span>);</div><div class="line">        <span class="keyword">int</span> length = langs.getLength();</div><div class="line">        System.out.println(<span class="string">"lang名称的节点长度为："</span>+length);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</div><div class="line">            Node node = langs.item(i);</div><div class="line">            <span class="comment">//获取下面所有的子节点</span></div><div class="line">            NodeList childNodes = node.getChildNodes();</div><div class="line">            <span class="keyword">int</span> len = childNodes.getLength();</div><div class="line">            System.out.println(<span class="string">"第"</span>+(i+<span class="number">1</span>)+<span class="string">"个lang标签子节点长度:"</span>+len);<span class="comment">//长度为5（因为含有三个回车）</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; j++) &#123;</div><div class="line">                Node item = childNodes.item(j);</div><div class="line">                <span class="comment">//只对节点类型为ELEMENT_NODE的操作   回车的类型为TEXT_NODE</span></div><div class="line">                <span class="keyword">if</span>(item.getNodeType()==Node.ELEMENT_NODE)&#123;</div><div class="line">                    System.out.println(item.getNodeName()+<span class="string">"="</span>+item.getTextContent());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="3-1-2-dom方式创建xml"><a href="#3-1-2-dom方式创建xml" class="headerlink" title="3.1.2 dom方式创建xml"></a>3.1.2 dom方式创建xml</h4><p>创建xml代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createXml</span><span class="params">()</span> <span class="keyword">throws</span> ParserConfigurationException, TransformerException </span>&#123;</div><div class="line">        <span class="comment">//1.获取DocumentBuilder工厂实例</span></div><div class="line">        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</div><div class="line">        <span class="comment">//2.获取解析器</span></div><div class="line">        DocumentBuilder builder = dbf.newDocumentBuilder();</div><div class="line">        <span class="comment">//3.获取Document</span></div><div class="line">        Document document = builder.newDocument();</div><div class="line"></div><div class="line">        <span class="comment">//创建节点</span></div><div class="line">        Element root = document.createElement(<span class="string">"languages"</span>);</div><div class="line">        <span class="comment">//创建属性</span></div><div class="line">        root.setAttribute(<span class="string">"cat"</span>, <span class="string">"it"</span>);</div><div class="line"></div><div class="line">        <span class="comment">//创建lang</span></div><div class="line">        Element lang = document.createElement(<span class="string">"lang"</span>);</div><div class="line">        lang.setAttribute(<span class="string">"id"</span>, <span class="string">"1"</span>);</div><div class="line"></div><div class="line">        Element name = document.createElement(<span class="string">"name"</span>);</div><div class="line">        name.setTextContent(<span class="string">"java"</span>);<span class="comment">//设置文本内容</span></div><div class="line"></div><div class="line">        Element ide = document.createElement(<span class="string">"ide"</span>);</div><div class="line">        ide.setTextContent(<span class="string">"Eclipse"</span>);</div><div class="line"></div><div class="line">        <span class="comment">//添加节点</span></div><div class="line">        lang.appendChild(name);</div><div class="line">        lang.appendChild(ide);</div><div class="line">        root.appendChild(lang);</div><div class="line"></div><div class="line">        document.appendChild(root);</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">//输出</span></div><div class="line">        TransformerFactory factory = TransformerFactory.newInstance();</div><div class="line">        Transformer transformer = factory.newTransformer();</div><div class="line">        transformer.setOutputProperty(<span class="string">"encoding"</span>, <span class="string">"UTF-8"</span>);</div><div class="line"></div><div class="line">        <span class="comment">//写到字符串</span></div><div class="line">        StringWriter out = <span class="keyword">new</span> StringWriter();</div><div class="line">        transformer.transform(<span class="keyword">new</span> DOMSource(document),<span class="keyword">new</span> StreamResult(out));</div><div class="line">        System.out.println(out.toString());</div><div class="line"></div><div class="line">        <span class="comment">//写到文件</span></div><div class="line">        transformer.transform(<span class="keyword">new</span> DOMSource(document), <span class="keyword">new</span> StreamResult(<span class="keyword">new</span> File(<span class="string">"newxml.xml"</span>)));</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="3-2-、SAX"><a href="#3-2-、SAX" class="headerlink" title="3.2 、SAX"></a>3.2 、SAX</h3><p>​    SAX介绍</p>
+<p>　　SAX的全称是<strong>Simple APIs for XML</strong>，也即XML简单应用程序接口。</p>
+<p>　　与DOM不同，SAX提供的访问模式是一种顺序模式，这是一种快速读写XML数据的方式。</p>
+<p>　　<strong>当使用SAX分析器对XML文档进行分析时，会触发一系列事件，并激活相应的事件处理函数，应用程序通过这些事件处理函数实现对XML文档的访问，因而SAX接口也被称作事件驱动接口</strong>。</p>
+<p>　　<strong>局限性：</strong></p>
+<p>　　1. SAX分析器在对XML文档进行分析时，触发了一系列的事件，由于事件触发本身是有时序性的，因此，SAX提供的是一种顺序访问机制，对于已经分析过的部分，不能再倒回去重新处理。</p>
+<p>　　即，一旦经过了某个元素，我们没有办法返回去再去访问它。</p>
+<p>　　2. SAX分析器只做了一些简单的工作，大部分工作还要由应用程序自己去做。</p>
+<p>　　也就是说，SAX分析器在实现时，只是顺序地检查XML文档中的字节流，判断当前字节是XML语法中的哪一部分、是否符合XML语法，然后再触发相应的事件，而事件处理函数本身则要由应用程序自己来实现。</p>
+<p>　　同DOM分析器相比，SAX分析器缺乏灵活性。</p>
+<p>　　<strong>优势：</strong></p>
+<p>　　然而，由于SAX分析器实现简单，对内存要求比较低，（SAX不必将整个XML文档加载到内存当中，因此它占据内存要比DOM小）， 因此实现效率比较高。</p>
+<p>　　对于大型的XML文档来说，通常会用SAX而不是DOM。</p>
+<p>　　并且对于那些只需要访问XML文档中的数据而不对文档进行更改的应用程序来说，SAX分析器更为合适。</p>
+<p><strong>DefaultHandler类：</strong></p>
+<p><img src="http://img.blog.csdn.net/20140501222742750?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYW5kaWVfZ3Vv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
+<h4 id="3-2-1-读取xml文件"><a href="#3-2-1-读取xml文件" class="headerlink" title="3.2.1 读取xml文件"></a>3.2.1 读取xml文件</h4><p>标签的枚举类如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> org.wuqinghua.java.xml.sax;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by wuqinghua on 17/7/5.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> TagName &#123;</div><div class="line">    LANGUAGES(<span class="string">"languages"</span>),LANG(<span class="string">"lang"</span>), NAME(<span class="string">"name"</span>), IDE(<span class="string">"ide"</span>),NONE(<span class="string">"none"</span>);</div><div class="line">    <span class="keyword">private</span> String tagName;</div><div class="line"></div><div class="line">    TagName(String tagName) &#123;</div><div class="line">        <span class="keyword">this</span>.tagName = tagName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTagName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> tagName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TagName <span class="title">transformer</span><span class="params">(String tagName)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (tagName) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">"languages"</span>:</div><div class="line">               <span class="keyword">return</span> LANGUAGES;</div><div class="line">            <span class="keyword">case</span> <span class="string">"lang"</span>:</div><div class="line">                <span class="keyword">return</span> LANG;</div><div class="line">            <span class="keyword">case</span> <span class="string">"name"</span>:</div><div class="line">                <span class="keyword">return</span> NAME;</div><div class="line">            <span class="keyword">case</span> <span class="string">"ide"</span>:</div><div class="line">                <span class="keyword">return</span> IDE;</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">return</span> NONE;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>将lang标签设计为一个对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> org.wuqinghua.java.xml.sax;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by wuqinghua on 17/7/5.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lang</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String id;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> String ide;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.id = id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getIde</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> ide;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIde</span><span class="params">(String ide)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.ide = ide;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Lang&#123;"</span> +</div><div class="line">                <span class="string">"id='"</span> + id + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", name='"</span> + name + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", ide='"</span> + ide + <span class="string">'\''</span> +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>xml顺序执行的handler</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> org.wuqinghua.java.xml.sax;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.xml.sax.Attributes;</div><div class="line"><span class="keyword">import</span> org.xml.sax.SAXException;</div><div class="line"><span class="keyword">import</span> org.xml.sax.helpers.DefaultHandler;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by wuqinghua on 17/7/5.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SaxHandler</span> <span class="keyword">extends</span> <span class="title">DefaultHandler</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> List&lt;Lang&gt; langs = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> Lang lang = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isName = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isIde = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="comment">//文档开始触发</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startDocument</span><span class="params">()</span> <span class="keyword">throws</span> SAXException </span>&#123;</div><div class="line">        <span class="keyword">super</span>.startDocument();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//文档结束触发</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">endDocument</span><span class="params">()</span> <span class="keyword">throws</span> SAXException </span>&#123;</div><div class="line">        <span class="keyword">super</span>.endDocument();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//标签开始触发</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startElement</span><span class="params">(String uri, String localName, String qName, Attributes attributes)</span> <span class="keyword">throws</span> SAXException </span>&#123;</div><div class="line">        TagName tagName = TagName.transformer(qName);</div><div class="line">        <span class="keyword">switch</span> (tagName) &#123;</div><div class="line">            <span class="keyword">case</span> NONE:</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> LANGUAGES:</div><div class="line">                <span class="keyword">if</span> (langs == <span class="keyword">null</span>)</div><div class="line">                    langs = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> LANG:  <span class="comment">//解析lang标签</span></div><div class="line">                lang = <span class="keyword">new</span> Lang();</div><div class="line">                String id = attributes.getValue(<span class="string">"id"</span>);</div><div class="line">                lang.setId(id);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> NAME: <span class="comment">//解析name标签</span></div><div class="line">                isName = <span class="keyword">true</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> IDE:  <span class="comment">//解析ide标签</span></div><div class="line">                isIde = <span class="keyword">true</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//标签结束触发</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">endElement</span><span class="params">(String uri, String localName, String qName)</span> <span class="keyword">throws</span> SAXException </span>&#123;</div><div class="line">        <span class="keyword">if</span> (TagName.transformer(qName).equals(TagName.LANG)) &#123;</div><div class="line">            langs.add(lang);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//标签中数据触发</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">characters</span><span class="params">(<span class="keyword">char</span>[] ch, <span class="keyword">int</span> start, <span class="keyword">int</span> length)</span> <span class="keyword">throws</span> SAXException </span>&#123;</div><div class="line">        <span class="keyword">if</span> (isName) &#123;</div><div class="line">            lang.setName(<span class="keyword">new</span> String(ch, start, length));</div><div class="line">            isName = <span class="keyword">false</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isIde) &#123;</div><div class="line">            lang.setIde(<span class="keyword">new</span> String(ch, start, length));</div><div class="line">            isIde = <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Lang&gt; <span class="title">getLangs</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> langs;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>读取xml</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readXML</span><span class="params">()</span> <span class="keyword">throws</span> ParserConfigurationException, SAXException, IOException </span>&#123;</div><div class="line">    <span class="comment">//1.获取SAX解析器的工厂</span></div><div class="line">    SAXParserFactory factory = SAXParserFactory.newInstance();</div><div class="line">    <span class="comment">//2.获取SAX解析器</span></div><div class="line">    SAXParser saxParser = factory.newSAXParser();</div><div class="line">    <span class="comment">//3.创建顺序读取xml的处理器</span></div><div class="line">    SaxHandler handler = <span class="keyword">new</span> SaxHandler();</div><div class="line">    <span class="comment">//4.解析xml</span></div><div class="line">    saxParser.parse(<span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"xml/languages"</span> +</div><div class="line">            <span class="string">".xml"</span>),handler);</div><div class="line"></div><div class="line">    System.out.println(handler.getLangs());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-2-1-创建xml文件"><a href="#3-2-1-创建xml文件" class="headerlink" title="3.2.1 创建xml文件"></a>3.2.1 创建xml文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createXML</span><span class="params">()</span> <span class="keyword">throws</span> TransformerConfigurationException, SAXException </span>&#123;</div><div class="line">    <span class="comment">//1.获取SAXTransformerFactory实例</span></div><div class="line">    SAXTransformerFactory factory = (SAXTransformerFactory) SAXTransformerFactory.newInstance();</div><div class="line"></div><div class="line">    <span class="comment">//2.创建TransformerHandler实例</span></div><div class="line">    TransformerHandler transformerHandler = factory.newTransformerHandler();</div><div class="line"></div><div class="line">    <span class="comment">//3.创建Transformer对象</span></div><div class="line">    Transformer transformer = transformerHandler.getTransformer();</div><div class="line"></div><div class="line">    <span class="comment">//4、设置输出的xml属性，encoding为编码，indent是确保输出的xml文件能够自动换行</span></div><div class="line">    transformer.setOutputProperty(OutputKeys.ENCODING,<span class="string">"UTF-8"</span>);</div><div class="line">    transformer.setOutputProperty(OutputKeys.INDENT,<span class="string">"yes"</span>);</div><div class="line"></div><div class="line">    <span class="comment">//5、创建Result对象，将Result对象加载到TransHandler中</span></div><div class="line">    <span class="comment">//注意：1、这一步必须在Transformer.setOutputProperty()之后，不然设置的xml属性将不生效</span></div><div class="line">    <span class="comment">//    2、这一步也必须在TransformerHandler.startDocument()之前，不然会报错。</span></div><div class="line">    <span class="comment">//       分析源码后发现，startDocument()会先判断result是否为空，为空则报错</span></div><div class="line">    Result result = <span class="keyword">new</span> StreamResult(<span class="string">"newxml.xml"</span>);</div><div class="line">    transformerHandler.setResult(result);</div><div class="line"></div><div class="line">    <span class="comment">//6、创建属性Attribute对象</span></div><div class="line">    AttributesImpl attr = <span class="keyword">new</span> AttributesImpl();</div><div class="line"></div><div class="line">    <span class="comment">//7.开始写文件</span></div><div class="line">    transformerHandler.startDocument();</div><div class="line"></div><div class="line">    <span class="comment">//8.写入根节点</span></div><div class="line">    attr.clear();</div><div class="line">    <span class="comment">//设置属性</span></div><div class="line">    attr.addAttribute(<span class="string">""</span>,<span class="string">""</span>,<span class="string">"cat"</span>,<span class="string">""</span>,<span class="string">"it"</span>);</div><div class="line">    transformerHandler.startElement(<span class="string">""</span>,<span class="string">""</span>,TagName.LANGUAGES.getTagName(),attr);</div><div class="line"></div><div class="line">    <span class="comment">//设置lang节点</span></div><div class="line">    attr.clear();</div><div class="line">    attr.addAttribute(<span class="string">""</span>,<span class="string">""</span>,<span class="string">"id"</span>,<span class="string">""</span>,<span class="string">"1"</span>);</div><div class="line">    transformerHandler.startElement(<span class="string">""</span>,<span class="string">""</span>,TagName.LANG.getTagName(),attr);</div><div class="line"></div><div class="line">    <span class="comment">//设置name节点</span></div><div class="line">    attr.clear();;</div><div class="line">    transformerHandler.startElement(<span class="string">""</span>,<span class="string">""</span>,TagName.NAME.getTagName(),attr);</div><div class="line">    transformerHandler.characters(<span class="string">"java"</span>.toCharArray(),<span class="number">0</span>,<span class="string">"java"</span>.toCharArray().length);</div><div class="line">    transformerHandler.endElement(<span class="string">""</span>,<span class="string">""</span>,TagName.NAME.getTagName());</div><div class="line"></div><div class="line">    <span class="comment">//设置ide</span></div><div class="line">    attr.clear();</div><div class="line">    transformerHandler.startElement(<span class="string">""</span>,<span class="string">""</span>,TagName.IDE.getTagName(),attr);</div><div class="line">    transformerHandler.characters(<span class="string">"Eclipse"</span>.toCharArray(),<span class="number">0</span>,<span class="string">"Eclipse"</span>.toCharArray().length);</div><div class="line">    transformerHandler.endElement(<span class="string">""</span>,<span class="string">""</span>,TagName.IDE.getTagName());</div><div class="line"></div><div class="line"></div><div class="line">    transformerHandler.endElement(<span class="string">""</span>,<span class="string">""</span>,TagName.LANG.getTagName());</div><div class="line"></div><div class="line">    transformerHandler.endElement(<span class="string">""</span>,<span class="string">""</span>,TagName.LANGUAGES.getTagName());</div><div class="line"></div><div class="line">    <span class="comment">//9.结束</span></div><div class="line">    transformerHandler.endDocument();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-3-JDom"><a href="#3-3-JDom" class="headerlink" title="3.3  JDom"></a>3.3  JDom</h3><p>JDOM是一个开源项目，它基于树型结构，利用Java的技术对XML文档实现解析、生成、序列化以及多种操作，用Java的数据类型来定义操作数据树的各个节点。</p>
+<p>JDOM下载</p>
+<p>jdom-2.0.4.jar下载： <a href="http://www.jdom.org/downloads/" target="_blank" rel="external">http://www.jdom.org/downloads/</a></p>
+<h4 id="3-3-1-读取xml文件"><a href="#3-3-1-读取xml文件" class="headerlink" title="3.3.1 读取xml文件"></a>3.3.1 读取xml文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readXML</span><span class="params">()</span> <span class="keyword">throws</span> JDOMException, IOException </span>&#123;</div><div class="line">    <span class="comment">//1.获取JDom的解析器</span></div><div class="line">    SAXBuilder saxBuilder = <span class="keyword">new</span> SAXBuilder();</div><div class="line"></div><div class="line">    <span class="comment">//2.加载xml</span></div><div class="line">    Document document = saxBuilder.build(<span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"xml/languages"</span> +</div><div class="line">            <span class="string">".xml"</span>));</div><div class="line"></div><div class="line">    <span class="comment">//3.获取根元素</span></div><div class="line">    Element rootElement = document.getRootElement();</div><div class="line">    System.out.println(<span class="string">"根元素名称:"</span>+rootElement.getName()+<span class="string">" 属性cat:"</span>+rootElement.getAttributeValue</div><div class="line">            (<span class="string">"cat"</span>));</div><div class="line"></div><div class="line">    <span class="comment">//4.获取根元素下的所有的子节点</span></div><div class="line">    List&lt;Element&gt; children = rootElement.getChildren();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;children.size() ; i++) &#123;</div><div class="line">        Element element = children.get(i);</div><div class="line">        System.out.println(element.getName()+<span class="string">" id:"</span>+element.getAttribute(<span class="string">"id"</span>).getValue());</div><div class="line"></div><div class="line">        List&lt;Element&gt; child = element.getChildren();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; child.size(); j++) &#123;</div><div class="line">            System.out.println(child.get(j).getName()+<span class="string">"="</span>+child.get(j).getText());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-3-2-创建xml文件"><a href="#3-3-2-创建xml文件" class="headerlink" title="3.3.2 创建xml文件"></a>3.3.2 创建xml文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createXml</span><span class="params">()</span> <span class="keyword">throws</span> TransformerException, IOException </span>&#123;</div><div class="line">        <span class="comment">//1.创建文档</span></div><div class="line">        Document document = <span class="keyword">new</span> Document();</div><div class="line"></div><div class="line">        <span class="comment">//2.添加跟节点</span></div><div class="line">        Element root = <span class="keyword">new</span> Element(<span class="string">"languages"</span>);</div><div class="line">        root.setAttribute(<span class="string">"cat"</span>,<span class="string">"it"</span>);</div><div class="line">        document.setRootElement(root);</div><div class="line"></div><div class="line">        <span class="comment">//3.添加子节点</span></div><div class="line">        Element lang = <span class="keyword">new</span> Element(<span class="string">"lang"</span>);</div><div class="line">        lang.setAttribute(<span class="string">"id"</span>,<span class="string">"1"</span>);</div><div class="line"></div><div class="line">        Element name = <span class="keyword">new</span> Element(<span class="string">"name"</span>);</div><div class="line">        name.setText(<span class="string">"Java"</span>);</div><div class="line"></div><div class="line">        Element ide = <span class="keyword">new</span> Element(<span class="string">"ide"</span>);</div><div class="line">        ide.setText(<span class="string">"Eclipse"</span>);</div><div class="line"></div><div class="line">        lang.addContent(name);</div><div class="line">        lang.addContent(ide);</div><div class="line"></div><div class="line">        root.addContent(lang);</div><div class="line"></div><div class="line">        <span class="comment">//输出</span></div><div class="line"><span class="comment">//        TransformerFactory factory  = TransformerFactory.newInstance();</span></div><div class="line"><span class="comment">//        Transformer transformer = factory.newTransformer();</span></div><div class="line"><span class="comment">//        transformer.setOutputProperty(OutputKeys.ENCODING,"UTF-8");</span></div><div class="line"><span class="comment">//        transformer.setOutputProperty(OutputKeys.INDENT,"yes");</span></div><div class="line"><span class="comment">//        transformer.transform(new JDOMSource(document),new StreamResult(new FileWriter("newxml" +</span></div><div class="line"><span class="comment">//                ".xml")));</span></div><div class="line"></div><div class="line">        <span class="comment">//输出</span></div><div class="line">        Format format = Format.getPrettyFormat();</div><div class="line">        format.setEncoding(<span class="string">"UTF-8"</span>);</div><div class="line">        XMLOutputter out = <span class="keyword">new</span> XMLOutputter();</div><div class="line">        out.setFormat(format);</div><div class="line">        out.output(document,<span class="keyword">new</span> FileWriter(<span class="string">"newxml.xml"</span>));</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="3-4-DOM4J"><a href="#3-4-DOM4J" class="headerlink" title="3.4 DOM4J"></a>3.4 DOM4J</h3><p>​    dom4j的项目地址：<a href="http://sourceforge.net/projects/dom4j/?source=directory" target="_blank" rel="external">http://sourceforge.net/projects/dom4j/?source=directory</a></p>
+<p>　　dom4j是一个简单的开源库，用于处理XML、 XPath和XSLT，它基于Java平台，使用Java的集合框架，全面集成了DOM，SAX和JAXP。</p>
+<h4 id="3-4-1-读取xml"><a href="#3-4-1-读取xml" class="headerlink" title="3.4.1 读取xml"></a>3.4.1 读取xml</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readXml</span><span class="params">()</span> <span class="keyword">throws</span> DocumentException </span>&#123;</div><div class="line">    <span class="comment">//1.说去SAXReader对象</span></div><div class="line">    SAXReader reader = <span class="keyword">new</span> SAXReader();</div><div class="line">    <span class="comment">//2.获取Document对象</span></div><div class="line">    Document document = reader.read(<span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"xml/languages.xml"</span>));</div><div class="line">    <span class="comment">//3.获取根元素</span></div><div class="line">    Element rootElement = document.getRootElement();</div><div class="line">    System.out.println(<span class="string">"根元素名称:"</span>+rootElement.getName());</div><div class="line">    String cat = rootElement.attributeValue(<span class="string">"cat"</span>);</div><div class="line">    System.out.println(<span class="string">"属性为cat的值为:"</span>+cat);</div><div class="line"></div><div class="line">    System.out.println(<span class="string">"-------------------------"</span>);</div><div class="line">    <span class="comment">//4.获取其下的子元素</span></div><div class="line">    List&lt;Element&gt; elements = rootElement.elements();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; elements.size(); i++) &#123;</div><div class="line">        Element element = elements.get(i);</div><div class="line">        System.out.println(<span class="string">"第"</span>+i+<span class="string">"个元素的名称:"</span>+element.getName());</div><div class="line">        System.out.println(<span class="string">"属性id为:"</span>+element.attributeValue(<span class="string">"id"</span>));</div><div class="line">        List&lt;Element&gt; children = element.elements();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; children.size(); j++) &#123;</div><div class="line">            Element ele = children.get(j);</div><div class="line">            System.out.println(ele.getName()+<span class="string">"="</span>+ele.getText());</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">"-------------------------"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-4-2-创建xml"><a href="#3-4-2-创建xml" class="headerlink" title="3.4.2 创建xml"></a>3.4.2 创建xml</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createXml</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    <span class="comment">//1.获取文档</span></div><div class="line">    Document document = DocumentHelper.createDocument();</div><div class="line"></div><div class="line">    <span class="comment">//2.创建跟节点</span></div><div class="line">    Element languages = DocumentHelper.createElement(<span class="string">"languages"</span>);</div><div class="line">    languages.addAttribute(<span class="string">"cat"</span>,<span class="string">"it"</span>);</div><div class="line"></div><div class="line"></div><div class="line">    document.setRootElement(languages);</div><div class="line"></div><div class="line">    <span class="comment">//3.添加子节点</span></div><div class="line">    Element lang = languages.addElement(<span class="string">"lang"</span>);</div><div class="line">    lang.addAttribute(<span class="string">"id"</span>,<span class="string">"1"</span>);</div><div class="line">    Element name = lang.addElement(<span class="string">"name"</span>);</div><div class="line">    name.setText(<span class="string">"Java"</span>);</div><div class="line">    Element ide = lang.addElement(<span class="string">"ide"</span>);</div><div class="line">    ide.setText(<span class="string">"Eclipse"</span>);</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">//输出</span></div><div class="line">    <span class="comment">//输出到控制台</span></div><div class="line">    XMLWriter writer = <span class="keyword">new</span> XMLWriter();</div><div class="line">    writer.write(document);</div><div class="line"></div><div class="line">    <span class="comment">//输出到文件</span></div><div class="line">    OutputFormat format = <span class="keyword">new</span> OutputFormat(<span class="string">"    "</span>,<span class="keyword">true</span>);</div><div class="line">    XMLWriter out = <span class="keyword">new</span> XMLWriter(<span class="keyword">new</span> FileOutputStream(<span class="string">"newxml.xml"</span>),format);</div><div class="line">    out.write(document);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-5-digester"><a href="#3-5-digester" class="headerlink" title="3.5 digester"></a>3.5 digester</h3><p>digester原来为struts中解析xml的方式，由于其比较好，被apache单独拿出变为一个小型框架。</p>
+<p>其使用的原理为sax。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/xml/" rel="tag"># xml</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/04/JavaWeb学习总结-十七-JSP中的九个内置对象/" rel="next" title="JavaWeb学习总结(十七)--JSP中的九个内置对象">
+                <i class="fa fa-chevron-left"></i> JavaWeb学习总结(十七)--JSP中的九个内置对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/08/go语言学习-一-GO语言的环境搭建/" rel="prev" title="go语言学习(一)--GO语言的环境搭建">
+                go语言学习(一)--GO语言的环境搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Wu Qinghua" />
+          <p class="site-author-name" itemprop="name">Wu Qinghua</p>
+           
+              <p class="site-description motion-element" itemprop="description">纪录学习的点滴</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、了解XML"><span class="nav-number">1.</span> <span class="nav-text">1、了解XML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、什么是可扩展标记语言？"><span class="nav-number">2.</span> <span class="nav-text">2、什么是可扩展标记语言？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、解析XML文档的五种方式：-五种方法解析XML文档：Dom、SAX、JDOM、dom4j-、degister"><span class="nav-number">3.</span> <span class="nav-text">3、解析XML文档的五种方式： 五种方法解析XML文档：Dom、SAX、JDOM、dom4j 、degister</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备xml文件"><span class="nav-number">3.0.1.</span> <span class="nav-text">准备xml文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1、DOM"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-dom读取xml文件"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 dom读取xml文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-dom方式创建xml"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 dom方式创建xml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-、SAX"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 、SAX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-读取xml文件"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 读取xml文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-创建xml文件"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.1 创建xml文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-JDom"><span class="nav-number">3.3.</span> <span class="nav-text">3.3  JDom</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-读取xml文件"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 读取xml文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-创建xml文件"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 创建xml文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-DOM4J"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 DOM4J</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-读取xml"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 读取xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-创建xml"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2 创建xml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-digester"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 digester</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wu Qinghua</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://qintongbaba.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://qintongbaba.github.io/2017/07/05/Java操作XML的五种方式/';
+          this.page.identifier = '2017/07/05/Java操作XML的五种方式/';
+          this.page.title = 'Java操作XML的五种方式';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qintongbaba.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

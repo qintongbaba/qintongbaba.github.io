@@ -1,0 +1,984 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Go," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+1.第一个Go程序​    几乎所有的程序开始都是以Hello World小例子作为开始。我们也不面熟（或者说尊重传统），下面我们从一个简单Go语言版本的Hello World来初窥Go这门新语言的模样。
+​    hello.go
+1234567package mainimport &quot;fmt&quot; //导入我们需要使用的包 ，我们需要使用里面的Println函数func main() &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go语言学习(二)--第一个GO程序">
+<meta property="og:url" content="https://qintongbaba.github.io/2017/07/09/go语言学习-二-第一个GO程序/index.html">
+<meta property="og:site_name" content="Qintong BaBa">
+<meta property="og:description" content="[TOC]
+1.第一个Go程序​    几乎所有的程序开始都是以Hello World小例子作为开始。我们也不面熟（或者说尊重传统），下面我们从一个简单Go语言版本的Hello World来初窥Go这门新语言的模样。
+​    hello.go
+1234567package mainimport &quot;fmt&quot; //导入我们需要使用的包 ，我们需要使用里面的Println函数func main() &amp;">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-7-9/41679399.jpg">
+<meta property="og:updated_time" content="2017-07-09T10:11:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go语言学习(二)--第一个GO程序">
+<meta name="twitter:description" content="[TOC]
+1.第一个Go程序​    几乎所有的程序开始都是以Hello World小例子作为开始。我们也不面熟（或者说尊重传统），下面我们从一个简单Go语言版本的Hello World来初窥Go这门新语言的模样。
+​    hello.go
+1234567package mainimport &quot;fmt&quot; //导入我们需要使用的包 ，我们需要使用里面的Println函数func main() &amp;">
+<meta name="twitter:image" content="http://ojw4jti3h.bkt.clouddn.com/17-7-9/41679399.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qintongbaba.github.io/2017/07/09/go语言学习-二-第一个GO程序/"/>
+
+
+
+
+
+  <title> go语言学习(二)--第一个GO程序 | Qintong BaBa </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qintong BaBa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一天进步一点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2017/07/09/go语言学习-二-第一个GO程序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wu Qinghua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qintong BaBa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                go语言学习(二)--第一个GO程序
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T15:43:27+08:00">
+                2017-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GoLang/" itemprop="url" rel="index">
+                    <span itemprop="name">GoLang</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/09/go语言学习-二-第一个GO程序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/07/09/go语言学习-二-第一个GO程序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h3 id="1-第一个Go程序"><a href="#1-第一个Go程序" class="headerlink" title="1.第一个Go程序"></a>1.第一个Go程序</h3><p>​    几乎所有的程序开始都是以Hello World小例子作为开始。我们也不面熟（或者说尊重传统），下面我们从一个简单Go语言版本的Hello World来初窥Go这门新语言的模样。</p>
+<p>​    hello.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span> <span class="comment">//导入我们需要使用的包 ，我们需要使用里面的Println函数</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Println(<span class="string">"Hello, world. 你好， 世界！"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="代码解读："><a href="#代码解读：" class="headerlink" title="代码解读："></a>代码解读：</h4><p>​    每个Go源码文件的开头都是以一个package开头，表示该Go代码所属的包。包是Go中最基本的分发单位,也会工程管理中依赖关系的体现。要生成可执行文件，必须建立一个名字为main的包，并且在该包中包含一个叫main()的函数（该函数为Go可执行程序的起点，也只能含有一个）。</p>
+<p>​    main()函数定义为不能带参数、返回值。命令行的参数保存在os包中的os.Args中，命令行的参数解析可以通过flag包解析，在后面章节中我们回看到如何使用flag包。</p>
+<p>​    在包的声明后会含有一系列的import语句，用于导入该程序所依赖的包。（有一点需要注意：⚠️ 在源码文件中不能包含没有使用的包，否则会编译错误）</p>
+<p>​    所有的Go函数都是以func关键字开头一个常规的函数包涵一下格式。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> 函数名<span class="params">(参数列表)</span><span class="params">(返回值列表)</span></span>&#123;</div><div class="line">  </div><div class="line">&#125;</div><div class="line"><span class="comment">//比如</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Compute</span><span class="params">(arg1 <span class="keyword">int</span>,arg2 <span class="keyword">float64</span>)</span><span class="params">(retVal <span class="keyword">float64</span>,err error)</span></span>&#123;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​    在Go的函数中支持多个函数返回值，比如上面的例子中返回了retVal和error。但是并不是所有的返回值都需要赋值，如果函数返回值没有被明确的赋值都会被设置为对应的类型的零值，比如retVal被设置为0.0，err被设置为nil。</p>
+<h4 id="Go中的注释"><a href="#Go中的注释" class="headerlink" title="Go中的注释"></a>Go中的注释</h4><p>Go的注释和C++保持一致，同时支持一下两种方式：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">	快注释</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="comment">//  行注释</span></div></pre></td></tr></table></figure>
+<p>​    ⚠️  </p>
+<ol>
+<li><p>在Go源码文件中不能包含没有使用的包，否则会编译错误。</p>
+</li>
+<li><p>在Go源码文件中不能使用分号。</p>
+</li>
+<li><p>同时在含有括号的语句中，左括号({)不能另起一行。syntax error: unexpected semicolon or newline before {</p>
+<h4 id="代码的编译与执行"><a href="#代码的编译与执行" class="headerlink" title="代码的编译与执行"></a>代码的编译与执行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go run hello.go #直接执行</div><div class="line">Hello, world. 你好,世界!</div></pre></td></tr></table></figure>
+<p>使用如上命令，会将编译、链接和运行3个步骤合并为一步。运行完成后在当前目录下也看不到中间文件和最终的可执行文件。如果需要生成编译结果，不需要自动执行，可以使用build命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ go build hello.go  #编译</div><div class="line">$ ./hello</div><div class="line">Hello, world. 你好,世界!</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="工程管理"><a href="#工程管理" class="headerlink" title="工程管理"></a>工程管理</h4><p>​    在实际的开发工作中,直接调用编译器进行编译和链接的场景是少而又少,因为在工程中不会简单到只有一个源代码文件,且源文件之间会有相互的依赖关系。如果这样一个文件一个文件逐步编译,那不亚于一场灾难。Go语言的设计者作为行业老将,自然不会忽略这一点。早期Go语言使用makefile作为临时方案,到了Go 1发布时引入了强大无比的Go命令行工具。</p>
+<p>​    Go命令行工具的革命性之处在于彻底消除了工程文件的概念,完全用目录结构和包名来推导工程结构和构建顺序。针对只有一个源文件的情况讨论工程管理看起来会比较多余,因为这可以直接用go run和go build搞定。下面我们将用一个更接近现实的虚拟项目来展示Go语言的基本工程管理方法。</p>
+<p>假设有这样一个场景:我们需要开发一个基于命令行的计算器程序。下面为此程序的基本用法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ cal help</div><div class="line">Usage: calc cmmand [args]...</div><div class="line"></div><div class="line">The cmmand are:</div><div class="line">sqrt       Square root of non-negative value.</div><div class="line">add        Add of two value</div><div class="line"></div><div class="line">$ cal sqrt 4  # 开根号</div><div class="line">2</div><div class="line">$ cal add 1 2 # 加法</div><div class="line">3</div></pre></td></tr></table></figure>
+<p>我们假设这个工程被分割为两个部分:<br> 可执行程序,名为calc,内部只包含一个calc.go文件;<br> 算法库,名为simplemath,每个command对应于一个同名的go文件,比如add.go。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">则一个正常的工程目录组织应该如下所示:</div></pre></td></tr></table></figure>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/17-7-9/41679399.jpg" alt=""></p>
+<p>在上面的结构里,带尖括号的名字表示其为目录。xxx_test.go表示的是一个对于xxx.go的单元测试,这也是Go工程里的命名规则。</p>
+<p>为了让读者能够动手实践,这里我们会列出所有的源代码并以注释的方式解释关键内容,需要注意的是,本示例主要用于示范工程管理,并不保证代码达到产品级质量。</p>
+<p>cal.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//calc.go</span></div><div class="line"></div><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"gostudy/ch02/calc/simplemath"</span></div><div class="line">	<span class="string">"os"</span> <span class="comment">//用于获取命令行参数os.Args</span></div><div class="line">	<span class="string">"strconv"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	args := os.Args <span class="comment">//获取控制台参数</span></div><div class="line"></div><div class="line">	argsLen := <span class="built_in">len</span>(args)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> args == <span class="literal">nil</span> || argsLen &lt; <span class="number">3</span> &#123;</div><div class="line">		Usage()</div><div class="line">		<span class="keyword">return</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">switch</span> args[<span class="number">1</span>] &#123;</div><div class="line">	<span class="keyword">case</span> <span class="string">"add"</span>:</div><div class="line">		<span class="keyword">if</span> argsLen &lt; <span class="number">4</span> &#123;</div><div class="line">			fmt.Println(<span class="string">"Usage: calc add &lt;integer1&gt;&lt;integer2&gt;"</span>)</div><div class="line">			<span class="keyword">return</span></div><div class="line">		&#125;</div><div class="line">		v1, err1 := strconv.Atoi(args[<span class="number">2</span>])</div><div class="line">		v2, err2 := strconv.Atoi(args[<span class="number">3</span>])</div><div class="line">		<span class="keyword">if</span> err1 != <span class="literal">nil</span> || err2 != <span class="literal">nil</span> &#123;</div><div class="line">			fmt.Println(<span class="string">"Usage: calc add &lt;integer1&gt;&lt;integer2&gt;"</span>)</div><div class="line">			<span class="keyword">return</span></div><div class="line">		&#125;</div><div class="line">		result := simplemath.Add(v1, v2)</div><div class="line">		fmt.Println(<span class="string">"Result:"</span>, result)</div><div class="line">	<span class="keyword">case</span> <span class="string">"sqrt"</span>:</div><div class="line">		v, err := strconv.Atoi(args[<span class="number">2</span>])</div><div class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">			fmt.Println(<span class="string">"Usage: calc sqrt &lt;integer&gt;"</span>)</div><div class="line">			<span class="keyword">return</span></div><div class="line">		&#125;</div><div class="line">		result := simplemath.Sqrt(v)</div><div class="line">		fmt.Println(<span class="string">"Result:"</span>, result)</div><div class="line">	<span class="keyword">default</span>:</div><div class="line">		Usage()</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Usage</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Println(<span class="string">"Usage: calc command [args]..."</span>)</div><div class="line">	fmt.Println(<span class="string">"The command are:"</span>)</div><div class="line">	fmt.Println(<span class="string">"sqrt       Square root of non-negative value."</span>)</div><div class="line">	fmt.Println(<span class="string">"add        Add of two value"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>add.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//add.go</span></div><div class="line"><span class="keyword">package</span> simplemath</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Add</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line">	<span class="keyword">return</span> a + b</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>add_test.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> simplemath</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"testing"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestAdd1</span><span class="params">(t *testing.T)</span></span> &#123;</div><div class="line">	r := Add(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line">	<span class="keyword">if</span> r != <span class="number">3</span> &#123;</div><div class="line">		t.Errorf(<span class="string">"Add(1,2) failed.Got %d,expected 3."</span>, r)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>sqrt.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> simplemath</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"math"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Sqrt</span><span class="params">(a <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line">	v := math.Sqrt(<span class="keyword">float64</span>(a))</div><div class="line">	<span class="keyword">return</span> <span class="keyword">int</span>(v)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>sort_test.go</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> simplemath</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"testing"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestSqrt1</span><span class="params">(t *testing.T)</span></span> &#123;</div><div class="line">	v := Sqrt(<span class="number">16</span>)</div><div class="line">	<span class="keyword">if</span> v != <span class="number">4</span> &#123;</div><div class="line">		t.Errorf(<span class="string">"Sqrt(16) failed. Got %v, expected 4."</span>, v)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了能够构建这个工程,需要先把这个工程的根目录加入到环境变量GOPATH中。</p>
+<p>执行测试go test simplemath</p>
+<p>生成可执行文件go install  calc.go</p>
+<p>进入bin    ./calc add 1 2</p>
+<p>​<br>​<br>​    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Go/" rel="tag"># Go</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/08/go语言学习-一-GO语言的环境搭建/" rel="next" title="go语言学习(一)--GO语言的环境搭建">
+                <i class="fa fa-chevron-left"></i> go语言学习(一)--GO语言的环境搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/09/go语言学习-三-顺序编程/" rel="prev" title="go语言学习(三)--顺序编程">
+                go语言学习(三)--顺序编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Wu Qinghua" />
+          <p class="site-author-name" itemprop="name">Wu Qinghua</p>
+           
+              <p class="site-description motion-element" itemprop="description">纪录学习的点滴</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-第一个Go程序"><span class="nav-number">1.</span> <span class="nav-text">1.第一个Go程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码解读："><span class="nav-number">1.1.</span> <span class="nav-text">代码解读：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Go中的注释"><span class="nav-number">1.2.</span> <span class="nav-text">Go中的注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码的编译与执行"><span class="nav-number">1.3.</span> <span class="nav-text">代码的编译与执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工程管理"><span class="nav-number">1.4.</span> <span class="nav-text">工程管理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wu Qinghua</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://qintongbaba.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://qintongbaba.github.io/2017/07/09/go语言学习-二-第一个GO程序/';
+          this.page.identifier = '2017/07/09/go语言学习-二-第一个GO程序/';
+          this.page.title = 'go语言学习(二)--第一个GO程序';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qintongbaba.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

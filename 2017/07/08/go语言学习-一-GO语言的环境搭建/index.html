@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java-web," />
+  <meta name="keywords" content="Go," />
 
 
 
@@ -87,25 +87,34 @@
 
 
 
-<meta name="description" content="[TOC]
-任何语言都有自己的语法，JAVA中有，JSP虽然是在JAVA上的一种应用，但是依然有其自己扩充的语法，而且在JSP中，所有的JAVA语句都可以使用。
-一、JSP模版元素　　JSP页面中的HTML内容称之为JSP模版元素。　　JSP模版元素定义了网页的基本骨架，即定义了页面的结构和外观。
-二、JSP表达式　　JSP脚本表达式（expression）用于将程序数据输出到客户端​">
+<meta name="description" content="1.安装git
+​    因为golang是通过git来管理远程包的，所以我们首先要安装git，下载地址：http://www.git-scm.com/download/。本教程主要针对golang环境搭建，git安装请自行baidu。
+2.安装Golang
+​    1) 首先到https://golang.org/dl/选择适合你系统的安装包，（墙内：http://golangtc.com/d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaWeb学习总结(十五)--JSP基础语法">
-<meta property="og:url" content="https://qintongbaba.github.io/2017/07/04/JavaWeb学习总结-十五-JSP基础语法/index.html">
+<meta property="og:title" content="go语言学习(一)--GO语言的环境搭建">
+<meta property="og:url" content="https://qintongbaba.github.io/2017/07/08/go语言学习-一-GO语言的环境搭建/index.html">
 <meta property="og:site_name" content="Qintong BaBa">
-<meta property="og:description" content="[TOC]
-任何语言都有自己的语法，JAVA中有，JSP虽然是在JAVA上的一种应用，但是依然有其自己扩充的语法，而且在JSP中，所有的JAVA语句都可以使用。
-一、JSP模版元素　　JSP页面中的HTML内容称之为JSP模版元素。　　JSP模版元素定义了网页的基本骨架，即定义了页面的结构和外观。
-二、JSP表达式　　JSP脚本表达式（expression）用于将程序数据输出到客户端​">
-<meta property="og:updated_time" content="2017-07-04T04:47:37.000Z">
+<meta property="og:description" content="1.安装git
+​    因为golang是通过git来管理远程包的，所以我们首先要安装git，下载地址：http://www.git-scm.com/download/。本教程主要针对golang环境搭建，git安装请自行baidu。
+2.安装Golang
+​    1) 首先到https://golang.org/dl/选择适合你系统的安装包，（墙内：http://golangtc.com/d">
+<meta property="og:image" content="http://www.vckai.com/static/up/image/20150505/1432351251.png">
+<meta property="og:image" content="http://www.vckai.com/static/up/image/20150505/1432352139.png">
+<meta property="og:image" content="http://www.vckai.com/static/up/image/20150505/1432355012.png">
+<meta property="og:image" content="http://www.vckai.com/static/up/image/20150505/1432353394.png">
+<meta property="og:image" content="http://www.vckai.com/static/up/image/20150505/1432353546.png">
+<meta property="og:image" content="http://www.vckai.com/static/up/image/20150505/1432353719.png">
+<meta property="og:image" content="http://www.vckai.com/static/up/image/20150505/1432354244.png">
+<meta property="og:image" content="http://www.vckai.com/static/up/image/20150505/1432354894.png">
+<meta property="og:updated_time" content="2017-07-08T06:12:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaWeb学习总结(十五)--JSP基础语法">
-<meta name="twitter:description" content="[TOC]
-任何语言都有自己的语法，JAVA中有，JSP虽然是在JAVA上的一种应用，但是依然有其自己扩充的语法，而且在JSP中，所有的JAVA语句都可以使用。
-一、JSP模版元素　　JSP页面中的HTML内容称之为JSP模版元素。　　JSP模版元素定义了网页的基本骨架，即定义了页面的结构和外观。
-二、JSP表达式　　JSP脚本表达式（expression）用于将程序数据输出到客户端​">
+<meta name="twitter:title" content="go语言学习(一)--GO语言的环境搭建">
+<meta name="twitter:description" content="1.安装git
+​    因为golang是通过git来管理远程包的，所以我们首先要安装git，下载地址：http://www.git-scm.com/download/。本教程主要针对golang环境搭建，git安装请自行baidu。
+2.安装Golang
+​    1) 首先到https://golang.org/dl/选择适合你系统的安装包，（墙内：http://golangtc.com/d">
+<meta name="twitter:image" content="http://www.vckai.com/static/up/image/20150505/1432351251.png">
 
 
 
@@ -133,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="https://qintongbaba.github.io/2017/07/04/JavaWeb学习总结-十五-JSP基础语法/"/>
+  <link rel="canonical" href="https://qintongbaba.github.io/2017/07/08/go语言学习-一-GO语言的环境搭建/"/>
 
 
 
 
 
-  <title> JavaWeb学习总结(十五)--JSP基础语法 | Qintong BaBa </title>
+  <title> go语言学习(一)--GO语言的环境搭建 | Qintong BaBa </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -312,7 +321,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2017/07/04/JavaWeb学习总结-十五-JSP基础语法/">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2017/07/08/go语言学习-一-GO语言的环境搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wu Qinghua">
@@ -333,7 +342,7 @@
             
             
               
-                JavaWeb学习总结(十五)--JSP基础语法
+                go语言学习(一)--GO语言的环境搭建
               
             
           </h1>
@@ -348,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T12:37:31+08:00">
-                2017-07-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-08T14:07:56+08:00">
+                2017-07-08
               </time>
             
 
@@ -371,8 +380,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
-                    <span itemprop="name">Java Web</span>
+                  <a href="/categories/GoLang/" itemprop="url" rel="index">
+                    <span itemprop="name">GoLang</span>
                   </a>
                 </span>
 
@@ -389,9 +398,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/07/04/JavaWeb学习总结-十五-JSP基础语法/#comments" itemprop="discussionUrl">
+                <a href="/2017/07/08/go语言学习-一-GO语言的环境搭建/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/04/JavaWeb学习总结-十五-JSP基础语法/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/07/08/go语言学习-一-GO语言的环境搭建/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -417,39 +426,45 @@
       
 
       
-        <p>[TOC]</p>
-<p>任何语言都有自己的语法，JAVA中有，JSP虽然是在JAVA上的一种应用，但是依然有其自己扩充的语法，而且在JSP中，所有的JAVA语句都可以使用。</p>
-<h2 id="一、JSP模版元素"><a href="#一、JSP模版元素" class="headerlink" title="一、JSP模版元素"></a>一、JSP模版元素</h2><p>　　JSP页面中的HTML内容称之为JSP模版元素。<br>　　JSP模版元素定义了网页的基本骨架，即定义了页面的结构和外观。</p>
-<h2 id="二、JSP表达式"><a href="#二、JSP表达式" class="headerlink" title="二、JSP表达式"></a>二、JSP表达式</h2><p>　　JSP脚本表达式（expression）用于将程序数据输出到客户端<br>​    　　语法：<strong>&lt;%= 变量或表达式 %&gt;</strong><br>​    　　<strong>举例：输出当前系统时间:</strong></p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%= <span class="keyword">new</span> java.util.Date() %&gt;</div></pre></td></tr></table></figure>
-<p>JSP引擎在翻译脚本表达式时，会将程序数据转成字符串，然后在相应位置用out.print(…) 将数据输给客户端。<br>　JSP脚本表达式中的变量或表达式后面<strong>不能有分号（;）</strong>。</p>
-<h2 id="三、JSP脚本片断"><a href="#三、JSP脚本片断" class="headerlink" title="三、JSP脚本片断"></a>三、JSP脚本片断</h2><p>　　JSP脚本片断(scriptlet)用于在JSP页面中编写多行Java代码。语法：<br>　　　　&lt;% </p>
-<p>　　　　多行java代码 </p>
-<p>　　　　%&gt;</p>
-<p>　　<strong>在&lt;% %&gt;中可以定义变量、编写语句，不能定义方法。</strong></p>
-<p>范例：在Scriptlet中定义变量、编写语句</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>;<span class="comment">//声明变量</span></div><div class="line"></div><div class="line">    <span class="comment">/*编写语句*/</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</div><div class="line">        sum+=i;</div><div class="line">    &#125;</div><div class="line">    out.println(<span class="string">"&lt;h1&gt;Sum="</span>+sum+<span class="string">"&lt;/h1&gt;"</span>);</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
-<p>注意事项：</p>
-<ul>
-<li>JSP脚本片断中只能出现java代码，不能出现其它模板元素， JSP引擎在翻译JSP页面中，会将JSP脚本片断中的Java代码将被原封不动地放到Servlet的_jspService方法中。</li>
-<li>JSP脚本片断中的Java代码必须严格遵循Java语法，例如，每执行语句后面必须用分号（;）结束。</li>
-<li>在一个JSP页面中可以有多个脚本片断，在两个或多个脚本片断之间可以嵌入文本、HTML标记和其他JSP元素。</li>
-</ul>
-<p>​    举例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">    int x = 10;</div><div class="line">    out.println(x);</div><div class="line">%&gt;</div><div class="line">&lt;p&gt;这是JSP页面文本&lt;/p&gt;</div><div class="line">&lt;%</div><div class="line">    int y = 20;</div><div class="line">    out.println(y);</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
-<p>多个脚本片断中的代码可以相互访问，犹如将所有的代码放在一对&lt;%%&gt;之中的情况。如：out.println(x);<br>　　单个脚本片断中的Java语句可以是不完整的，但是，多个脚本片断组合后的结果必须是完整的Java语句，例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;%</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">5</span>; i++) </div><div class="line">    &#123;</div><div class="line">%&gt;</div><div class="line">    &lt;H1&gt;http:<span class="comment">//localhost:8080/JavaWeb_Jsp_Study_20140603/&lt;/H1&gt;</span></div><div class="line">&lt;%</div><div class="line">    &#125;</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
-<h2 id="四、JSP声明"><a href="#四、JSP声明" class="headerlink" title="四、JSP声明"></a>四、JSP声明</h2><p>　　<strong>JSP页面中编写的所有代码，默认会翻译到servlet的service方法中， 而Jsp声明中的java代码被翻译到_jspService方法的外面。</strong>语法：<br><strong>　　　　&lt;%！ </strong><br><strong>    　　　　java代码</strong><br><strong>　　　　%&gt;</strong><br>　　所以，<strong>JSP声明可用于定义JSP页面转换成的Servlet程序的静态代码块、成员变量和方法</strong> 。<br>　　多个静态代码块、变量和函数可以定义在一个JSP声明中，也可以分别单独定义在多个JSP声明中。<br>　　JSP隐式对象的作用范围仅限于Servlet的_jspService方法，所以在JSP声明中不能使用这些隐式对象。</p>
-<p>　　JSP声明案例：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;%!</div><div class="line"><span class="keyword">static</span> &#123; </div><div class="line">    System.out.println(<span class="string">"loading Servlet!"</span>); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> globalVar = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspInit</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"initializing jsp!"</span>);</div><div class="line">&#125;</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;%!</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"destroying jsp!"</span>);</div><div class="line">&#125;</div><div class="line">%&gt;</div></pre></td></tr></table></figure>
-<h2 id="五、JSP注释"><a href="#五、JSP注释" class="headerlink" title="五、JSP注释"></a>五、JSP注释</h2><p>在JSP中，注释有两大类：</p>
-<p>   显式注释：直接使用<strong>HTML</strong>风格的注释：<strong>&lt;!- - **</strong>注释内容<strong>**- -&gt;</strong></p>
-<p>   隐式注释：直接使用<strong>JAVA</strong>的注释：<strong>//</strong>、<strong>/***</strong>……<strong>*</strong>/**</p>
-<p><strong>　**</strong>JSP<strong>自己的注释：</strong>&lt;%- - <strong><strong>注释内容</strong></strong>- -%&gt;**</p>
-<p><strong>这三种注释的区别</strong></p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!--这个注释可以看见--&gt;</div><div class="line"></div><div class="line">&lt;%</div><div class="line">    <span class="comment">//JAVA中的单行注释</span></div><div class="line"></div><div class="line">    <span class="comment">/*</span></div><div class="line">        JAVA中的多行注释</div><div class="line">    */</div><div class="line">%&gt;</div><div class="line"></div><div class="line">&lt;%--JSP自己的注释--%&gt;</div></pre></td></tr></table></figure>
-<p>HTML的注释在浏览器中查看源文件的时候是可以看得到的，而JAVA注释和JSP注释在浏览器中查看源文件时是看不到注释的内容的，这就是这三种注释的区别。</p>
-
+        <p><strong>1.安装git</strong></p>
+<p>​    因为golang是通过git来管理远程包的，所以我们首先要安装git，下载地址：<a href="http://www.git-scm.com/download/" target="_blank" rel="external">http://www.git-scm.com/download/</a>。本教程主要针对golang环境搭建，git安装请自行baidu。</p>
+<p><strong>2.安装Golang</strong></p>
+<p>​    1) 首先到<a href="https://golang.org/dl/" target="_blank" rel="external">https://golang.org/dl/</a>选择适合你系统的安装包，（墙内：<a href="http://golangtc.com/download" target="_blank" rel="external">http://golangtc.com/download</a>）。</p>
+<p>​    2）我这里选择的是：go1.4.2.windows-amd64.msi，下载完成安装到指定目录即可。我这里是(E:\Go)。</p>
+<p>​    3）安装完成后环境变量已经自动设置好了，可以呼出cmd命令行输入命令查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; go env</div></pre></td></tr></table></figure>
+<p><a href="http://www.vckai.com/static/up/image/20150505/1432351251.png" target="_blank" rel="external"><img src="http://www.vckai.com/static/up/image/20150505/1432351251.png" alt="blob.png"></a></p>
+<p>   可以看到，已经出现</p>
+<p>go命令</p>
+<p>了。如果你的不能出现，那可能是环境变量设置的问题。</p>
+<p>​    进入<strong>我的电脑</strong>-&gt;<strong>高级设置</strong>-&gt;<strong>环境变量</strong>查看下，<strong>GOROOT</strong>变量是否存在，以及<strong>Path</strong>变量中是否也设置了<strong>GOROOT</strong>。没有的话，新增一个<strong>GOROOT</strong>变量，路径则输入你刚刚安装完成后Go的根目录，如我的是：E:\Go\。然后编辑<strong>Path</strong>变量，在最后面新增”<strong>;%GOROOT%bin</strong>“。</p>
+<p>​    4）<strong>go命令</strong>依赖一个环境变量：<strong>GOPATH</strong>，这不是Go的安装目录，而是你的<strong>工作（工程）</strong>目录（你的代码都会在该目录下）。<strong>GOPATH</strong>可以有多个，windows以分号(;)进行区分，Linux系统是冒号(:)，当有多个<strong>GOPATH</strong>时，默认会将<strong>go<br> get</strong>的内容放在第一个目录下。这里我们新建一个<strong>GOPATH</strong>变量，以我的为例：F:\mygo。</p>
+<p><a href="http://www.vckai.com/static/up/image/20150505/1432352139.png" target="_blank" rel="external"><img src="http://www.vckai.com/static/up/image/20150505/1432352139.png" alt="blob.png"></a></p>
+<p><strong>3.安装Sublime Text3</strong></p>
+<p>​    首先也是下载：<a href="http://www.sublimetext.com/3" target="_blank" rel="external">http://www.sublimetext.com/3</a>，安装也很傻瓜，直接下一步即可。</p>
+<p>​    注意：sublime是收费软件，不注册也可以正常使用,只是保存次数达到一定的数量的时候会提示购买;忽略后可以正常使用。</p>
+<p>​    这里需要安装一个sublime的<strong>pakcage control</strong>功能，用于接下来安装sublime插件。</p>
+<p>​    1）在打开软件后，按下快捷键 <strong>Ctrl+`</strong>，（`这个符号为英文半角模式下，按下 Tab 键上方、数字键1左边的那个按键），此时会打开一个命令窗口，复制并输入以下内容，最后回车：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = &apos;eb2297e1a458f27d836c04bb0cbaf282&apos; + &apos;d0e7a3098092775ccb37ca9d6b2e4b7d&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure>
+<p><strong>    </strong>如果遇到报错则参考这里安装：<a href="https://packagecontrol.io/installation#st3" target="_blank" rel="external">https://packagecontrol.io/installation#st3</a>。</p>
+<p><strong>    </strong>2）重启sublime之后，你就可以发现在 <strong>Preferences </strong>这个菜单下出现了菜单项 <strong>Package Control</strong>，如图：</p>
+<p><a href="http://www.vckai.com/static/up/image/20150505/1432355012.png" target="_blank" rel="external"><img src="http://www.vckai.com/static/up/image/20150505/1432355012.png" alt="blob.png"></a></p>
+<p><strong>4. 安装GoSublime插件</strong></p>
+<p>​    1）在sublime中，按住快捷键<strong> shift + ctrl + p</strong>，在弹出框中输入<strong>install package</strong>，如图：</p>
+<p><a href="http://www.vckai.com/static/up/image/20150505/1432353394.png" target="_blank" rel="external"><img src="http://www.vckai.com/static/up/image/20150505/1432353394.png" alt="blob.png"></a></p>
+<p>​    2）回车，会出现如下图（可能需要稍微等待下，可以看sublime最下面的状态）：</p>
+<p><a href="http://www.vckai.com/static/up/image/20150505/1432353546.png" target="_blank" rel="external"><img src="http://www.vckai.com/static/up/image/20150505/1432353546.png" alt="blob.png"></a></p>
+<p>​    3）输入<strong>gosublime</strong>，回车（可能需要稍微等待下，可以看sublime最下面的状态），如图：</p>
+<p><a href="http://www.vckai.com/static/up/image/20150505/1432353719.png" target="_blank" rel="external"><img src="http://www.vckai.com/static/up/image/20150505/1432353719.png" alt="blob.png"></a></p>
+<p>​    4）<strong>gosublime</strong>安装完成后，<strong>Preferences </strong>-&gt; <strong>package settings</strong> -&gt; <strong>GoSublime </strong>-&gt; <strong>Settings - Uesrs</strong>需要配置下<strong>GOPATH</strong>，<strong>GOROOT</strong>，如图：</p>
+<p><a href="http://www.vckai.com/static/up/image/20150505/1432354244.png" target="_blank" rel="external"><img src="http://www.vckai.com/static/up/image/20150505/1432354244.png" alt="blob.png"></a></p>
+<p>​    5）在打开的窗口中输入以下内容，路径请自行替换，ctrl+s保存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;env&quot;: &#123;</div><div class="line">        &quot;GOPATH&quot;: &quot;F:/mygo&quot;,</div><div class="line">        &quot;GOROOT&quot;: &quot;E:/Go&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​    6）重启sublime，在GOPATH中的src新建一个hello.go文件，可以看到代码自动补全已经出来了，:)</p>
+<p><a href="http://www.vckai.com/static/up/image/20150505/1432354894.png" target="_blank" rel="external"><img src="http://www.vckai.com/static/up/image/20150505/1432354894.png" alt="blob.png"></a></p>
+<p>至此，<strong>sublime text3 + golang</strong> 安装完成。</p>
+<p>附上我的 sublime text3 的简单配置, <strong>Preferences </strong>-&gt; <strong>Settings User</strong>清空复制粘贴即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;font_size&quot;: 12,</div><div class="line">    &quot;highlight_line&quot;: true,</div><div class="line">    &quot;highlight_modified_tabs&quot;: true,</div><div class="line">    &quot;ignored_packages&quot;:</div><div class="line">    [</div><div class="line">        &quot;Vintage&quot;</div><div class="line">    ],</div><div class="line">    &quot;soda_classic_tabs&quot;: true,</div><div class="line">    &quot;soda_folder_icons&quot;: true,</div><div class="line">    &quot;tab_size&quot;: 4,</div><div class="line">    &quot;translate_tabs_to_spaces&quot;: true,</div><div class="line">    &quot;update_check&quot;: false,</div><div class="line">    &quot;word_wrap&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -478,7 +493,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java-web/" rel="tag"># java-web</a>
+            <a href="/tags/Go/" rel="tag"># Go</a>
           
         </div>
       
@@ -491,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/04/JavaWeb学习总结-十四-JSP原理/" rel="next" title="JavaWeb学习总结(十四)--JSP原理">
-                <i class="fa fa-chevron-left"></i> JavaWeb学习总结(十四)--JSP原理
+              <a href="/2017/07/05/Java操作XML的五种方式/" rel="next" title="Java操作XML的五种方式">
+                <i class="fa fa-chevron-left"></i> Java操作XML的五种方式
               </a>
             
           </div>
@@ -501,8 +516,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/04/JavaWeb学习总结-十六-JSP指令/" rel="prev" title="JavaWeb学习总结(十六)--JSP指令">
-                JavaWeb学习总结(十六)--JSP指令 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/09/go语言学习-二-第一个GO程序/" rel="prev" title="go语言学习(二)--第一个GO程序">
+                go语言学习(二)--第一个GO程序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -557,17 +572,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -629,22 +635,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、JSP模版元素"><span class="nav-number">1.</span> <span class="nav-text">一、JSP模版元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、JSP表达式"><span class="nav-number">2.</span> <span class="nav-text">二、JSP表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、JSP脚本片断"><span class="nav-number">3.</span> <span class="nav-text">三、JSP脚本片断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、JSP声明"><span class="nav-number">4.</span> <span class="nav-text">四、JSP声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、JSP注释"><span class="nav-number">5.</span> <span class="nav-text">五、JSP注释</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -781,9 +771,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://qintongbaba.github.io/2017/07/04/JavaWeb学习总结-十五-JSP基础语法/';
-          this.page.identifier = '2017/07/04/JavaWeb学习总结-十五-JSP基础语法/';
-          this.page.title = 'JavaWeb学习总结(十五)--JSP基础语法';
+          this.page.url = 'https://qintongbaba.github.io/2017/07/08/go语言学习-一-GO语言的环境搭建/';
+          this.page.identifier = '2017/07/08/go语言学习-一-GO语言的环境搭建/';
+          this.page.title = 'go语言学习(一)--GO语言的环境搭建';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://qintongbaba.disqus.com/embed.js';
