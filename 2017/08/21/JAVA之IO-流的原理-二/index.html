@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="IO," />
 
 
 
@@ -87,15 +87,25 @@
 
 
 
-<meta name="description" content="纪录学习的点滴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Qintong BaBa">
-<meta property="og:url" content="https://qintongbaba.github.io/tags/xml/index.html">
+<meta name="description" content="一、概念​    流：流动、流向（比如车流。。）从一端移动到另一段，那么就会出现源头和目的地，那么在代码中就是文件移动到代码获取网络上到程序等 。需要注意以程序为中心。
+
+二、IO流的分类​    1.流向:以程序为中心，输入流和输出流​    2.数据：字节流：二进制，可以处理一切数据，比如文本、视频、音频等​            字符流：文本文件，只能处理纯文本​    3.功能：节点流：离">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA之IO--流的原理(二)">
+<meta property="og:url" content="https://qintongbaba.github.io/2017/08/21/JAVA之IO-流的原理-二/index.html">
 <meta property="og:site_name" content="Qintong BaBa">
-<meta property="og:description" content="纪录学习的点滴">
+<meta property="og:description" content="一、概念​    流：流动、流向（比如车流。。）从一端移动到另一段，那么就会出现源头和目的地，那么在代码中就是文件移动到代码获取网络上到程序等 。需要注意以程序为中心。
+
+二、IO流的分类​    1.流向:以程序为中心，输入流和输出流​    2.数据：字节流：二进制，可以处理一切数据，比如文本、视频、音频等​            字符流：文本文件，只能处理纯文本​    3.功能：节点流：离">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-8-21/2560195.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-8-21/16607333.jpg">
+<meta property="og:updated_time" content="2017-08-21T08:44:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Qintong BaBa">
-<meta name="twitter:description" content="纪录学习的点滴">
+<meta name="twitter:title" content="JAVA之IO--流的原理(二)">
+<meta name="twitter:description" content="一、概念​    流：流动、流向（比如车流。。）从一端移动到另一段，那么就会出现源头和目的地，那么在代码中就是文件移动到代码获取网络上到程序等 。需要注意以程序为中心。
+
+二、IO流的分类​    1.流向:以程序为中心，输入流和输出流​    2.数据：字节流：二进制，可以处理一切数据，比如文本、视频、音频等​            字符流：文本文件，只能处理纯文本​    3.功能：节点流：离">
+<meta name="twitter:image" content="http://ojw4jti3h.bkt.clouddn.com/17-8-21/2560195.jpg">
 
 
 
@@ -123,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://qintongbaba.github.io/tags/xml/"/>
+  <link rel="canonical" href="https://qintongbaba.github.io/2017/08/21/JAVA之IO-流的原理-二/"/>
 
 
 
 
 
-  <title> 标签: xml | Qintong BaBa </title>
+  <title> JAVA之IO--流的原理(二) | Qintong BaBa </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,7 +164,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -292,46 +302,199 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        xml
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2017/08/21/JAVA之IO-流的原理-二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wu Qinghua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qintong BaBa">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JAVA之IO--流的原理(二)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T16:17:20+08:00">
+                2017-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/21/JAVA之IO-流的原理-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/21/JAVA之IO-流的原理-二/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h3 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h3><p>​    流：流动、流向（比如车流。。）从一端移动到另一段，那么就会出现源头和目的地，那么在代码中就是文件移动到代码获取网络上到程序等 。需要注意以程序为中心。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/17-8-21/2560195.jpg" alt=""></p>
+<h3 id="二、IO流的分类"><a href="#二、IO流的分类" class="headerlink" title="二、IO流的分类"></a>二、IO流的分类</h3><p>​    1.流向:以程序为中心，输入流和输出流<br>​    2.数据：字节流：二进制，可以处理一切数据，比如文本、视频、音频等<br>​            字符流：文本文件，只能处理纯文本<br>​    3.功能：节点流：离源头比较近的，包裹源头<br>​            处理流：增强功能，提高效率</p>
+<h3 id="三、常用的一些流"><a href="#三、常用的一些流" class="headerlink" title="三、常用的一些流"></a>三、常用的一些流</h3><p><img src="http://ojw4jti3h.bkt.clouddn.com/17-8-21/16607333.jpg" alt=""></p>
+<p>​    1.字节流：<br>​        输入流：InputStream<br>​        输出流：OutputSteacm<br>​    2.字符流<br>​        输入流：Reader<br>​        输出流：Writer</p>
+<p>操作流的一般步骤：(一般家为例)<br>​    1.选择需要搬家的的房子（关联房子）              ——&gt;建立和文件的联系<br>     2.选择搬家公司                                                       ——&gt;选择对应的流<br>​    3.进行搬家                                                               ——&gt;文件的读取｜写入<br>​        选择卡车                               ——&gt;数组大小<br>​        运输<br>​    4.结束搬家                                                               ——&gt;释放资源</p>
+<p>过程为：<br>​    1)建立连接－－》2）选择合适的流－－》3）操作，选择数组的大小进行读取－－－》4）关闭流</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/07/05/Java操作XML的五种方式/" itemprop="url">
-              
-                <span itemprop="name">Java操作XML的五种方式</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-05T08:42:55+08:00"
-              content="2017-07-05" >
-          07-05
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IO/" rel="tag"># IO</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/21/JAVA之IO-FILE-一/" rel="next" title="JAVA之IO--FILE(一)">
+                <i class="fa fa-chevron-left"></i> JAVA之IO--FILE(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/21/JAVA之IO-字节流-三/" rel="prev" title="JAVA之IO--字节流(三)">
+                JAVA之IO--字节流(三) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -339,6 +502,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -358,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -421,6 +604,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概念"><span class="nav-number">1.</span> <span class="nav-text">一、概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、IO流的分类"><span class="nav-number">2.</span> <span class="nav-text">二、IO流的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、常用的一些流"><span class="nav-number">3.</span> <span class="nav-text">三、常用的一些流</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -533,6 +732,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -550,6 +753,18 @@
       <script id="dsq-count-scr" src="https://qintongbaba.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://qintongbaba.github.io/2017/08/21/JAVA之IO-流的原理-二/';
+          this.page.identifier = '2017/08/21/JAVA之IO-流的原理-二/';
+          this.page.title = 'JAVA之IO--流的原理(二)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qintongbaba.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
