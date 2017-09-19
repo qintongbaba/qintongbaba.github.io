@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git学习(三)--创建版本库]]></title>
+    <url>%2F2017%2F09%2F19%2FGit%E5%AD%A6%E4%B9%A0-%E4%B8%89-%E5%88%9B%E5%BB%BA%E7%89%88%E6%9C%AC%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[转载廖雪峰的官方网站 什么是版本呢？版本库又名仓库，英文名称repository，你可以简单的理解为一个目录，这个目录中的所有的文件都可以被Git管理起来，每个文件的修改、删除，Git都可以对其跟踪，以便任何时候都可以追踪历史，或在将来的某个时候进行还原。 创建版本首先，选择一个合适的地方，创建一个空目录 pwd命令为显示当前目录。在这里这个仓库位置为/Users/wuqinghua/git/learngit（尽量不要包涵中文和空格）第二步，通过git init命令把这个目录变成Git可以管理的仓库 瞬间Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository），细心的读者可以发现当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。 如果你没有看到.git目录，那是因为这个目录默认是隐藏的，用ls -ah命令就可以看见。 也不一定必须在空目录下创建Git仓库，选择一个已经有东西的目录也是可以的。不过，不建议你使用自己正在开发的公司项目来学习Git，否则造成的一切后果概不负责。 把文件添加到版本库​ 首先我们编写一个readme.txt文件，内容如下 12Git is a version control system.Git is free software. ​ PS:一定要放倒learngit目录或其子目录下，因为这是一个Git仓库，放倒其他地方Git发现不了 ​ 第二步，使用git add命令告诉Git，把文件添加到仓库 1git add readme.txt ​ 执行上面的命令，没有任何显示信息，这就对了，Unix的哲学就是“没有消息就是好消息”，说明添加成功。 ​ 第三步,使用git commit命令告诉Git，把文件提交到仓库 1234$ git commit -m &quot;wrote a readme file&quot;[master (root-commit) ead05c0] wrote a readme file 1 file changed, 2 insertions(+) create mode 100644 readme.txt ​ 简单解释一下git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。 嫌麻烦不想输入-m &quot;xxx&quot;行不行？确实有办法可以这么干，但是强烈不建议你这么干，因为输入说明对自己对别人阅读都很重要。实在不想输入说明的童鞋请自行Google，我不告诉你这个参数。 git commit命令执行成功后会告诉你，1个文件被改动（我们新添加的readme.txt文件），插入了两行内容（readme.txt有两行内容）。 为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件，比如： 123$ git add file1.txt$ git add file2.txt file3.txt$ git commit -m &quot;add 3 files.&quot; 小结现在总结一下今天学的两点内容： 初始化一个Git仓库，使用git init命令。 添加文件到Git仓库，分两步： 第一步，使用命令git add &lt;file&gt;，注意，可反复多次使用，添加多个文件； 第二步，使用命令git commit，完成。]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git学习(二)--安装Git]]></title>
+    <url>%2F2017%2F09%2F19%2FGit%E5%AD%A6%E4%B9%A0-%E4%BA%8C-%E5%AE%89%E8%A3%85Git%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git学习(一)--Git简介]]></title>
+    <url>%2F2017%2F09%2F19%2FGit%E5%AD%A6%E4%B9%A0-%E4%B8%80-Git%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JAVA之IO--字符流(四)]]></title>
     <url>%2F2017%2F08%2F23%2FJAVA%E4%B9%8BIO-%E5%AD%97%E7%AC%A6%E6%B5%81-%E5%9B%9B%2F</url>
     <content type="text"><![CDATA[字符流处理文件字符流只能处理纯文本，全部为可见字符.步骤和使用字节流一致。(使用流Reader和Writer) 1.文件（纯文本）读取 123456789101112131415161718@Test public void readTest() throws IOException &#123; //1.创建文件关联 File src = new File("pom.xml"); //2.选择流 Reader reader = new FileReader(src); //3.操作 char[] chars = new char[1024]; @SuppressWarnings("unused") int len = 0; while((len=reader.read(chars, 0, 1024))!=-1) &#123; System.out.println(new String(chars)); &#125; //4.关闭流 reader.close(); &#125; 2.文件的写入 1234567891011121314151617181920212223@Test public void writerTest() throws IOException &#123; //1.写出的文件 File dest = new File("pom.txt"); //2.选择流 Writer writer = new FileWriter(dest); //3.操作 String mes="锄禾日当午\r\n汗滴禾下土\r\n谁知盘中餐\r\n粒粒皆辛苦"; char[] cbuf = mes.toCharArray(); writer.write(cbuf, 0, cbuf.length); //写入还可以使用一下两种方式 //writer.writer(mes); //writer.append(mes); writer.flush(); //4.关闭 writer.close(); &#125;]]></content>
