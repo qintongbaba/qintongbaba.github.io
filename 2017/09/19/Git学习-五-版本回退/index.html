@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="IO," />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -87,25 +87,31 @@
 
 
 
-<meta name="description" content="File类​    表示为文件和路径名的抽象表示，也就是系统中文件或文件夹在Java中表示形式，File不能直接操作文件，只能表示文件，如果需要操作文件，后面会使用到流。
-1.File中的常量
-pathSeparator:与系统有关的的路径分隔符
-separator:与系统有关的名称分隔符12345@Test	public void fileConstant() &amp;#123;		System.ou">
+<meta name="description" content="转载廖雪峰的官方网站
+查看提交版本现在我们已经学会了修改文件，然后把修改后的文件提交到Git版本库，现在，我们在联系一次，修改readme.txt文件如下。
+12Git is a distributed version control system.Git is free software distributed under the GPL.
+然后尝试提交
+1234$ git add readme">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA之IO--FILE(一)">
-<meta property="og:url" content="https://qintongbaba.github.io/2017/08/21/JAVA之IO-FILE-一/index.html">
+<meta property="og:title" content="Git学习(五)--版本回退">
+<meta property="og:url" content="https://qintongbaba.github.io/2017/09/19/Git学习-五-版本回退/index.html">
 <meta property="og:site_name" content="Qintong BaBa">
-<meta property="og:description" content="File类​    表示为文件和路径名的抽象表示，也就是系统中文件或文件夹在Java中表示形式，File不能直接操作文件，只能表示文件，如果需要操作文件，后面会使用到流。
-1.File中的常量
-pathSeparator:与系统有关的的路径分隔符
-separator:与系统有关的名称分隔符12345@Test	public void fileConstant() &amp;#123;		System.ou">
-<meta property="og:updated_time" content="2017-08-21T08:16:39.000Z">
+<meta property="og:description" content="转载廖雪峰的官方网站
+查看提交版本现在我们已经学会了修改文件，然后把修改后的文件提交到Git版本库，现在，我们在联系一次，修改readme.txt文件如下。
+12Git is a distributed version control system.Git is free software distributed under the GPL.
+然后尝试提交
+1234$ git add readme">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-9-19/46742885.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-9-19/17394313.jpg">
+<meta property="og:updated_time" content="2017-09-19T06:07:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA之IO--FILE(一)">
-<meta name="twitter:description" content="File类​    表示为文件和路径名的抽象表示，也就是系统中文件或文件夹在Java中表示形式，File不能直接操作文件，只能表示文件，如果需要操作文件，后面会使用到流。
-1.File中的常量
-pathSeparator:与系统有关的的路径分隔符
-separator:与系统有关的名称分隔符12345@Test	public void fileConstant() &amp;#123;		System.ou">
+<meta name="twitter:title" content="Git学习(五)--版本回退">
+<meta name="twitter:description" content="转载廖雪峰的官方网站
+查看提交版本现在我们已经学会了修改文件，然后把修改后的文件提交到Git版本库，现在，我们在联系一次，修改readme.txt文件如下。
+12Git is a distributed version control system.Git is free software distributed under the GPL.
+然后尝试提交
+1234$ git add readme">
+<meta name="twitter:image" content="http://ojw4jti3h.bkt.clouddn.com/17-9-19/46742885.jpg">
 
 
 
@@ -133,13 +139,13 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
 
 
 
-  <link rel="canonical" href="https://qintongbaba.github.io/2017/08/21/JAVA之IO-FILE-一/"/>
+  <link rel="canonical" href="https://qintongbaba.github.io/2017/09/19/Git学习-五-版本回退/"/>
 
 
 
 
 
-  <title> JAVA之IO--FILE(一) | Qintong BaBa </title>
+  <title> Git学习(五)--版本回退 | Qintong BaBa </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -312,7 +318,7 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2017/08/21/JAVA之IO-FILE-一/">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2017/09/19/Git学习-五-版本回退/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wu Qinghua">
@@ -333,7 +339,7 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
             
             
               
-                JAVA之IO--FILE(一)
+                Git学习(五)--版本回退
               
             
           </h1>
@@ -348,8 +354,8 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T14:02:40+08:00">
-                2017-08-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-19T12:54:18+08:00">
+                2017-09-19
               </time>
             
 
@@ -371,8 +377,8 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -389,9 +395,9 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/21/JAVA之IO-FILE-一/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/19/Git学习-五-版本回退/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/21/JAVA之IO-FILE-一/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/19/Git学习-五-版本回退/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -417,22 +423,44 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
       
 
       
-        <h3 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h3><p>​    表示为文件和路径名的抽象表示，也就是系统中文件或文件夹在Java中表示形式，File不能直接操作文件，只能表示文件，如果需要操作文件，后面会使用到流。</p>
-<h4 id="1-File中的常量"><a href="#1-File中的常量" class="headerlink" title="1.File中的常量"></a>1.File中的常量</h4><ul>
-<li>pathSeparator:与系统有关的的路径分隔符</li>
-<li>separator:与系统有关的名称分隔符<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fileConstant</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(File.pathSeparator); <span class="comment">//windows --&gt; ;  linux --&gt; :</span></div><div class="line">		System.out.println(File.separator);  <span class="comment">//windows \   linux /</span></div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-</li>
+        <p>转载<a href="https://www.liaoxuefeng.com/" target="_blank" rel="external">廖雪峰的官方网站</a></p>
+<h3 id="查看提交版本"><a href="#查看提交版本" class="headerlink" title="查看提交版本"></a>查看提交版本</h3><p>现在我们已经学会了修改文件，然后把修改后的文件提交到Git版本库，现在，我们在联系一次，修改<code>readme.txt</code>文件如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Git is a distributed version control system.</div><div class="line">Git is free software distributed under the GPL.</div></pre></td></tr></table></figure>
+<p>然后尝试提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git add readme.txt </div><div class="line">$ git commit -m &quot;append GPL&quot;</div><div class="line">[master d6715a5] append GPL</div><div class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</div></pre></td></tr></table></figure>
+<p>​    像这样，你不断的对文件进行修改，然后不断的提交修改到版本库中，这个就像大家玩RPG游戏似的，每通关一关就会自动将游戏状态存盘，如果某一关没有过去，就可以选择读取上一关的状态。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以保存一个“快照”，这个“快照”在Git中被称为<code>commit</code>。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个<code>commit</code>恢复，然后继续工作，而不是把几个月的工作成果全部丢失。<br>​    现在，我们回顾一下<code>readme.txt</code>文件一共又几个版本被提交到Git仓库中<br>版本1：wrote a readme file</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Git is a version control system.</div><div class="line">Git is free software.</div></pre></td></tr></table></figure>
+<p>版本2：add distributed</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Git is a distributed version control system.</div><div class="line">Git is free software.</div></pre></td></tr></table></figure>
+<p>版本3：append GPL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Git is a distributed version control system.</div><div class="line">Git is free software distributed under the GPL.</div></pre></td></tr></table></figure>
+<p>当然，在实际工作中，我们不可能记得每次修改的内容，不然要版本控制系统干什么。版本控制系统中肯定含有命令可以告诉我们历史记录，在Git中，我们用<code>git log</code>命令查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">git log</div><div class="line">commit d6715a56b8e891b6e3894b4e2662fa67340f562a</div><div class="line">Author: wuqinghua &lt;zffwqh@126.com&gt;</div><div class="line">Date:   Tue Sep 19 13:00:16 2017 +0800</div><div class="line"></div><div class="line">    append GPL</div><div class="line"></div><div class="line">commit bf483385124eb7e4634cbdc1a293eeba19c17818</div><div class="line">Author: wuqinghua &lt;zffwqh@126.com&gt;</div><div class="line">Date:   Tue Sep 19 12:49:41 2017 +0800</div><div class="line"></div><div class="line">    add distributed</div><div class="line"></div><div class="line">commit ead05c0c5508b9a3d7e7e36896e8524c5c7fae47</div><div class="line">Author: wuqinghua &lt;zffwqh@126.com&gt;</div><div class="line">Date:   Tue Sep 19 11:26:34 2017 +0800</div><div class="line"></div><div class="line">    wrote a readme file</div></pre></td></tr></table></figure>
+<p>​    <code>git log</code>命令显示从最近到最远的提交日志，我们可以看到3次提交，最近一次是<code>append GPL</code>,上一次是<code>add distributed</code>,最早一次是<code>wrote a readme file</code>。<br>​    如果嫌输出的信息太多，看不清晰，可以尝试添加上<code>--pretty=oneline</code>参数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git log --pretty=oneline</div><div class="line">d6715a56b8e891b6e3894b4e2662fa67340f562a append GPL</div><div class="line">bf483385124eb7e4634cbdc1a293eeba19c17818 add distributed</div><div class="line">ead05c0c5508b9a3d7e7e36896e8524c5c7fae47 wrote a readme file</div></pre></td></tr></table></figure>
+<p>​    <code>PS:日志中的前面的一串字符串为提交的id   commit id</code></p>
+<h3 id="进行版本回退"><a href="#进行版本回退" class="headerlink" title="进行版本回退"></a>进行版本回退</h3><p>​    现在我们就可以开启时光穿梭机了，准备将<code>readme.txt</code>回退到上个版本，也就是回退到<code>add distribute</code>的那个版本，怎么做呢?<br>​    首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是<code>d6715a...67340f562a</code>(我的提交id肯定和你的不一样)，上一个版本就是<code>HEAD^</code>，上上个版本就是<code>HEAD^^</code>，当然往上100个版本写上100个<code>^</code>不容易写出了,所以可以写成<code>HEAD-100</code><br>​    现在，我们要把当前版本<code>append GPL</code>回退到<code>add distributed</code>，就可以使用<code>git reset</code>命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git reset --hard HEAD^</div><div class="line">HEAD is now at bf48338 add distributed</div></pre></td></tr></table></figure>
+<p><code>--hard</code>参数的含义我们后面会讲，现在先使用<br>现在看看<code>readme.txt</code>的内容是不是回退到上个版本的内容了，也就是是否为<code>add distributed</code>了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cat readme.txt </div><div class="line">Git is a distributed version control system.</div><div class="line">Git is free software.</div></pre></td></tr></table></figure>
+<p>还可以恢复到上个版本<code>wrote a readme file</code>,我们先使用<code>git log</code>在看看提交的记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git log</div><div class="line">commit bf483385124eb7e4634cbdc1a293eeba19c17818</div><div class="line">Author: wuqinghua &lt;zffwqh@126.com&gt;</div><div class="line">Date:   Tue Sep 19 12:49:41 2017 +0800</div><div class="line"></div><div class="line">    add distributed</div><div class="line"></div><div class="line">commit ead05c0c5508b9a3d7e7e36896e8524c5c7fae47</div><div class="line">Author: wuqinghua &lt;zffwqh@126.com&gt;</div><div class="line">Date:   Tue Sep 19 11:26:34 2017 +0800</div><div class="line"></div><div class="line">    wrote a readme file</div></pre></td></tr></table></figure>
+<p>最新的那个<code>append GPL</code>已经看不到，这个就好比，21世纪的人穿梭到19世纪，回不去了，怎么版？<br>办法其实还是存在的，比如如果你的终端没有关闭的话，可以在上面找到那个<code>append GPL</code>的<code>commit id</code>是<code>d6715a56b8e891b6e3894b4e2662fa67340f562a</code>,于是就可以指定回到未来的某个版本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git reset --hard d6715a56b8e</div><div class="line">HEAD is now at d6715a5 append GPL</div></pre></td></tr></table></figure>
+<p>​    版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位，因为Git可能会找到多个版本号，就无法确定是哪一个了。<br>​    这个时候再查看一下文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat readme.txt </div><div class="line">Git is a distributed version control system.</div><div class="line">Git is free software distributed under the GPL.</div></pre></td></tr></table></figure>
+<p>​    果然，又回到了<code>add GPL</code>版本<br>​    Git的版本回退速度非常的快，因为在Git中含有一个指向<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是将<code>HEAD</code>指向<code>append GPL</code><br><img src="http://ojw4jti3h.bkt.clouddn.com/17-9-19/46742885.jpg" alt="">    </p>
+<p>修改为指向<code>add distributed</code><br><img src="http://ojw4jti3h.bkt.clouddn.com/17-9-19/17394313.jpg" alt=""></p>
+<p>然后顺便将工作区的文件更新了。所以你让<code>HEAD</code>指向哪个版本，你就把当前的版本定位在哪里。</p>
+<p>但是如果，你回退到哪个版本之后，关掉了电脑，第二天后悔了，想要恢复怎么办？找不到<code>commit id</code>了。<br>在Git中总是有方式决解的。当你用<code>git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>add GPL</code>就必须找到<code>add GPL</code>的<code>commit id</code>。在Git中提供了一个命令<code>git reflog</code>用来记录你的每一次命令:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git reflog</div><div class="line">d6715a5 HEAD@&#123;0&#125;: reset: moving to d6715a56b8e</div><div class="line">bf48338 HEAD@&#123;1&#125;: reset: moving to HEAD^</div><div class="line">d6715a5 HEAD@&#123;2&#125;: commit: append GPL</div><div class="line">bf48338 HEAD@&#123;3&#125;: commit: add distributed</div><div class="line">ead05c0 HEAD@&#123;4&#125;: commit (initial): wrote a readme file</div></pre></td></tr></table></figure>
+<p>可以看到第三行显示就为<code>append GPL</code>的<code>commit id</code>，现在你又可以使用<code>git reset</code>命令进行版本穿梭了</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>现在总结一下：</p>
+<ul>
+<li><code>HEAD</code>指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令<code>git reset --hard commit_id</code>。</li>
+<li>穿梭前，用<code>git log</code>可以查看提交历史，以便确定要回退到哪个版本。</li>
+<li>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本</li>
 </ul>
-<h4 id="2-绝对路径和相对路径"><a href="#2-绝对路径和相对路径" class="headerlink" title="2.绝对路径和相对路径"></a>2.绝对路径和相对路径</h4><p>​    表示一个文件的位置信息，绝对路径表示从盘符开始表示其位置。绝对路径表示相对于一个位置，其位置的信息。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">*   比如在你的电脑上存在 d:/file/parent/test/test.txt</div><div class="line">**/</div><div class="line"><span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">filePath</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">/**绝度路径**/</span></div><div class="line">		File file1 = <span class="keyword">new</span> File(<span class="string">"d:/file/parent/test"</span>);</div><div class="line">		<span class="comment">/**相对路径**/</span></div><div class="line">		File file2 = <span class="keyword">new</span> File(<span class="keyword">new</span> 		File(<span class="string">"d:/file/parent/test"</span>),<span class="string">"text.txt"</span>);</div><div class="line">      </div><div class="line">      	File file3 = <span class="keyword">new</span> File(<span class="string">"abc.txt"</span>);<span class="comment">//表示当前工程</span></div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h4 id="3-File的简单使用-常用的方法"><a href="#3-File的简单使用-常用的方法" class="headerlink" title="3.File的简单使用(常用的方法)"></a>3.File的简单使用(常用的方法)</h4><h5 id="1-文件名相关的操作"><a href="#1-文件名相关的操作" class="headerlink" title="1.文件名相关的操作"></a>1.文件名相关的操作</h5><p>getName():文件名称<br>getPath():路径名，如果采用绝对路径那么返回的就是绝对路径，如果采用相对路径构建的File那么就是相对路径<br>getAbsoluteFile():绝对路径对应的文件<br>getAbsolutePath:绝对路径<br>getParent():父目录,相对路径的父目录，可能为null<br>renameTo(File newName);重命名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fileTest</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">//表示工程目录下的pom.xml</span></div><div class="line">		File file = <span class="keyword">new</span> File(<span class="string">"pom.xml"</span>);</div><div class="line">		System.out.println(<span class="string">"文件名称:"</span>+file.getName());</div><div class="line">		System.out.println(<span class="string">"绝对路径:"</span>+file.getAbsolutePath());</div><div class="line">		System.out.println(<span class="string">"路径:"</span>+file.getPath()); <span class="comment">//如果为绝度路径，返回绝对路径，否则相对路径</span></div><div class="line">		System.out.println(<span class="string">"上级目录:"</span>+file.getParent()); <span class="comment">//相对路径返回null</span></div><div class="line">		System.out.println(<span class="string">"绝对文件:"</span>+file.getAbsoluteFile());</div><div class="line">		System.out.println(<span class="string">"绝对文件的上级目录:"</span>+file.getAbsoluteFile().getParent()); <span class="comment">//可以返回为上级目录</span></div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p>#####2.判断信息操作<br>exists():是否存在<br>canWrite():能否写入<br>canRead()：能否进行读取<br>isFile():判断是否为文件<br>isDirectory():判断是否为文件夹<br>isAbsolute():消除平台差异，windows是以盘符开头,其它以/</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fileTest02</span><span class="params">()</span> </span>&#123;</div><div class="line">		File file = <span class="keyword">new</span> File(<span class="string">"pom.xml"</span>);</div><div class="line">		System.out.println(<span class="string">"文件是否存在:"</span>+file.exists());</div><div class="line">		System.out.println(<span class="string">"文件是否可读："</span>+file.canRead());</div><div class="line">		System.out.println(<span class="string">"文件是否可写："</span>+file.canWrite());</div><div class="line">		System.out.println(<span class="string">"是否为文件:"</span>+file.isFile());</div><div class="line">		System.out.println(<span class="string">"是否为文件夹:"</span>+file.isDirectory());</div><div class="line">		System.out.println(<span class="string">"是否为绝对路径构建："</span>+file.isAbsolute());</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<p>#####3.长度<br>length():文件的大小</p>
-<p>#####4.创建和删除<br>createNewFile():不存在创建新文件<br>delete():删除文件<br>static createTempFile(前缀3个字节，后缀默认.temp)   在默认的临时空间中创建临时文件<br>static createTempFile(前缀3个字节，后缀默认.temp,目录)    在目录中创建临时文件<br>deleteOnExit() 退出虚拟机删除，常用语删除临时文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fileTest03</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">	File file = <span class="keyword">new</span> File(<span class="string">"test.txt"</span>);</div><div class="line">	<span class="keyword">if</span>(!file.exists()) &#123;</div><div class="line">		file.createNewFile(); <span class="comment">//文件不存在创建文件</span></div><div class="line">	&#125;</div><div class="line">	file.delete();<span class="comment">//删除文件</span></div><div class="line">	</div><div class="line">	File fileTemp1 = File.createTempFile(<span class="string">"abc"</span>, <span class="string">".temp"</span>);<span class="comment">//创建临时文件</span></div><div class="line">	File fileTemp2 = File.createTempFile(<span class="string">"abc"</span>, <span class="string">".temp"</span>, <span class="keyword">new</span> File(<span class="string">"."</span>));</div><div class="line">	fileTemp1.deleteOnExit(); <span class="comment">//退出时删除</span></div><div class="line">	fileTemp2.deleteOnExit();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>#####5.操作目录<br>mkdir()  创建目录，但是父目录不存在不能创建<br>mkdirs() 创建目录，父目录不存在也同时创建<br>list() :  返回的为字符串数组，表示文件的字符串表示<br>listFiles() :返回目录下的所有的字符串<br>listFiles(FileFilter):进行过滤器过滤<br>static listRoots():  根目录<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fileTest04</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">		File file1 = <span class="keyword">new</span> File(<span class="string">"abc/ccc"</span>);</div><div class="line">		file1.mkdir();<span class="comment">//创建目录，必须保证父路径存在</span></div><div class="line">		file1.mkdirs();<span class="comment">//创建目录，父目录不存在，同时创建</span></div><div class="line">		</div><div class="line">		<span class="comment">//创建文件</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">5</span>;i++) &#123;</div><div class="line">			File file = <span class="keyword">new</span> File(file1,i+<span class="string">".txt"</span>);</div><div class="line">			<span class="keyword">if</span>(!file.exists()) &#123;</div><div class="line">				file.createNewFile();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		String[] fileNames = file1.list();<span class="comment">//返回目录中的文件字符串表示</span></div><div class="line">		System.out.println(Arrays.toString(fileNames));</div><div class="line">		</div><div class="line">		File[] listFiles = file1.listFiles();</div><div class="line">		System.out.println(Arrays.toString(listFiles));</div><div class="line">		</div><div class="line">		<span class="comment">/**进行过滤器**/</span></div><div class="line">		File[] listFiles2 = file1.listFiles(<span class="keyword">new</span> FileFilter() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File pathname)</span> </span>&#123;</div><div class="line">				<span class="keyword">return</span> pathname.getName().endsWith(<span class="string">"4.txt"</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">		System.out.println(Arrays.toString(listFiles2));</div><div class="line">		</div><div class="line">		File[] listRoots = File.listRoots(); <span class="comment">//获取跟目录</span></div><div class="line">		System.out.println(Arrays.toString(listRoots));</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -462,7 +490,7 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
       
         <div class="post-tags">
           
-            <a href="/tags/IO/" rel="tag"># IO</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
         </div>
       
@@ -475,8 +503,8 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/03/JVM之运行时数据区-Runtime-Data-Area/" rel="next" title="JVM之运行时数据区-Runtime-Data-Area">
-                <i class="fa fa-chevron-left"></i> JVM之运行时数据区-Runtime-Data-Area
+              <a href="/2017/09/19/Git学习-四-Git的状态/" rel="next" title="Git学习(四)--Git的状态">
+                <i class="fa fa-chevron-left"></i> Git学习(四)--Git的状态
               </a>
             
           </div>
@@ -485,8 +513,8 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/21/JAVA之IO-流的原理-二/" rel="prev" title="JAVA之IO--流的原理(二)">
-                JAVA之IO--流的原理(二) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/19/Git学习-六-工作区和暂存区/" rel="prev" title="Git学习(六)--工作区和暂存区">
+                Git学习(六)--工作区和暂存区 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -623,7 +651,7 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#File类"><span class="nav-number">1.</span> <span class="nav-text">File类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-File中的常量"><span class="nav-number">1.1.</span> <span class="nav-text">1.File中的常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-绝对路径和相对路径"><span class="nav-number">1.2.</span> <span class="nav-text">2.绝对路径和相对路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-File的简单使用-常用的方法"><span class="nav-number">1.3.</span> <span class="nav-text">3.File的简单使用(常用的方法)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-文件名相关的操作"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.文件名相关的操作</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看提交版本"><span class="nav-number">1.</span> <span class="nav-text">查看提交版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进行版本回退"><span class="nav-number">2.</span> <span class="nav-text">进行版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
@@ -760,9 +788,9 @@ separator:与系统有关的名称分隔符12345@Test	public void fileConstant()
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://qintongbaba.github.io/2017/08/21/JAVA之IO-FILE-一/';
-          this.page.identifier = '2017/08/21/JAVA之IO-FILE-一/';
-          this.page.title = 'JAVA之IO--FILE(一)';
+          this.page.url = 'https://qintongbaba.github.io/2017/09/19/Git学习-五-版本回退/';
+          this.page.identifier = '2017/09/19/Git学习-五-版本回退/';
+          this.page.title = 'Git学习(五)--版本回退';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://qintongbaba.disqus.com/embed.js';
