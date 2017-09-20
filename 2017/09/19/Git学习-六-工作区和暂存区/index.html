@@ -90,7 +90,7 @@
 <meta name="description" content="转载廖雪峰的官方网站
 工作区(Working Directory)就是在你电脑中可以看到的目录比如我们这里的learngit
 
-版本库(Repository)在工作区中含有一个隐藏的目录.git，这个不是工作区，而是Git的版本库。">
+版本库(Repository)在工作区中含有一个隐藏的目录.git，这个不是工作区，而是Git的版本库。在Git的版本库中存放了很多东西，其中最重要的就是被称为stage(或index)的暂存区，还有Git为我们自动创建的第一个分支master，以及一个指向master的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习(六)--工作区和暂存区">
 <meta property="og:url" content="https://qintongbaba.github.io/2017/09/19/Git学习-六-工作区和暂存区/index.html">
@@ -98,15 +98,18 @@
 <meta property="og:description" content="转载廖雪峰的官方网站
 工作区(Working Directory)就是在你电脑中可以看到的目录比如我们这里的learngit
 
-版本库(Repository)在工作区中含有一个隐藏的目录.git，这个不是工作区，而是Git的版本库。">
+版本库(Repository)在工作区中含有一个隐藏的目录.git，这个不是工作区，而是Git的版本库。在Git的版本库中存放了很多东西，其中最重要的就是被称为stage(或index)的暂存区，还有Git为我们自动创建的第一个分支master，以及一个指向master的">
 <meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-9-19/29795912.jpg">
-<meta property="og:updated_time" content="2017-09-19T06:13:48.000Z">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-9-19/22492589.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-9-19/70202474.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/17-9-19/15622669.jpg">
+<meta property="og:updated_time" content="2017-09-19T09:31:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习(六)--工作区和暂存区">
 <meta name="twitter:description" content="转载廖雪峰的官方网站
 工作区(Working Directory)就是在你电脑中可以看到的目录比如我们这里的learngit
 
-版本库(Repository)在工作区中含有一个隐藏的目录.git，这个不是工作区，而是Git的版本库。">
+版本库(Repository)在工作区中含有一个隐藏的目录.git，这个不是工作区，而是Git的版本库。在Git的版本库中存放了很多东西，其中最重要的就是被称为stage(或index)的暂存区，还有Git为我们自动创建的第一个分支master，以及一个指向master的">
 <meta name="twitter:image" content="http://ojw4jti3h.bkt.clouddn.com/17-9-19/29795912.jpg">
 
 
@@ -422,7 +425,24 @@
         <p>转载<a href="https://www.liaoxuefeng.com/" target="_blank" rel="external">廖雪峰的官方网站</a></p>
 <h3 id="工作区-Working-Directory"><a href="#工作区-Working-Directory" class="headerlink" title="工作区(Working Directory)"></a>工作区(Working Directory)</h3><p>就是在你电脑中可以看到的目录比如我们这里的<code>learngit</code></p>
 <p><img src="http://ojw4jti3h.bkt.clouddn.com/17-9-19/29795912.jpg" alt=""></p>
-<h3 id="版本库-Repository"><a href="#版本库-Repository" class="headerlink" title="版本库(Repository)"></a>版本库(Repository)</h3><p>在工作区中含有一个隐藏的目录<code>.git</code>，这个不是工作区，而是Git的版本库。</p>
+<h3 id="版本库-Repository"><a href="#版本库-Repository" class="headerlink" title="版本库(Repository)"></a>版本库(Repository)</h3><p>在工作区中含有一个隐藏的目录<code>.git</code>，这个不是工作区，而是Git的版本库。<br>在Git的版本库中存放了很多东西，其中最重要的就是被称为stage(或index)的暂存区，还有Git为我们自动创建的第一个分支<code>master</code>，以及一个指向<code>master</code>的指针<code>HEAD</code><br><img src="http://ojw4jti3h.bkt.clouddn.com/17-9-19/22492589.jpg" alt=""></p>
+<p>其中，分支和<code>HEAD</code>后面会讲。<br>​    前面我们将文件添加到Git版本库中分为两步。<br>​        第一步使用<code>git add</code>把文件添加进去，实际就是将文件添加到暂存区中；<br>​        第二步使用<code>git commit</code>提交修改，实际上就是将暂存区所有的内容添加到当前分支。<br>​    因为我们在创建Git版本库的时候，Git自动会为我们创建一个<code>master</code>分支，所以，现在<code>git commit</code>就是往<code>master</code>分支上提交。<br>​    你可以简单的理解为，先将需要提交修改的文件统统放入到暂存区，然后一次性提交暂存区的所有修改。<br>下面我们在实践一下：<br>​    先对<code>readme.txt</code>进行修改,比如添加一行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Git is a distributed version control system.</div><div class="line">Git is free software distributed under the GPL.</div><div class="line">Git has a mutable index called stage.</div></pre></td></tr></table></figure>
+<p>​    然后在添加一个文件<code>LICENSE</code>文本文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apache license</div></pre></td></tr></table></figure>
+<p>​    先使用<code>git status</code>查看状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">On branch master</div><div class="line">Changes not staged for commit:</div><div class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</div><div class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</div><div class="line"></div><div class="line">	modified:   readme.txt</div><div class="line"></div><div class="line">Untracked files:</div><div class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</div><div class="line"></div><div class="line">	LICENSE</div><div class="line"></div><div class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</div></pre></td></tr></table></figure>
+<p>​    Git非常清楚的告诉我们，<code>readme.txt</code>被修改了，<code>LICENSE</code>还从来没有被添加过，所以它的状态为<code>Untracked</code>。<br>​    现在使用命令<code>git add</code>,把<code>readme.txt</code>和<code>LICENSE</code>文件都添加到暂存区，用<code>git status</code>查看一下状态.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ git add .</div><div class="line">$ git status</div><div class="line">On branch master</div><div class="line">Changes to be committed:</div><div class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</div><div class="line"></div><div class="line">	new file:   LICENSE</div><div class="line">	modified:   readme.txt</div></pre></td></tr></table></figure>
+<p>​    现在暂存区的状态就变为</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/17-9-19/70202474.jpg" alt=""></p>
+<p>​    所以，<code>git add</code>命令实际上是将要提交的所有的修改放倒暂存区（stage）,然后，执行<code>git commit</code>就可以一次性把暂存区所有的修改提交到分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git commit -m &quot;understand how stage works&quot;</div><div class="line">[master eb1b3cd] understand how stage works</div><div class="line"> 2 files changed, 2 insertions(+)</div><div class="line"> create mode 100644 LICENSE</div></pre></td></tr></table></figure>
+<p>一旦提交后，如果没有对工作区做任何修改，那么工作区就是干净的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">On branch master</div><div class="line">nothing to commit, working tree clean</div></pre></td></tr></table></figure>
+<p>现在版本库就变为<br>​    <img src="http://ojw4jti3h.bkt.clouddn.com/17-9-19/15622669.jpg" alt=""></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>暂存区是Git非常重要的概念，弄明白了暂存区，就弄明白了Git的很多操作到底干了什么。</p>
+<p>没弄明白暂存区是怎么回事的童鞋，请向上滚动页面，再看一次。</p>
 
       
     </div>
@@ -609,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区-Working-Directory"><span class="nav-number">1.</span> <span class="nav-text">工作区(Working Directory)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本库-Repository"><span class="nav-number">2.</span> <span class="nav-text">版本库(Repository)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区-Working-Directory"><span class="nav-number">1.</span> <span class="nav-text">工作区(Working Directory)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本库-Repository"><span class="nav-number">2.</span> <span class="nav-text">版本库(Repository)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
