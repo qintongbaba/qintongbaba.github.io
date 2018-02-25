@@ -1,0 +1,1108 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JVM," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+1、Java虚拟机概述和基本概念1.1 Java虚拟机的原理​    所谓的虚拟机，就是一台虚拟的机器。它是一款软件，用来执行一系列虚拟计算机指令。大体上虚拟机分为系统虚拟机和程序虚拟机，大名鼎鼎的Visual Box、VMare就属于系统虚拟机，它们完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台。程序虚拟机典型代表就是Java虚拟机，它专门为执行单个计算机程序而设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jvm详解">
+<meta property="og:url" content="https://qintongbaba.github.io/2018/02/25/jvm详解/index.html">
+<meta property="og:site_name" content="Qintong BaBa">
+<meta property="og:description" content="[TOC]
+1、Java虚拟机概述和基本概念1.1 Java虚拟机的原理​    所谓的虚拟机，就是一台虚拟的机器。它是一款软件，用来执行一系列虚拟计算机指令。大体上虚拟机分为系统虚拟机和程序虚拟机，大名鼎鼎的Visual Box、VMare就属于系统虚拟机，它们完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台。程序虚拟机典型代表就是Java虚拟机，它专门为执行单个计算机程序而设计">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-2-25/41509160.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-2-25/52407008.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-2-25/72997907.jpg">
+<meta property="og:updated_time" content="2018-02-25T05:58:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jvm详解">
+<meta name="twitter:description" content="[TOC]
+1、Java虚拟机概述和基本概念1.1 Java虚拟机的原理​    所谓的虚拟机，就是一台虚拟的机器。它是一款软件，用来执行一系列虚拟计算机指令。大体上虚拟机分为系统虚拟机和程序虚拟机，大名鼎鼎的Visual Box、VMare就属于系统虚拟机，它们完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台。程序虚拟机典型代表就是Java虚拟机，它专门为执行单个计算机程序而设计">
+<meta name="twitter:image" content="http://ojw4jti3h.bkt.clouddn.com/18-2-25/41509160.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qintongbaba.github.io/2018/02/25/jvm详解/"/>
+
+
+
+
+
+  <title> jvm详解 | Qintong BaBa </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qintong BaBa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一天进步一点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2018/02/25/jvm详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wu Qinghua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qintong BaBa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jvm详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-25T09:23:42+08:00">
+                2018-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaJVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaJVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/25/jvm详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/25/jvm详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h2 id="1、Java虚拟机概述和基本概念"><a href="#1、Java虚拟机概述和基本概念" class="headerlink" title="1、Java虚拟机概述和基本概念"></a>1、Java虚拟机概述和基本概念</h2><h3 id="1-1-Java虚拟机的原理"><a href="#1-1-Java虚拟机的原理" class="headerlink" title="1.1 Java虚拟机的原理"></a>1.1 Java虚拟机的原理</h3><p>​    所谓的虚拟机，就是一台虚拟的机器。它是一款软件，用来执行一系列虚拟计算机指令。大体上虚拟机分为<strong>系统虚拟机</strong>和<strong>程序虚拟机</strong>，大名鼎鼎的Visual Box、VMare就属于系统虚拟机，它们完全是对物理计算机的仿真，提供了一个可运行完整操作系统的软件平台。程序虚拟机典型代表就是Java虚拟机，它专门为执行单个计算机程序而设计，在Java虚拟机中执行的指令我们称为Java字节码指令。无论是系统虚拟机还是程序虚拟机，在上面运行的软件都被限制于虚拟机提供的资源中。Java发展至今，出现过很多的虚拟机，最初Sun使用的一款叫Classic的Java虚拟机，到现在引用最广泛的是HotSpot虚拟机。除了Sun以外，还有BEA的JRockit，目前JRockit和HotSpot都被Oracle收入旗下，大有整合的趋势。</p>
+<h3 id="1-2-认识Java虚拟机"><a href="#1-2-认识Java虚拟机" class="headerlink" title="1.2 认识Java虚拟机"></a>1.2 认识Java虚拟机</h3><p><img src="http://ojw4jti3h.bkt.clouddn.com/18-2-25/41509160.jpg" alt=""></p>
+<ul>
+<li>类加载器子系统：负责从文件系统或网络中加载Class信息，加载的信息存放在一块称为方法区的内存空间。</li>
+<li>方法区：就是存放类信息、常量信息、常量池信息、包括字符串字面量和数字常量等。</li>
+<li>Java堆：在java虚拟机启动的时候建立java堆，它是Java程序最主要的内存工作区域，几乎所有的对象的实例都存放在Java堆中，堆空间是所有的线程共享的。</li>
+<li>直接内存：Java的NIO库允许Java程序使用直接内存，从而提高性能，通常直接内存速度会优于Java堆。读写频繁的场合可能会考虑使用。</li>
+<li>JVM栈：每个虚拟机线程都有一个私有的栈，一个线程的Java栈在线程创建的时候被创建，java栈中保存着局部变量、方法参数、同时java方法调用、返回值等</li>
+<li>本地方法栈：和java栈非常相似，最大的不同为本地为本地方法栈用于本地方法调用。java虚拟机允许java直接调用本地方法（通常使用C编写）</li>
+<li>垃圾收集系统：是java的核心，也是必不可少的，java有一套自己进行垃圾清理的机制，开发人员无需手工清理，稍后在第三节我们详细说明。</li>
+<li>PC（Program Counter）：寄存器也是每个线程私有的空间，java虚拟机会为每个线程创建PC寄存器，在任意时刻，一个java线程总是在执行一个方法，这个方法被称为当前方法，如果当前方法不是本地方法，PC寄存器就会执行当前正在被执行的指令，如果是本地方法，则PC寄存器为undefined，寄存器存放如当前执行环境指针、程序计数器、操作栈指针、计算的变量指针等信息。</li>
+<li>虚拟机最核心的就是执行引擎了，它负责执行虚拟机的字节码。一般进行编译成机器码后执行。</li>
+</ul>
+<h2 id="2、堆、栈、方法区"><a href="#2、堆、栈、方法区" class="headerlink" title="2、堆、栈、方法区"></a>2、堆、栈、方法区</h2><h3 id="2-1-堆、栈、方法区概念和联系"><a href="#2-1-堆、栈、方法区概念和联系" class="headerlink" title="2.1 堆、栈、方法区概念和联系"></a>2.1 堆、栈、方法区概念和联系</h3><p>堆解决的数据存储的问题，即数据怎么放、放在哪个。<br>栈解决程序的运行问题，即程序如何执行，或者说如何处理数据。<br>方法区则是辅助堆栈的永久区（Perm），解决堆栈信息的产生，是先决条件。<br>比如：我们创建一个新的对象，User，那么User类的一些信息（类信息、静态信息都存放在方法区中）</p>
+<ul>
+<li>而User类实例化后，被存储到java堆中</li>
+<li>当我们使用的时候，都是使用user对象的引用，形如User user = new User();</li>
+<li>这里的user存放在java的栈中，即User真是对象时一个引用</li>
+</ul>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-2-25/52407008.jpg" alt=""></p>
+<h3 id="2-2-辨清java堆"><a href="#2-2-辨清java堆" class="headerlink" title="2.2 辨清java堆"></a>2.2 辨清java堆</h3><p>​    java堆是和java应用程序关系最密切的内存空间，几乎所有的对象都存放在其中，并且java堆完全为自动化管理的，通过垃圾回收机制，垃圾对象会自动清理，不需要显示的释放。</p>
+<p>​    <strong>根据垃圾回收机制不同，Java堆有可能拥有不同的结构。最常见的就是讲Java堆分为新生代和老年代。其中新生代存放新生的对象或者年龄不大的对象，老年代则存放老年代对象</strong></p>
+<p>​    <strong>新生代分为eden区、s0区、s1区，s0和s1也成为from和to区域，它们是两块大小相等并且可能相互转换角色的空间</strong></p>
+<p>​    <strong>绝大多数情况下，对象首先分配在eden区，在一次新生代回收后，如果对象还存活，则会进入s0或s1区，之后每经过一次新生代回收，如果对象存活则它的年龄就被加1，当对象达到一定的年龄后，则进入老年代。</strong></p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-2-25/72997907.jpg" alt=""></p>
+<h3 id="2-3-java栈"><a href="#2-3-java栈" class="headerlink" title="2.3 java栈"></a>2.3 java栈</h3><p>java栈是一块线程私有的内存空间，一个栈，一般由三个部分组成：<strong>局部变量表、操作数栈和帧数据区</strong></p>
+<ul>
+<li>局部变量表：用于报错函数的参数以及局部变量</li>
+<li>操作数栈：主要保存计算过程的中间结果，同时作为计算过程中的变量临时的存储空间。</li>
+<li>帧数据区：除了局部变量表和操作数栈以外，栈还需要一些数据来支持常量池的解析，这里的帧数据区保存着访问常量池的指针，方便程序访问常量池，另外，当函数返回或者出现异常时，虚拟机必须有一个异常处理表，方便发送异常的时候找到异常的代码，因此异常处理表噎死帧数据区的一部分。</li>
+</ul>
+<h3 id="2-4-java方法区"><a href="#2-4-java方法区" class="headerlink" title="2.4 java方法区"></a>2.4 java方法区</h3><p>java方法区和堆一样，方法区是一块所有内存共享的区域，它保存系统的类信息，比如类的字段、方法、常量池等。方法区的大小决定了系统可以保存多少个类，如果系统定义太多类，导致方法区溢出。虚拟机同样会抛出内存溢出错误。方法区可以理解为永久区(Perm)。</p>
+<h2 id="3、了解虚拟机参数"><a href="#3、了解虚拟机参数" class="headerlink" title="3、了解虚拟机参数"></a>3、了解虚拟机参数</h2><h3 id="3-1-虚拟机参数"><a href="#3-1-虚拟机参数" class="headerlink" title="3.1 虚拟机参数"></a>3.1 虚拟机参数</h3><p>在虚拟机运行的过程中，如果可以跟踪系统的运行状态，那么对于问题的故障排查会有一定的帮助，为此，虚拟机提供了一些跟踪系统状态的参数，使用给定的参数执行java虚拟机，就可以在系统运行的时候打印相关的日志，用于分析实际的问题。我们进行的参数配置，其实主要就是围绕着堆、栈、方法区进行配置。</p>
+<h3 id="3-2-堆分配参数（一）"><a href="#3-2-堆分配参数（一）" class="headerlink" title="3.2 堆分配参数（一）"></a>3.2 堆分配参数（一）</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-XX:+PrintGC</td>
+<td style="text-align:center">虚拟机启动后，只要遇到GC就会打印参数</td>
+</tr>
+<tr>
+<td style="text-align:center">-XX:+UserSerialGC</td>
+<td style="text-align:center">配置串行回收器</td>
+</tr>
+<tr>
+<td style="text-align:center">-XX:PrintGCDetails</td>
+<td style="text-align:center">可以查看详细信息，包括各个区的情况</td>
+</tr>
+<tr>
+<td style="text-align:center">-Xms</td>
+<td style="text-align:center">设置程序启动的时候初始堆大小</td>
+</tr>
+<tr>
+<td style="text-align:center">-Xmx</td>
+<td style="text-align:center">设置程序启动的时候最大堆大小</td>
+</tr>
+<tr>
+<td style="text-align:center">-XX:+PrintCommandLineFlags</td>
+<td style="text-align:center">可以显示或隐式给虚拟机的参数输出</td>
+</tr>
+</tbody>
+</table>
+<p>实例: <a href="https://github.com/qintongbaba/java-architect/blob/master/jvm/src/main/java/org/wuqinghua/jvm/Test01.java" target="_blank" rel="external">Test01</a></p>
+<blockquote>
+<p>总结：在实际工作中，我们可以直接将初始的堆大小与最大堆大小设置相同，这样的好处是可以减少程序运行时的垃圾回收次数，从而提高性能。</p>
+</blockquote>
+<h3 id="3-3-堆分配参数-二"><a href="#3-3-堆分配参数-二" class="headerlink" title="3.3 堆分配参数 (二)"></a>3.3 堆分配参数 (二)</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-Xmn</td>
+<td>设置新生代大小，新生代通常为堆空间的1/3到1/4左右</td>
+</tr>
+<tr>
+<td>-XX:SurvivorRatio</td>
+<td>用来设置新生代中eden\from\to的空间比例</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>-XX:SurvivorRatio=eden/from=eden/to</p>
+</blockquote>
+<p>实例:<a href="https://github.com/qintongbaba/java-architect/blob/master/jvm/src/main/java/org/wuqinghua/jvm/Test02.java" target="_blank" rel="external">Test02</a></p>
+<blockquote>
+<p>总结:在不同的堆分布情况，对系统执行会产生一定的影响，在实际工作中，应该根据系统的特点做出合理的配置，基本策略：尽量可能将对象预留在新生代，减少老年代GC次数。</p>
+<p>除了可以设置新生代的绝对大小(-Xmn),还可以使用(-XX:NewRatio)设置新生代和老年代的比例：-XX:NewRatio=老年代/新生代</p>
+</blockquote>
+<h3 id="3-4-堆溢出处理"><a href="#3-4-堆溢出处理" class="headerlink" title="3.4 堆溢出处理"></a>3.4 堆溢出处理</h3><p>在Java程序的运行过程中，如果堆空间不足，则会抛出内存溢出的错误(OutOfMemory)OOM，java虚拟机提供了<code>-XX:+HeapDumpOnOutOfMemoryError</code>,使用该参数可以在内存溢出导出整个堆信息，与之配合使用的还有参数，<code>-XX:HeapDumpPath</code>，可以设置导出路径</p>
+<p><em>内存分析工具：<a href="http://download.eclipse.org/mat/1.5/update-site/" target="_blank" rel="external">Memory Analyzer 1.5.0</a></em></p>
+<p>实例:<a href="https://github.com/qintongbaba/java-architect/blob/master/jvm/src/main/java/org/wuqinghua/jvm/Test03.java" target="_blank" rel="external">Test03</a></p>
+<h3 id="3-5-栈配置"><a href="#3-5-栈配置" class="headerlink" title="3.5 栈配置"></a>3.5 栈配置</h3><p>java虚拟机提供<code>-Xss</code>来指定线程的最大栈空间，整个参数也直接决定了函数可调用的最大深度</p>
+<p>实例:<a href="https://github.com/qintongbaba/java-architect/blob/master/jvm/src/main/java/org/wuqinghua/jvm/Test04.java" target="_blank" rel="external">Test04</a></p>
+<h3 id="3-6-方法区"><a href="#3-6-方法区" class="headerlink" title="3.6 方法区"></a>3.6 方法区</h3><p>可以使用<code>-XX:MaxPremSize</code>和<code>-XX:PermSize</code>进行配置  默认情况为64m。</p>
+<h3 id="3-7-Client和Server虚拟机模式"><a href="#3-7-Client和Server虚拟机模式" class="headerlink" title="3.7 Client和Server虚拟机模式"></a>3.7 Client和Server虚拟机模式</h3><p>可以通过<code>java -version</code>查看虚拟机的模式，可以通过<code>-client</code>指定为Client模式</p>
+<p>Client模式启动较快，如果不追求系统的长时间使用可以使用Client模式。</p>
+<p><a href="http://www.cnblogs.com/redcreen/archive/2011/05/04/2037057.html" target="_blank" rel="external">JVM一个不错的博客</a></p>
+<h2 id="4、垃圾回收概念和算法"><a href="#4、垃圾回收概念和算法" class="headerlink" title="4、垃圾回收概念和算法"></a>4、垃圾回收概念和算法</h2><h3 id="一、对象存活判断"><a href="#一、对象存活判断" class="headerlink" title="一、对象存活判断"></a>一、对象存活判断</h3><p>判断对象是否存活一般有两种方式：</p>
+<ul>
+<li>1.引用计数：每个对象有一个引用计数属性，新增一个引用时计数加1，引用释放时计数减1，计数为0时可以回收。此方法简单，无法解决对象相互循环引用的问题。</li>
+<li>2.可达性分析（Reachability Analysis）：从GC Roots开始向下搜索，搜索所走过的路径称为引用链。当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。不可达对象。</li>
+</ul>
+<p>在Java语言中，GC Roots包括：</p>
+<p>虚拟机栈中引用的对象。</p>
+<p>方法区中类静态属性实体引用的对象。</p>
+<p>方法区中常量引用的对象。</p>
+<p>本地方法栈中JNI引用的对象。</p>
+<h3 id="二、JVM的垃圾回收过程"><a href="#二、JVM的垃圾回收过程" class="headerlink" title="二、JVM的垃圾回收过程"></a>二、JVM的垃圾回收过程</h3><p>首先从GC Roots开始进行可达性分析，判断哪些是不可达对象。</p>
+<p>对于不可达对象，判断是否需要执行其finalize方法，如果对象没有覆盖finalize方法或已经执行过finalize方法则视为不需要执行，进行回收；如果需要，则把对象加入F-Queue队列。</p>
+<p>对于F-Queue队列里的对象，稍后虚拟机会自动建立一个低优先级的线程去触发其finalize方法，但不会等待这个方法返回。</p>
+<p>如果在finalize方法的执行过程中，对象重新被引用，那么进行第二次标记时将被移出F-Queue，在finalize方法执行完成后，对象仍然没有被引用，则进行回收。</p>
+<p>对于被移出F-Queue的对象，如果它下一次面临回收时，将不会再执行其finalize方法。</p>
+<p>finalize方法只执行一次。</p>
+<h3 id="三、垃圾收集算法"><a href="#三、垃圾收集算法" class="headerlink" title="三、垃圾收集算法"></a>三、垃圾收集算法</h3><ul>
+<li>1、引用计数（reference counting）</li>
+</ul>
+<p>​    原理：此对象有一个引用，则+1；删除一个引用，则-1。只用收集计数为0的对象。</p>
+<p>​    缺点：无法处理循环引用的问题。如：对象A和B分别有字段b、a，令A.b=B和B.a=A，除此之外这2个对象再无任何引用，那实际上这2个对象已经不可能再被访问，但是引用计数算法却无法回收他们。 </p>
+<ul>
+<li>2、复制（copying）</li>
+</ul>
+<p>​    原理：把内存空间划分为2个相等的区域，每次只使用一个区域。垃圾回收时，遍历当前使用区域，把正在使用的对象复制到另外一个区域。</p>
+<p>​    优点：不会出现碎片问题。</p>
+<p>​    缺点：1、暂停整个应用。2、需要2倍的内存空间。</p>
+<ul>
+<li>3、标记-清扫（Mark-and-sweep）—sun前期版本就是用这个技术。</li>
+</ul>
+<p>​    原理：对于“活”的对象，一定可以追溯到其存活在堆栈、静态存储区之中的引用。这个引用链条可能会穿过数个对象层次。第一阶段：从GC roots开始遍历所有的引用，对有活的对象进行标记。第二阶段：对堆进行遍历，把未标记的对象进行清除。这个解决了循环引用的问题。</p>
+<p>​    缺点：1、暂停整个应用；2、会产生内存碎片。</p>
+<ul>
+<li>4、标记-压缩（Mark-Compact）自适应</li>
+</ul>
+<p>​    原理：第一阶段标记活的对象，第二阶段把为标记的对象压缩到堆的其中一块，按顺序放。</p>
+<p>​    优点：1、避免标记扫描的碎片问题；2、避免停止复制的空间问题。</p>
+<p>​    </p>
+<p>​    具体使用什么方法GC，Java虚拟机会进行监视，如果所有对象都很稳定，垃圾回收器的效率低的话，就切换到“标记-扫描”方式；同样，Java虚拟机会跟踪“标记-扫描”的效果，要是堆空间碎片出现很多碎片，就会切换回“停止-复制”模式。这就是自适应的技术。</p>
+<ul>
+<li>5、分代（generational collecting）—–J2SE1.2以后使用此算法</li>
+</ul>
+<p>​    原理：基于对象生命周期分析得出的垃圾回收算法。把对象分为年轻代、年老代、持久代，对不同的生命周期使用不同的算法（2-3方法中的一个即4自适应）进行回收。</p>
+<ul>
+<li>6、自适应算法(Adaptive Collector)</li>
+</ul>
+<p>​    在特定的情况下，一些垃圾收集算法会优于其它算法。基于Adaptive算法的垃圾收集器就是监控当前堆的使用情况，并将选择适当算法的垃圾收集器。</p>
+<p>年轻代（young）</p>
+<p>年轻代分三个区。一个Eden区，两个Survivor区。大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到Survivor区（两个中的一个），当这个Survivor区满时，此区的存活对象将被复制到另外一个Survivor区，当第二个Survivor区也满了的时候，从第一个Survivor区复制过来的并且此时还存活的对象，将被复制到tenured generation。需要注意，Survivor的两个区是对称的，没先后关系，所以同一个区中可能同时存在从Eden复制过来对象，和从前一个 Survivor复制过来的对象，而复制到年老区的只有从第一个Survivor去过来的对象。而且，Survivor区总有一个是空的。young generation的gc称为minor gc。经过数次minor gc，依旧存活的对象，将被移出young generation，移到tenured generation。</p>
+<p>年老代（tenured）</p>
+<p>   存放从年轻代（young）复制过来的对象。生命周期较长的对象，归入到tenured generation。一般是经过多次minor gc，还依旧存活的对象，将移入到tenured generation。（当然，在minor gc中如果存活的对象的超过survivor的容量，放不下的对象会直接移入到tenured generation）。tenured generation的gc称为major gc，就是通常说的full gc。</p>
+<p>​    采用compaction算法。由于tenured generaion区域比较大，而且通常对象生命周期都比较长，compaction需要一定时间。所以这部分的gc时间比较长。</p>
+<p>​    minor gc可能引发full gc。当eden＋from space的空间大于tenured generation区的剩余空间时，会引发full gc。这是悲观算法，要确保eden＋from space的对象如果都存活，必须有足够的tenured generation空间存放这些对象。</p>
+<p>持久代（perm）</p>
+<p>​    用于存放静态文件，如Java类、方法等。持久代对垃圾回收没有显著的影响，但是有些应用可能动态生成或者调用一些class。持久代大小通过-XX:MaxPermSize=N进行设置</p>
+<p>该区域比较稳定，主要用于存放classloader信息，比如类信息和method信息。</p>
+<p>对于spring hibernate这些需要动态类型支持的框架，这个区域需要足够的空间。(这部分空间应该存在于方法区而不是heap中)。</p>
+<h3 id="四、Minor-collections和Major-collections"><a href="#四、Minor-collections和Major-collections" class="headerlink" title="四、Minor collections和Major collections"></a>四、Minor collections和Major collections</h3><p>Minor collection当young space被占满时执行。它比major collections快，因为minor collection仅仅检查major collection相应的一个子集对象。minor collection比major collection发生的频率高。</p>
+<p>Major collection当tenured space被占满时执行。他会清理tenured和young。</p>
+<p>Thinking in java给java gc取了一个罗嗦的称呼：“自适应、分代的、停止-复制、标记-扫描”式的垃圾回收器。</p>
+<h3 id="五、导致Gc的情况："><a href="#五、导致Gc的情况：" class="headerlink" title="五、导致Gc的情况："></a>五、导致Gc的情况：</h3><p>1、tenured被写满</p>
+<p>2、perm被写满</p>
+<p>3、System.gc()的显式调用。</p>
+<p>4、上一次GC之后heap的各域分配策略动态变化。</p>
+<h3 id="六、GC运行的三种方式"><a href="#六、GC运行的三种方式" class="headerlink" title="六、GC运行的三种方式"></a>六、GC运行的三种方式</h3><p>在java5和java6中有4中垃圾回收的算法，有一种算法将不再支持，剩余的三种垃圾回收算法是：serial, throughput and concurrent low pause。 </p>
+<p>Stop the world（停止所有程序的方式）：在这种方式运行的GC，在GC完成前，JVM中的所有程序都不允许运行。Serial collector此时做minor和major收集。Throughput collector此时做major collector。</p>
+<p>Incremental（增量运行方式）：目前没要Java GC算法支持这种运行方式。GC以这种方式运行时，GC允许程序做一小段时间的工作，然后做垃圾回收工作。</p>
+<p>Concurrent（并行运行）：Throughput collector此时做minor collect，Concurrent low pause collector此时做minor和major收集。在这种运行方式下，GC和程序并行的运行，因此程序仅仅被短暂的暂停。</p>
+<h3 id="七、关于finalize方法的问题"><a href="#七、关于finalize方法的问题" class="headerlink" title="七、关于finalize方法的问题"></a>七、关于finalize方法的问题</h3><p>finalize方法使得GC过程做了更多的事情，增加的GC的负担。</p>
+<p>如果某个对象的finalize方法运行时间过长，它会使得其他对象的finalize方法被延迟执行。</p>
+<p>finalize方法中如果创建了strong reference引用了其他对象，这会阻止此对象被GC。</p>
+<p>finalize方法有可能以不可确定的顺序执行（也就是说要在安全性要求严格的场景中尽量避免使用finalize方法）。</p>
+<p>不确保finalize方法会被及时调用，也许程序都退出了，但是finalize方法还没被调用。</p>
+<h3 id="八、对象引用的类型"><a href="#八、对象引用的类型" class="headerlink" title="八、对象引用的类型"></a>八、对象引用的类型</h3><p>Reference(or named Strong Reference)（ 强引用）：普通类型的引用。</p>
+<p>SoftReference（ 软引用）：被这种引用指向的对象，如果此对象没要再被其他Strong Reference引用的话，可能在任何时候被GC。虽然是可能在任何时候被GC，但是通常是在可用内存数比较低的时候，并且在程序抛出OutOfMemoryError之前才发生对此对象的GC。SoftReference通常被用作实现Cache的对象引用，如果这个对象被GC了，那么他可以在任何时候再重新被创建。另外，根据JDK文档中介绍，实际JVM的实现是鼓励不回收最近创建和最近使用的对象。SoftReference 类的一个典型用途就是用于内存敏感的高速缓存。</p>
+<p>WeakReference（弱引用）：如果一个被WeakReference引用的对象，当没要任何SoftReference和StrongReference引用时，立即会被GC。和SoftReference的区别是：WeakReference对象是被eagerly collected，即一旦没要任何SoftReference和StrongReference引用，立即被清楚；而只被SoftReference引用的对象，不回立即被清楚，只有当内存不够，即将发生OutOfMemoryError时才被清除，而且是先清除不常用的。SoftReference适合实现Cache用。WeakReference 类的一个典型用途就是规范化映射（ canonicalized mapping ）</p>
+<p>PhantomReference（虚引用）：当没有StrongReference，SoftReference和WeakReference引用时，随时可被GC。通常和ReferenceQueue联合使用，管理和清除与被引用对象（没有finalize方法）相关的本地资源。</p>
+<p>## </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/28/spring-boot-1-基础-servlet3-springMVC去除所有的xml/" rel="next" title="spring boot(1)--基础(servlet3+springMVC去除所有的xml)">
+                <i class="fa fa-chevron-left"></i> spring boot(1)--基础(servlet3+springMVC去除所有的xml)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Wu Qinghua" />
+          <p class="site-author-name" itemprop="name">Wu Qinghua</p>
+           
+              <p class="site-description motion-element" itemprop="description">纪录学习的点滴</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Java虚拟机概述和基本概念"><span class="nav-number">1.</span> <span class="nav-text">1、Java虚拟机概述和基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Java虚拟机的原理"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Java虚拟机的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-认识Java虚拟机"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 认识Java虚拟机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、堆、栈、方法区"><span class="nav-number">2.</span> <span class="nav-text">2、堆、栈、方法区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-堆、栈、方法区概念和联系"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 堆、栈、方法区概念和联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-辨清java堆"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 辨清java堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-java栈"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 java栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-java方法区"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 java方法区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、了解虚拟机参数"><span class="nav-number">3.</span> <span class="nav-text">3、了解虚拟机参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-虚拟机参数"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 虚拟机参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-堆分配参数（一）"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 堆分配参数（一）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-堆分配参数-二"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 堆分配参数 (二)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-堆溢出处理"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 堆溢出处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-栈配置"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 栈配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-方法区"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 方法区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-Client和Server虚拟机模式"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 Client和Server虚拟机模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、垃圾回收概念和算法"><span class="nav-number">4.</span> <span class="nav-text">4、垃圾回收概念和算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、对象存活判断"><span class="nav-number">4.1.</span> <span class="nav-text">一、对象存活判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、JVM的垃圾回收过程"><span class="nav-number">4.2.</span> <span class="nav-text">二、JVM的垃圾回收过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、垃圾收集算法"><span class="nav-number">4.3.</span> <span class="nav-text">三、垃圾收集算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Minor-collections和Major-collections"><span class="nav-number">4.4.</span> <span class="nav-text">四、Minor collections和Major collections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、导致Gc的情况："><span class="nav-number">4.5.</span> <span class="nav-text">五、导致Gc的情况：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、GC运行的三种方式"><span class="nav-number">4.6.</span> <span class="nav-text">六、GC运行的三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、关于finalize方法的问题"><span class="nav-number">4.7.</span> <span class="nav-text">七、关于finalize方法的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、对象引用的类型"><span class="nav-number">4.8.</span> <span class="nav-text">八、对象引用的类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wu Qinghua</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://qintongbaba.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://qintongbaba.github.io/2018/02/25/jvm详解/';
+          this.page.identifier = '2018/02/25/jvm详解/';
+          this.page.title = 'jvm详解';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qintongbaba.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
