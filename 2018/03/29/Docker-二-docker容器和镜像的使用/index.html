@@ -1,0 +1,1116 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="docker devops," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1.Docker容器的使用1.1 Docker 客户端docker 客户端非常简单 ,我们可以直接输入 docker 命令来查看到 Docker 客户端的所有命令选项。
+
+可以通过命令 docker command --help 更深入的了解指定的 Docker 命令使用方法。
+例如我们要查看 docker stats 指令的具体使用方法：docker stats --help
+1.2 运行一个w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker(二)--docker容器和镜像的使用">
+<meta property="og:url" content="https://qintongbaba.github.io/2018/03/29/Docker-二-docker容器和镜像的使用/index.html">
+<meta property="og:site_name" content="Qintong BaBa">
+<meta property="og:description" content="1.Docker容器的使用1.1 Docker 客户端docker 客户端非常简单 ,我们可以直接输入 docker 命令来查看到 Docker 客户端的所有命令选项。
+
+可以通过命令 docker command --help 更深入的了解指定的 Docker 命令使用方法。
+例如我们要查看 docker stats 指令的具体使用方法：docker stats --help
+1.2 运行一个w">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-29/59746051.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-29/64935809.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-29/89204064.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-29/23081345.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-29/69292779.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-29/38867705.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-29/12365056.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-30/19449300.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-30/51474410.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-30/67032682.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-30/49547498.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-30/51474410.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-30/2652131.jpg">
+<meta property="og:updated_time" content="2018-03-30T07:59:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker(二)--docker容器和镜像的使用">
+<meta name="twitter:description" content="1.Docker容器的使用1.1 Docker 客户端docker 客户端非常简单 ,我们可以直接输入 docker 命令来查看到 Docker 客户端的所有命令选项。
+
+可以通过命令 docker command --help 更深入的了解指定的 Docker 命令使用方法。
+例如我们要查看 docker stats 指令的具体使用方法：docker stats --help
+1.2 运行一个w">
+<meta name="twitter:image" content="http://ojw4jti3h.bkt.clouddn.com/18-3-29/59746051.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qintongbaba.github.io/2018/03/29/Docker-二-docker容器和镜像的使用/"/>
+
+
+
+
+
+  <title> Docker(二)--docker容器和镜像的使用 | Qintong BaBa </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qintong BaBa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一天进步一点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2018/03/29/Docker-二-docker容器和镜像的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wu Qinghua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qintong BaBa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Docker(二)--docker容器和镜像的使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T16:21:04+08:00">
+                2018-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/29/Docker-二-docker容器和镜像的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/29/Docker-二-docker容器和镜像的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-Docker容器的使用"><a href="#1-Docker容器的使用" class="headerlink" title="1.Docker容器的使用"></a>1.Docker容器的使用</h3><h4 id="1-1-Docker-客户端"><a href="#1-1-Docker-客户端" class="headerlink" title="1.1 Docker 客户端"></a><em>1.1 Docker 客户端</em></h4><p>docker 客户端非常简单 ,我们可以直接输入 <code>docker</code> 命令来查看到 Docker 客户端的所有命令选项。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-29/59746051.jpg" alt=""></p>
+<p>可以通过命令 <code>docker command --help</code> 更深入的了解指定的 Docker 命令使用方法。</p>
+<p>例如我们要查看 <code>docker stats</code> 指令的具体使用方法：<code>docker stats --help</code></p>
+<h4 id="1-2-运行一个web应用"><a href="#1-2-运行一个web应用" class="headerlink" title="1.2 运行一个web应用"></a><em>1.2 运行一个web应用</em></h4><p>前面我们运行的容器并没有一些什么特别的用处。</p>
+<p>接下来让我们尝试使用 docker 构建一个 web 应用程序。</p>
+<p>我们将在docker容器中运行一个 Python Flask 应用来运行一个web应用。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-29/64935809.jpg" alt=""></p>
+<p>首先载入一个镜像<strong>training/webapp</strong></p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-29/89204064.jpg" alt=""></p>
+<p>再在容器上启动一个web应用</p>
+<p>参数说明:</p>
+<ul>
+<li><strong>-d:</strong>让容器在后台运行。</li>
+<li><strong>-P:</strong>将容器内部使用的网络端口映射到我们使用的主机上。</li>
+</ul>
+<h4 id="1-3-查看-WEB-应用容器"><a href="#1-3-查看-WEB-应用容器" class="headerlink" title="1.3 查看 WEB 应用容器"></a><em>1.3 查看 WEB 应用容器</em></h4><p>使用 docker ps 来查看我们正在运行的容器</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-29/23081345.jpg" alt=""></p>
+<p>这里我们发现在<code>PORTS</code>这一栏中多个信息<code>0.0.0.0:32768-&gt;5000/tcp</code>表示docker开放了5000端口到主机的32768上，现在我们可以使用<code>http://localhost:32768</code>来进行访问</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-29/69292779.jpg" alt=""></p>
+<blockquote>
+<p>我们也可以指定 -p 标识来绑定指定端口。</p>
+<p><code>docker run -d -p 5000:5000 training/webapp python app.py</code></p>
+</blockquote>
+<h4 id="1-4-查看WEB应用程序日志"><a href="#1-4-查看WEB应用程序日志" class="headerlink" title="1.4 查看WEB应用程序日志"></a><em>1.4 查看WEB应用程序日志</em></h4><p>docker logs [ID或者名字] 可以查看容器内部的标准输出。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-29/38867705.jpg" alt=""></p>
+<p><strong>-f:</strong>让 <code>dokcer logs</code> 像使用<code>tail -f</code> 一样来输出容器内部的标准输出。</p>
+<p>从上面，我们可以看到应用程序使用的是 5000 端口并且能够查看到应用程序的访问日志。</p>
+<h4 id="1-5-检查WEB应用程序"><a href="#1-5-检查WEB应用程序" class="headerlink" title="1.5 检查WEB应用程序"></a><em>1.5 检查WEB应用程序</em></h4><p>使用 docker inspect 来查看Docker的底层信息。它会返回一个 JSON 文件记录着 Docker 容器的配置和状态信息。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-29/12365056.jpg" alt=""></p>
+<h4 id="1-6-停止WEB应用容器-重启WEB应用容器-移除WEB应用容器"><a href="#1-6-停止WEB应用容器-重启WEB应用容器-移除WEB应用容器" class="headerlink" title="1.6 停止WEB应用容器,重启WEB应用容器,移除WEB应用容器"></a><em>1.6 停止WEB应用容器,</em>重启WEB应用容器,移除WEB应用容器</h4><p>分别使用<code>docker stop</code> <code>docker start</code> <code>docker rm</code></p>
+<h3 id="2-Docker镜像的使用"><a href="#2-Docker镜像的使用" class="headerlink" title="2.Docker镜像的使用"></a>2.Docker镜像的使用</h3><p>当运行容器时，使用的镜像如果在本地中不存在，docker 就会自动从 docker 镜像仓库中下载，默认是从 Docker Hub 公共镜像源下载。</p>
+<p>下面我们来学习：</p>
+<ul>
+<li>1、管理和使用本地 Docker 主机镜像</li>
+<li>2、创建镜像</li>
+</ul>
+<h4 id="2-1-列出镜像列表"><a href="#2-1-列出镜像列表" class="headerlink" title="2.1 列出镜像列表"></a><em>2.1 列出镜像列表</em></h4><p>我们可以使用<code>docker images</code>来列出本机上的所有的镜像。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-30/19449300.jpg" alt=""></p>
+<p>各个选项说明:</p>
+<ul>
+<li><strong>REPOSITORY：</strong>表示镜像的仓库源</li>
+<li><strong>TAG：</strong>镜像的标签</li>
+<li><strong>IMAGE ID：</strong>镜像ID</li>
+<li><strong>CREATED：</strong>镜像创建时间</li>
+<li><strong>SIZE：</strong>镜像大小</li>
+</ul>
+<p>同一仓库源可以有多个 TAG，代表这个仓库源的不同个版本，如ubuntu仓库源里，有15.10、14.04等多个不同的版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</p>
+<p>所以，我们如果要使用版本为15.10的ubuntu系统镜像来运行容器时，命令如下：    </p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-30/51474410.jpg" alt=""></p>
+<blockquote>
+<p>如果你不指定一个镜像的版本标签，例如你只使用 ubuntu，docker 将默认使用 ubuntu:latest 镜像。</p>
+</blockquote>
+<h4 id="2-2-获取一个新的镜像"><a href="#2-2-获取一个新的镜像" class="headerlink" title="2.2 获取一个新的镜像"></a><em>2.2 获取一个新的镜像</em></h4><p>当我们在本地主机上使用一个不存在的镜像时 Docker 就会自动下载这个镜像。如果我们想预先下载这个镜像，我们可以使用 <code>docker pull</code> 命令来下载它。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-30/67032682.jpg" alt=""></p>
+<p>下载完成后，我们可以直接使用这个镜像来运行容器。</p>
+<h4 id="2-3-查找镜像"><a href="#2-3-查找镜像" class="headerlink" title="2.3 查找镜像"></a><em>2.3 查找镜像</em></h4><p>我们可以从 Docker Hub 网站来搜索镜像，Docker Hub 网址为： <a href="https://hub.docker.com/" target="_blank" rel="external">https://hub.docker.com/</a></p>
+<p>我们也可以使用 docker search 命令来搜索镜像。比如我们需要一个httpd的镜像来作为我们的web服务。我们可以通过 docker search 命令搜索 httpd 来寻找适合我们的镜像。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-30/49547498.jpg" alt=""></p>
+<ul>
+<li><strong>NAME:</strong>镜像仓库源的名称</li>
+<li><strong>DESCRIPTION:</strong>镜像的描述</li>
+<li><strong>OFFICIAL:</strong>是否docker官方发布</li>
+</ul>
+<h4 id="2-4-创建镜像"><a href="#2-4-创建镜像" class="headerlink" title="2.4 创建镜像"></a><em>2.4 创建镜像</em></h4><p>当我们从docker镜像仓库中下载的镜像不能满足我们的需求时，我们可以通过以下两种方式对镜像进行更改。</p>
+<ul>
+<li>1.从已经创建的容器中更新镜像，并且提交这个镜像</li>
+<li>2.使用 Dockerfile 指令来创建一个新的镜像</li>
+</ul>
+<blockquote>
+<p>具体操作后期会详细讲解。</p>
+</blockquote>
+<h4 id="2-5-更新镜像"><a href="#2-5-更新镜像" class="headerlink" title="2.5 更新镜像"></a><em>2.5 更新镜像</em></h4><p>更新镜像之前，我们需要使用镜像来创建一个容器。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-30/51474410.jpg" alt=""></p>
+<p>在运行的容器内使用 apt-get update 命令进行更新。</p>
+<p>在完成操作之后，输入 exit命令来退出这个容器。</p>
+<p>此时ID为5b3413d2e84a的容器，是按我们的需求更改的容器。我们可以通过命令 docker commit来提交容器副本。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-3-30/2652131.jpg" alt=""></p>
+<p><code>docker commit -m=&quot;has update&quot; -a=&quot;wuqinghua&quot; 5b3413d2e84a wuqinghua/ubuntu:v2</code></p>
+<p>各个参数说明：</p>
+<ul>
+<li><strong>-m:</strong>提交的描述信息</li>
+<li><strong>-a:</strong>指定镜像作者</li>
+<li><strong>5b3413d2e84a：</strong>容器ID</li>
+<li><strong>wuqinghua/ubuntu:v2:</strong>指定要创建的目标镜像名</li>
+</ul>
+<h4 id="2-6-构建镜像"><a href="#2-6-构建镜像" class="headerlink" title="2.6 构建镜像"></a><em>2.6 构建镜像</em></h4><p>我们使用命令 <code>docker build</code> ， 从零开始来创建一个新的镜像。为此，我们需要创建一个 Dockerfile 文件，其中包含一组指令来告诉 Docker 如何构建我们的镜像。</p>
+<h5 id="2-6-1-Dockerfile"><a href="#2-6-1-Dockerfile" class="headerlink" title="2.6.1 Dockerfile"></a><em>2.6.1 Dockerfile</em></h5><p>Dockerfile是由一系列命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。它们简化了从头到尾的流程并极大的简化了部署工作。Dockerfile从FROM命令开始，紧接着跟随者各种方法，命令和参数。其产出为一个新的可以用于创建容器的镜像。</p>
+<h5 id="2-6-2-Dockerfile-语法"><a href="#2-6-2-Dockerfile-语法" class="headerlink" title="2.6.2 Dockerfile 语法"></a><em>2.6.2 Dockerfile 语法</em></h5><h6 id="2-6-2-1-语法示例"><a href="#2-6-2-1-语法示例" class="headerlink" title="2.6.2.1 语法示例"></a><strong>2.6.2.1 语法示例</strong></h6><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Dockerfile语法由两部分构成，注释和命令+参数</div><div class="line"></div><div class="line"><span class="comment"># Line blocks used for commenting</span></div><div class="line">command argument argument ..</div><div class="line"></div><div class="line">一个简单的例子：</div><div class="line"><span class="comment"># Print "Hello docker!"</span></div><div class="line"><span class="keyword">RUN</span> echo "Hello docker!"</div></pre></td></tr></table></figure>
+<h6 id="2-6-2-2-Dockerfile命令"><a href="#2-6-2-2-Dockerfile命令" class="headerlink" title="2.6.2.2 Dockerfile命令"></a><strong>2.6.2.2 Dockerfile命令</strong></h6><p>Dockerfile有十几条命令可用于构建镜像，下文将简略介绍这些命令。</p>
+<ul>
+<li>ADD</li>
+</ul>
+<blockquote>
+<p>ADD命令有两个参数，源和目标。它的基本作用是从源系统的文件系统上复制文件到目标容器的文件系统。如果源是一个URL，那该URL的内容将被下载并复制到容器中。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: ADD [source directory or URL] [destination directory]</span></div><div class="line"><span class="keyword">ADD</span> /my_app_folder /my_app_folder</div></pre></td></tr></table></figure>
+<ul>
+<li>CMD</li>
+</ul>
+<blockquote>
+<p>和RUN命令相似，CMD可以用于执行特定的命令。和RUN不同的是，这些命令不是在镜像构建的过程中执行的，而是在用镜像构建容器后被调用。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage 1: CMD application "argument", "argument", ..</span></div><div class="line"><span class="keyword">CMD</span> "echo" "Hello docker!"</div></pre></td></tr></table></figure>
+<ul>
+<li>ENTRYPOINT</li>
+</ul>
+<blockquote>
+<p>配置容器启动后执行的命令，并且不可被 docker run 提供的参数覆盖。</p>
+<p>每个 Dockerfile 中只能有一个 ENTRYPOINT，当指定多个时，只有最后一个起效。</p>
+<p>ENTRYPOINT 帮助你配置一个容器使之可执行化，如果你结合CMD命令和ENTRYPOINT命令，你可以从CMD命令中移除“application”而仅仅保留参数，参数将传递给ENTRYPOINT命令。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: ENTRYPOINT application "argument", "argument", ..</span></div><div class="line"><span class="comment"># Remember: arguments are optional. They can be provided by CMD or during the creation of a container.</span></div><div class="line"><span class="keyword">ENTRYPOINT</span> echo</div><div class="line"><span class="comment"># Usage example with CMD:</span></div><div class="line"><span class="comment"># Arguments set with CMD can be overridden during *run*</span></div><div class="line"><span class="keyword">CMD</span> "Hello docker!"</div><div class="line"><span class="keyword">ENTRYPOINT</span> echo</div></pre></td></tr></table></figure>
+<ul>
+<li>ENV</li>
+</ul>
+<blockquote>
+<p>ENV命令用于设置环境变量。这些变量以”key=value”的形式存在，并可以在容器内被脚本或者程序调用。这个机制给在容器中运行应用带来了极大的便利。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Usage: <span class="keyword">ENV</span> key value</div><div class="line"><span class="keyword">ENV</span> SERVER_WORKS <span class="number">4</span></div></pre></td></tr></table></figure>
+<ul>
+<li>EXPOSE</li>
+</ul>
+<blockquote>
+<p>EXPOSE用来指定端口，使容器内的应用可以通过端口和外界交互。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: EXPOSE [port]</span></div><div class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></div></pre></td></tr></table></figure>
+<ul>
+<li>FROM</li>
+</ul>
+<blockquote>
+<p>FROM命令可能是最重要的Dockerfile命令。改命令定义了使用哪个基础镜像启动构建流程。基础镜像可以为任意镜 像。如果基础镜像没有被发现，Docker将试图从Docker image index来查找该镜像。FROM命令必须是Dockerfile的首个命令。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: FROM [image name]</span></div><div class="line"><span class="keyword">FROM</span> ubuntu</div></pre></td></tr></table></figure>
+<ul>
+<li>MAINTAINER</li>
+</ul>
+<blockquote>
+<p>我建议这个命令放在Dockerfile的起始部分，虽然理论上它可以放置于Dockerfile的任意位置。这个命令用于声明作者，并应该放在FROM的后面。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: MAINTAINER [name]</span></div><div class="line"><span class="keyword">MAINTAINER</span> authors_name</div></pre></td></tr></table></figure>
+<ul>
+<li>RUN</li>
+</ul>
+<blockquote>
+<p>RUN命令是Dockerfile执行命令的核心部分。它接受命令作为参数并用于创建镜像。不像CMD命令，RUN命令用于创建镜像（在之前commit的层之上形成新的层）。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: RUN [command]</span></div><div class="line"><span class="keyword">RUN</span> aptitude install -y riak</div></pre></td></tr></table></figure>
+<ul>
+<li>USER</li>
+</ul>
+<blockquote>
+<p>USER命令用于设置运行容器的UID。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: USER [UID]</span></div><div class="line"><span class="keyword">USER</span> <span class="number">751</span></div></pre></td></tr></table></figure>
+<ul>
+<li>VOLUME</li>
+</ul>
+<blockquote>
+<p>VOLUME命令用于让你的容器访问宿主机上的目录。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: VOLUME ["/dir_1", "/dir_2" ..]</span></div><div class="line"><span class="keyword">VOLUME</span> ["/my_files"]</div></pre></td></tr></table></figure>
+<ul>
+<li>WORKDIR</li>
+</ul>
+<blockquote>
+<p>WORKDIR命令用于设置CMD指明的命令的运行目录。</p>
+</blockquote>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Usage: WORKDIR /path</span></div><div class="line"><span class="keyword">WORKDIR</span> ~/</div></pre></td></tr></table></figure>
+<h6 id="2-6-2-3-Docfile示例一：创建一个MongoDB镜像"><a href="#2-6-2-3-Docfile示例一：创建一个MongoDB镜像" class="headerlink" title="2.6.2.3 Docfile示例一：创建一个MongoDB镜像"></a><strong>2.6.2.3 Docfile示例一：创建一个MongoDB镜像</strong></h6><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 定义文件和它的目的</span></div><div class="line"><span class="comment"># 让阅读者明确Dockerfile的目的永远是必要的。为此，我们通常从注释开始写Dockerfile。</span></div><div class="line"><span class="comment">############################################################</span></div><div class="line"><span class="comment"># Dockerfile to build MongoDB container images</span></div><div class="line"><span class="comment"># Based on Ubuntu</span></div><div class="line"><span class="comment">############################################################</span></div><div class="line"></div><div class="line"><span class="comment"># 设置基础镜像 </span></div><div class="line"><span class="keyword">FROM</span> ubuntu</div><div class="line"></div><div class="line"><span class="comment"># 设置作者</span></div><div class="line"><span class="keyword">MAINTAINER</span> WuQinghua</div><div class="line"></div><div class="line"><span class="comment"># 设置命令与参数下载MongoDB</span></div><div class="line"><span class="comment">################## BEGIN INSTALLATION ######################</span></div><div class="line"><span class="keyword">RUN</span> apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10</div><div class="line"><span class="keyword">RUN</span> echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list</div><div class="line"><span class="keyword">RUN</span> apt-get update</div><div class="line"><span class="keyword">RUN</span> apt-get install -y mongodb-10gen</div><div class="line"><span class="keyword">RUN</span> mkdir -p /data/db</div><div class="line"><span class="comment">##################### INSTALLATION END #####################</span></div><div class="line"></div><div class="line"><span class="comment"># 设置MongoDB端口 </span></div><div class="line"><span class="keyword">EXPOSE</span> <span class="number">27017</span></div><div class="line"><span class="keyword">CMD</span> ["--port 27017"]</div><div class="line"></div><div class="line"><span class="keyword">ENTRYPOINT</span> usr/bin/mongod</div></pre></td></tr></table></figure>
+<h6 id="2-6-2-3-Docfile示例二：创建一个Nginx镜像"><a href="#2-6-2-3-Docfile示例二：创建一个Nginx镜像" class="headerlink" title="2.6.2.3 Docfile示例二：创建一个Nginx镜像"></a>2.6.2.3 Docfile示例二：创建一个Nginx镜像</h6><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">############################################################</span></div><div class="line"><span class="comment"># Dockerfile to build Nginx Installed Containers</span></div><div class="line"><span class="comment"># Based on Ubuntu</span></div><div class="line"><span class="comment">############################################################</span></div><div class="line"></div><div class="line"><span class="keyword">FROM</span> ubuntu</div><div class="line"></div><div class="line"><span class="comment"># 设置作者</span></div><div class="line"><span class="keyword">MAINTAINER</span> WuQinghua</div><div class="line"></div><div class="line"><span class="comment"># Install Nginx</span></div><div class="line"><span class="keyword">RUN</span> echo "deb http://archive.ubuntu.com/ubuntu/ raring main universe" &gt;&gt; /etc/apt/sources.list</div><div class="line"><span class="keyword">RUN</span> apt-get update</div><div class="line"><span class="keyword">RUN</span> apt-get install -y nano wget dialog net-tools</div><div class="line"><span class="keyword">RUN</span> apt-get install -y nginx</div><div class="line"></div><div class="line"><span class="comment"># 安装Nginx后，我们需要配置Nginx并且替换掉默认的配置文件</span></div><div class="line"><span class="keyword">RUN</span> rm -v /etc/nginx/nginx.conf</div><div class="line"><span class="keyword">ADD</span> nginx.conf /etc/nginx/</div><div class="line"><span class="keyword">RUN</span> echo "daemon off;" &gt;&gt; /etc/nginx/nginx.conf</div><div class="line"></div><div class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">CMD</span> service nginx start</div></pre></td></tr></table></figure>
+<p>需要在当前目录下含有一个nginx.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">worker_processes 1;</div><div class="line">events &#123; worker_connections 1024; &#125;</div><div class="line">http &#123;</div><div class="line">     sendfile on;</div><div class="line">     server &#123;</div><div class="line">         listen 80;</div><div class="line">         location / &#123;</div><div class="line">              proxy_pass http://httpstat.us/;</div><div class="line">              proxy_set_header X-Real-IP $remote_addr;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="2-7-设置镜像标签"><a href="#2-7-设置镜像标签" class="headerlink" title="2.7 设置镜像标签"></a><strong>2.7 </strong>设置镜像标签</h5><p>我们可以使用 docker tag 命令，为镜像添加一个新的标签。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker-devops/" rel="tag"># docker devops</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/29/Docker-一-docker简介/" rel="next" title="Docker(一)--docker简介">
+                <i class="fa fa-chevron-left"></i> Docker(一)--docker简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Wu Qinghua" />
+          <p class="site-author-name" itemprop="name">Wu Qinghua</p>
+           
+              <p class="site-description motion-element" itemprop="description">纪录学习的点滴</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Docker容器的使用"><span class="nav-number">1.</span> <span class="nav-text">1.Docker容器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Docker-客户端"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Docker 客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-运行一个web应用"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 运行一个web应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-查看-WEB-应用容器"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 查看 WEB 应用容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-查看WEB应用程序日志"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 查看WEB应用程序日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-检查WEB应用程序"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 检查WEB应用程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-停止WEB应用容器-重启WEB应用容器-移除WEB应用容器"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 停止WEB应用容器,重启WEB应用容器,移除WEB应用容器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Docker镜像的使用"><span class="nav-number">2.</span> <span class="nav-text">2.Docker镜像的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-列出镜像列表"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 列出镜像列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-获取一个新的镜像"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 获取一个新的镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-查找镜像"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 查找镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-创建镜像"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 创建镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-更新镜像"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 更新镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-构建镜像"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 构建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-1-Dockerfile"><span class="nav-number">2.6.1.</span> <span class="nav-text">2.6.1 Dockerfile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-2-Dockerfile-语法"><span class="nav-number">2.6.2.</span> <span class="nav-text">2.6.2 Dockerfile 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-6-2-1-语法示例"><span class="nav-number">2.6.2.1.</span> <span class="nav-text">2.6.2.1 语法示例</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-6-2-2-Dockerfile命令"><span class="nav-number">2.6.2.2.</span> <span class="nav-text">2.6.2.2 Dockerfile命令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-6-2-3-Docfile示例一：创建一个MongoDB镜像"><span class="nav-number">2.6.2.3.</span> <span class="nav-text">2.6.2.3 Docfile示例一：创建一个MongoDB镜像</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-6-2-3-Docfile示例二：创建一个Nginx镜像"><span class="nav-number">2.6.2.4.</span> <span class="nav-text">2.6.2.3 Docfile示例二：创建一个Nginx镜像</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-7-设置镜像标签"><span class="nav-number">2.6.3.</span> <span class="nav-text">2.7 设置镜像标签</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wu Qinghua</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://qintongbaba.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://qintongbaba.github.io/2018/03/29/Docker-二-docker容器和镜像的使用/';
+          this.page.identifier = '2018/03/29/Docker-二-docker容器和镜像的使用/';
+          this.page.title = 'Docker(二)--docker容器和镜像的使用';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qintongbaba.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
