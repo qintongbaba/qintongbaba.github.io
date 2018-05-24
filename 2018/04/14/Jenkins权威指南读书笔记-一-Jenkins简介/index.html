@@ -1,0 +1,972 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Jenkins devops," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1. 持续集成基础
+   持续集成:就其最简单的形式来讲，就是一个能监控版本控制系统变化的工具。无论任何时候，只要检测到有变化，这个工具就会自动编译和测试你的应用程序。如果出现问题，它就会马上通知开发人员，以便他们可以立即着手解决这个问题。 
+
+ 当然持续集成可以做的事情还能更多，比如
+
+密切监视代码库的健康
+自动监控代码质量和代码覆盖率
+降低技术债务和减少维护成本
+还可以结合插件完成自动化部署等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins权威指南读书笔记(一)--Jenkins简介">
+<meta property="og:url" content="https://qintongbaba.github.io/2018/04/14/Jenkins权威指南读书笔记-一-Jenkins简介/index.html">
+<meta property="og:site_name" content="Qintong BaBa">
+<meta property="og:description" content="1. 持续集成基础
+   持续集成:就其最简单的形式来讲，就是一个能监控版本控制系统变化的工具。无论任何时候，只要检测到有变化，这个工具就会自动编译和测试你的应用程序。如果出现问题，它就会马上通知开发人员，以便他们可以立即着手解决这个问题。 
+
+ 当然持续集成可以做的事情还能更多，比如
+
+密切监视代码库的健康
+自动监控代码质量和代码覆盖率
+降低技术债务和减少维护成本
+还可以结合插件完成自动化部署等">
+<meta property="og:updated_time" content="2018-04-14T05:30:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jenkins权威指南读书笔记(一)--Jenkins简介">
+<meta name="twitter:description" content="1. 持续集成基础
+   持续集成:就其最简单的形式来讲，就是一个能监控版本控制系统变化的工具。无论任何时候，只要检测到有变化，这个工具就会自动编译和测试你的应用程序。如果出现问题，它就会马上通知开发人员，以便他们可以立即着手解决这个问题。 
+
+ 当然持续集成可以做的事情还能更多，比如
+
+密切监视代码库的健康
+自动监控代码质量和代码覆盖率
+降低技术债务和减少维护成本
+还可以结合插件完成自动化部署等">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qintongbaba.github.io/2018/04/14/Jenkins权威指南读书笔记-一-Jenkins简介/"/>
+
+
+
+
+
+  <title> Jenkins权威指南读书笔记(一)--Jenkins简介 | Qintong BaBa </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qintong BaBa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一天进步一点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2018/04/14/Jenkins权威指南读书笔记-一-Jenkins简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wu Qinghua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qintong BaBa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Jenkins权威指南读书笔记(一)--Jenkins简介
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T11:45:44+08:00">
+                2018-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Jenkins/" itemprop="url" rel="index">
+                    <span itemprop="name">Jenkins</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/14/Jenkins权威指南读书笔记-一-Jenkins简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/04/14/Jenkins权威指南读书笔记-一-Jenkins简介/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-持续集成基础"><a href="#1-持续集成基础" class="headerlink" title="1. 持续集成基础"></a>1. 持续集成基础</h3><blockquote>
+<p>   <strong>持续集成:</strong>就其最简单的形式来讲，就是一个能监控版本控制系统变化的工具。无论任何时候，只要检测到有变化，这个工具就会自动编译和测试你的应用程序。如果出现问题，它就会马上通知开发人员，以便他们可以立即着手解决这个问题。 </p>
+</blockquote>
+<p> 当然持续集成可以做的事情还能更多，比如</p>
+<ul>
+<li>密切监视代码库的健康</li>
+<li>自动监控代码质量和代码覆盖率</li>
+<li>降低技术债务和减少维护成本</li>
+<li>还可以结合插件完成自动化部署等</li>
+</ul>
+<blockquote>
+<p>自动化部署的想法很重要。事实上，理论上来讲自动化部署的过程可以使你能够推送每一个带有必要的自动化测试构建到生产环境中去，这种实践就叫做<strong>持续部署</strong>。</p>
+</blockquote>
+<h3 id="2-Jenkins简介"><a href="#2-Jenkins简介" class="headerlink" title="2.Jenkins简介"></a>2.Jenkins简介</h3><blockquote>
+<p>Jenkins，最开始被称为Hudson，是一个Java语言编写的开源的持续集成工具。</p>
+</blockquote>
+<p>它拥有以下的好处：</p>
+<ol>
+<li>首先，Jenkins易于使用。用户界面非常的简单、直观。</li>
+<li>其次，Jenkins拥有良好的扩展性，能够极其灵活地迎合你的想法。（它拥有很多的插件）</li>
+<li>最后，Jenkins的社区规模庞大，活跃度也非常的高。</li>
+</ol>
+<h3 id="3-引进持续集成到公司的阶段"><a href="#3-引进持续集成到公司的阶段" class="headerlink" title="3.引进持续集成到公司的阶段"></a>3.引进持续集成到公司的阶段</h3><h4 id="阶段一：无构建服务器"><a href="#阶段一：无构建服务器" class="headerlink" title="阶段一：无构建服务器"></a>阶段一：无构建服务器</h4><p>期初，团队没有任何形式的中央构建服务器。软件实在开发人员的机器上手工进行触发构建的，尽管这个构建可能使用了Maven或者Ant等构件工具。源代码可能存储在一个中央源代码仓库（Git，Svn等）中,但是开发人员不需要定期提交其代码变更。在计划发布一个新的版本之前的那段时间里，开发人员需要手动集成他的代码改动，这个过程非常的痛苦。</p>
+<h4 id="阶段二：夜间构建"><a href="#阶段二：夜间构建" class="headerlink" title="阶段二：夜间构建"></a>阶段二：夜间构建</h4><p>这个阶段，团体有一个构建服务器，并且会定期（通常是夜间）的按照计划触发自动化构建。但是这个过程只是简单的代码编译，没有可靠的或可重复的单元测试。即使有自动化测试，它也不是强制地要作为构建的一部分，并很可能运行的不正确。在这个阶段开发人员至少会在每天结束后提交代码更新。加入一个开发人员的代码和另一个开发人员的代码发生冲突，构建服务器会在第二天早上通过发送邮件的方式向团队报警。但是这个阶段，开发人员不会立即的修改错误的构建，所以有些构建会一直坏在构建服务器上没人处理。</p>
+<h4 id="阶段三：夜间构建加自动化测试"><a href="#阶段三：夜间构建加自动化测试" class="headerlink" title="阶段三：夜间构建加自动化测试"></a>阶段三：夜间构建加自动化测试</h4><p>在这个阶段，无论任何时候，只要有代码更新提交到版本控制系统中，构建服务器就会触发一个构建，团队成员可以轻易的看到那些源码变化触发了这个特定的构建。此外，构建运行脚本去编译和运行应用的一系列自动化的测试、集成测试。除了发送邮件，构建服务器也会使用更积极的沟通渠道（比如即使通信）来提醒团队成员在集成的过程中出现的问题。运行失败的构建的构建在这个阶段一般都可以很快地得到修复。</p>
+<h4 id="阶段四：加入度量指标"><a href="#阶段四：加入度量指标" class="headerlink" title="阶段四：加入度量指标"></a>阶段四：加入度量指标</h4><p>在这个阶段，构建中会运行自动化的代码质量和代码覆盖率检查，来帮助我们检查代码库的质量和测试相关性以及有效性。质量构建也会自动为程序生成API文档。如果代码质量发生下降也会进行警报。同时团队还会建立一个“构建展示器”。</p>
+<h4 id="阶段五：更认真的对待测试"><a href="#阶段五：更认真的对待测试" class="headerlink" title="阶段五：更认真的对待测试"></a>阶段五：更认真的对待测试</h4><p>持续集成的好处是可以和可靠的测试实践紧密结合。</p>
+<h4 id="阶段六：自动化验收测试和自动化部署"><a href="#阶段六：自动化验收测试和自动化部署" class="headerlink" title="阶段六：自动化验收测试和自动化部署"></a>阶段六：自动化验收测试和自动化部署</h4><p>这个阶段，测试人员进行测试验收，当测试人员认为可以的时候，就可以手工触发构建来部署一个新的版本去进行用户测试或直接交付到生产环境。如果当前版本出现严重问题，团队还可以使用构建服务器把当前版本回滚到上个版本。</p>
+<h4 id="阶段七：持续部署"><a href="#阶段七：持续部署" class="headerlink" title="阶段七：持续部署"></a>阶段七：持续部署</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Jenkins-devops/" rel="tag"># Jenkins devops</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/29/Docker-二-docker容器和镜像的使用/" rel="next" title="Docker(二)--docker容器和镜像的使用">
+                <i class="fa fa-chevron-left"></i> Docker(二)--docker容器和镜像的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/14/Jenkins权威指南读书笔记-二-Jenkins起步/" rel="prev" title="Jenkins权威指南读书笔记(二)--Jenkins起步">
+                Jenkins权威指南读书笔记(二)--Jenkins起步 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Wu Qinghua" />
+          <p class="site-author-name" itemprop="name">Wu Qinghua</p>
+           
+              <p class="site-description motion-element" itemprop="description">纪录学习的点滴</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-持续集成基础"><span class="nav-number">1.</span> <span class="nav-text">1. 持续集成基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Jenkins简介"><span class="nav-number">2.</span> <span class="nav-text">2.Jenkins简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-引进持续集成到公司的阶段"><span class="nav-number">3.</span> <span class="nav-text">3.引进持续集成到公司的阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阶段一：无构建服务器"><span class="nav-number">3.1.</span> <span class="nav-text">阶段一：无构建服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阶段二：夜间构建"><span class="nav-number">3.2.</span> <span class="nav-text">阶段二：夜间构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阶段三：夜间构建加自动化测试"><span class="nav-number">3.3.</span> <span class="nav-text">阶段三：夜间构建加自动化测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阶段四：加入度量指标"><span class="nav-number">3.4.</span> <span class="nav-text">阶段四：加入度量指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阶段五：更认真的对待测试"><span class="nav-number">3.5.</span> <span class="nav-text">阶段五：更认真的对待测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阶段六：自动化验收测试和自动化部署"><span class="nav-number">3.6.</span> <span class="nav-text">阶段六：自动化验收测试和自动化部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阶段七：持续部署"><span class="nav-number">3.7.</span> <span class="nav-text">阶段七：持续部署</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wu Qinghua</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://qintongbaba.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://qintongbaba.github.io/2018/04/14/Jenkins权威指南读书笔记-一-Jenkins简介/';
+          this.page.identifier = '2018/04/14/Jenkins权威指南读书笔记-一-Jenkins简介/';
+          this.page.title = 'Jenkins权威指南读书笔记(一)--Jenkins简介';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qintongbaba.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
