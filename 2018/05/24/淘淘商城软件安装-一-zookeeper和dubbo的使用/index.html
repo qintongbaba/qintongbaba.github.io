@@ -105,7 +105,7 @@
 ·">
 <meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-5-24/46396109.jpg">
 <meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-5-24/5990519.jpg">
-<meta property="og:updated_time" content="2018-05-24T15:18:42.000Z">
+<meta property="og:updated_time" content="2018-05-25T15:15:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="淘淘商城软件安装(一)--zookeeper和dubbo的使用">
 <meta name="twitter:description" content="1.  什么是Dubbo随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统确保架构有条不紊的演进。
@@ -509,6 +509,19 @@
 <p>centos1的myid文件内容设置为2</p>
 <p>centos1的myid文件内容设置为3</p>
 <p>（分别对应zoo.cfg配置的的server.1、server.2、server.3中的1，2，3）</p>
+<h4 id="3-4-dubbo的监控中心"><a href="#3-4-dubbo的监控中心" class="headerlink" title="3.4 dubbo的监控中心"></a>3.4 dubbo的监控中心</h4><ol>
+<li>安装tomcat(建议jdk1.8  如果是2.5.4需要1.7)</li>
+<li>将dubbo-admin-2.5.8.war上传至服务器，并修改名称为dubbo-admin.war</li>
+<li>将dubbo-admin.war移动到tomcat的webapps下，并启动tomcat即可</li>
+<li>直接访问<a href="http://localhost:8080/dubbo-admin" target="_blank" rel="external">http://localhost:8080/dubbo-admin</a>  (默认用户和密码都是root)</li>
+</ol>
+<blockquote>
+<p>如果和zookeeper不在同一台机器上，需要修改配置文件dubbo-admin/WEB-INF/dubbo.properties</p>
+<p>dubbo.registry.address=zookeeper://127.0.0.1:2181<br>dubbo.admin.root.password=root<br>dubbo.admin.guest.password=guest</p>
+</blockquote>
+<ol>
+<li></li>
+</ol>
 
       
     </div>
@@ -695,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是Dubbo"><span class="nav-number">1.</span> <span class="nav-text">1.  什么是Dubbo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Dubbo的架构"><span class="nav-number">2.</span> <span class="nav-text">2.  Dubbo的架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用方法"><span class="nav-number">3.</span> <span class="nav-text">3. 使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-注册中心"><span class="nav-number">4.</span> <span class="nav-text">3. 注册中心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Zookeeper介绍"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 Zookeeper介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Zookeeper的安装"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 Zookeeper的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Zookeeper集群"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 Zookeeper集群</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一步"><span class="nav-number">4.3.1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二步"><span class="nav-number">4.3.2.</span> <span class="nav-text">第二步</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-什么是Dubbo"><span class="nav-number">1.</span> <span class="nav-text">1.  什么是Dubbo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Dubbo的架构"><span class="nav-number">2.</span> <span class="nav-text">2.  Dubbo的架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-使用方法"><span class="nav-number">3.</span> <span class="nav-text">3. 使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-注册中心"><span class="nav-number">4.</span> <span class="nav-text">3. 注册中心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Zookeeper介绍"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 Zookeeper介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Zookeeper的安装"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 Zookeeper的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Zookeeper集群"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 Zookeeper集群</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一步"><span class="nav-number">4.3.1.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二步"><span class="nav-number">4.3.2.</span> <span class="nav-text">第二步</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-dubbo的监控中心"><span class="nav-number">4.4.</span> <span class="nav-text">3.4 dubbo的监控中心</span></a></li></ol></li></ol></div>
             
 
           </div>
