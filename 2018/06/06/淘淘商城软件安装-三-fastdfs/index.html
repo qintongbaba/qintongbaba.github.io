@@ -1,0 +1,1191 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="fastdfs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1.FastDFS简介FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 
+2.FastDFS架构FastDFS架构包括 Tracker server和Storage server。客户端请求Tracker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="淘淘商城软件安装(三)-fastdfs">
+<meta property="og:url" content="https://qintongbaba.github.io/2018/06/06/淘淘商城软件安装-三-fastdfs/index.html">
+<meta property="og:site_name" content="Qintong BaBa">
+<meta property="og:description" content="1.FastDFS简介FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 
+2.FastDFS架构FastDFS架构包括 Tracker server和Storage server。客户端请求Tracker">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/83913715.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/16018772.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/87011624.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/92608289.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/12348256.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/93881859.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/87115630.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/81077827.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/38142755.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/88387068.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/63526394.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/82907950.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/45833863.jpg">
+<meta property="og:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/39766215.jpg">
+<meta property="og:updated_time" content="2018-06-06T14:51:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="淘淘商城软件安装(三)-fastdfs">
+<meta name="twitter:description" content="1.FastDFS简介FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 
+2.FastDFS架构FastDFS架构包括 Tracker server和Storage server。客户端请求Tracker">
+<meta name="twitter:image" content="http://ojw4jti3h.bkt.clouddn.com/18-6-6/83913715.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qintongbaba.github.io/2018/06/06/淘淘商城软件安装-三-fastdfs/"/>
+
+
+
+
+
+  <title> 淘淘商城软件安装(三)-fastdfs | Qintong BaBa </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Qintong BaBa</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一天进步一点</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://qintongbaba.github.io/2018/06/06/淘淘商城软件安装-三-fastdfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wu Qinghua">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Qintong BaBa">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                淘淘商城软件安装(三)-fastdfs
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-06T22:29:26+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java软件安装/" itemprop="url" rel="index">
+                    <span itemprop="name">java软件安装</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/06/淘淘商城软件安装-三-fastdfs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/06/06/淘淘商城软件安装-三-fastdfs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-FastDFS简介"><a href="#1-FastDFS简介" class="headerlink" title="1.FastDFS简介"></a>1.FastDFS简介</h3><p>FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。 </p>
+<h3 id="2-FastDFS架构"><a href="#2-FastDFS架构" class="headerlink" title="2.FastDFS架构"></a>2.FastDFS架构</h3><p>FastDFS架构包括 Tracker server和Storage server。客户端请求Tracker server进行文件上传、下载，通过Tracker server调度最终由Storage server完成文件上传和下载。</p>
+<p>​           Tracker server作用是负载均衡和调度，通过Tracker server在文件上传时可以根据一些策略找到Storage server提供文件上传服务。可以将tracker称为追踪服务器或调度服务器。</p>
+<p>​           Storage server作用是文件存储，客户端上传的文件最终存储在Storage服务器上，Storage server没有实现自己的文件系统而是利用操作系统 的文件系统来管理文件。可以将storage称为存储服务器。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/83913715.jpg" alt=""></p>
+<h4 id="2-1-Tracker集群"><a href="#2-1-Tracker集群" class="headerlink" title="2.1 Tracker集群"></a>2.1 Tracker集群</h4><p>FastDFS集群中的Tracker server可以有多台，Tracker server之间是相互平等关系同时提供服务，Tracker server不存在单点故障。客户端请求Tracker server采用轮询方式，如果请求的tracker无法提供服务则换另一个tracker。 </p>
+<h4 id="2-2-Storage集群"><a href="#2-2-Storage集群" class="headerlink" title="2.2 Storage集群"></a>2.2 Storage集群</h4><p>Storage集群采用了分组存储方式。storage集群由一个或多个组构成，集群存储总容量为集群中所有组的存储容量之和。一个组由一台或多台存储服务器组成，组内的Storage server之间是平等关系，不同组的Storage server之间不会相互通信，同组内的Storage server之间会相互连接进行文件同步，从而保证同组内每个storage上的文件完全一致的。一个组的存储容量为该组内存储服务器容量最小的那个，由此可见组内存储服务器的软硬件配置最好是一致的。   </p>
+<p>采用分组存储方式的好处是灵活、可控性较强。比如上传文件时，可以由客户端直接指定上传到的组也可以由tracker进行调度选择。一个分组的存储服务器访问压力较大时，可以在该组增加存储服务器来扩充服务能力（纵向扩容）。当系统容量不足时，可以增加组来扩充存储容量（横向扩容）。</p>
+<h4 id="2-3-Storage状态收集"><a href="#2-3-Storage状态收集" class="headerlink" title="2.3 Storage状态收集"></a>2.3 Storage状态收集</h4><p>Storage server会连接集群中所有的Tracker server，定时向他们报告自己的状态，包括磁盘剩余空间、文件同步状况、文件上传下载次数等统计信息。 </p>
+<h4 id="2-4-文件上传流程"><a href="#2-4-文件上传流程" class="headerlink" title="2.4 文件上传流程"></a>2.4 文件上传流程</h4><p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/16018772.jpg" alt=""></p>
+<p>客户端上传文件后存储服务器将文件ID返回给客户端，此文件ID用于以后访问该文件的索引信息。文件索引信息包括：组名，虚拟磁盘路径，数据两级目录，文件名 </p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/87011624.jpg" alt=""></p>
+<ul>
+<li>组名：文件上传后所在的storage组名称，在文件上传成功后有storage服务器返回，需要客户端自行保存。 </li>
+<li>虚拟磁盘路径：storage配置的虚拟路径，与磁盘选项store_path*对应。如果配置了store_path0则是M00，如果配置了store_path1则是M01，以此类推。</li>
+<li>数据两级目录：storage服务器在每个虚拟磁盘路径下创建的两级目录，用于存储数据文件。</li>
+<li>文件名：与文件上传时不同。是由存储服务器根据特定信息生成，文件名包含：源存储服务器IP地址、文件创建时间戳、文件大小、随机数和文件拓展名等信息。</li>
+</ul>
+<h4 id="2-5-文件下载流程"><a href="#2-5-文件下载流程" class="headerlink" title="2.5 文件下载流程"></a>2.5 文件下载流程</h4><p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/92608289.jpg" alt=""></p>
+<p>tracker根据请求的文件路径即文件ID 来快速定义文件。</p>
+<p>比如请求下边的文件：</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/12348256.jpg" alt=""></p>
+<ul>
+<li>通过组名tracker能够很快的定位到客户端需要访问的存储服务器组是group1，并选择合适的存储服务器提供客户端访问。  </li>
+<li>存储服务器根据“文件存储虚拟磁盘路径”和“数据文件两级目录”可以很快定位到文件所在目录，并根据文件名找到客户端需要访问的文件。</li>
+</ul>
+<h3 id="3-FastDFS-Nginx实现文件服务器"><a href="#3-FastDFS-Nginx实现文件服务器" class="headerlink" title="3.FastDFS+Nginx实现文件服务器"></a>3.FastDFS+Nginx实现文件服务器</h3><h4 id="3-1-下载"><a href="#3-1-下载" class="headerlink" title="3.1 下载"></a>3.1 下载</h4><p>tracker和storage使用相同的安装包，下载地址：<a href="http://sourceforge.net/projects/FastDFS/" target="_blank" rel="external">http://sourceforge.net/projects/FastDFS/</a> 或<a href="https://github.com/happyfish100/FastDFS（推荐）" target="_blank" rel="external">https://github.com/happyfish100/FastDFS（推荐）</a>   </p>
+<p>本教程下载：FastDFS_v5.05.tar.gz</p>
+<h4 id="3-2-FastDFS安装环境"><a href="#3-2-FastDFS安装环境" class="headerlink" title="3.2 FastDFS安装环境"></a>3.2 FastDFS安装环境</h4><p>FastDFS是C语言开发，建议在linux上运行，本教程使用Centos6.4作为安装环境。</p>
+<ul>
+<li>安装FastDFS需要先将官网下载的源码进行编译，编译依赖gcc环境，如果没有gcc环境，需要安装gcc：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install gcc-c++</div></pre></td></tr></table></figure>
+<ul>
+<li>FastDFS依赖libevent库，需要安装：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install libevent</div></pre></td></tr></table></figure>
+<ul>
+<li>libfastcommon是FastDFS官方提供的，libfastcommon包含了FastDFS运行所需要的一些基础库。 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">将libfastcommonV1.0.7.tar.gz拷贝至/usr/local/下</div><div class="line">cd /usr/local</div><div class="line">tar -zxvf libfastcommonV1.0.7.tar.gz</div><div class="line">cd libfastcommon-1.0.7</div><div class="line">./make.sh</div><div class="line">./make.sh install</div></pre></td></tr></table></figure>
+<p><strong>注意：libfastcommon**</strong>安装好后会自动将库文件拷贝至/usr/lib64<strong><strong>下，由于FastDFS</strong></strong>程序引用usr/lib<strong><strong>目录所以需要将/usr/lib64</strong></strong>下的库文件拷贝至/usr/lib<strong>**下。</strong></p>
+<p><strong>要拷贝的文件如下：</strong></p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/93881859.jpg" alt=""></p>
+<h4 id="3-3-tracker编译安装"><a href="#3-3-tracker编译安装" class="headerlink" title="3.3 tracker编译安装"></a>3.3 tracker编译安装</h4><p>将FastDFS_v5.05.tar.gz拷贝至/usr/local/下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar -zxvf FastDFS_v5.05.tar.gz</div><div class="line"> cd FastDFS</div><div class="line">./make.sh</div><div class="line">./make.sh install</div></pre></td></tr></table></figure>
+<p> 安装成功将安装目录下的conf下的文件拷贝到/etc/fdfs/下。</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/87115630.jpg" alt=""></p>
+<h4 id="3-4-配置"><a href="#3-4-配置" class="headerlink" title="3.4 配置"></a>3.4 配置</h4><p>安装成功后进入/etc/fdfs目录： </p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/81077827.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">拷贝一份新的tracker配置文件：</div><div class="line">cp tracker.conf.sample tracker.conf</div><div class="line"></div><div class="line">修改tracker.conf</div><div class="line">vi tracker.conf</div><div class="line">base_path=/home/yuqing/FastDFS   </div><div class="line">改为：</div><div class="line">base_path=/home/FastDFS</div></pre></td></tr></table></figure>
+<h4 id="3-5-启动"><a href="#3-5-启动" class="headerlink" title="3.5 启动"></a>3.5 启动</h4><p>usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</p>
+<p>启动的日志显示先停止5619进程（实际环境不是5619）再启动，如下图：</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/38142755.jpg" alt=""></p>
+<p>注意：如果没有显示上图要注意是否正常停止原有进程。</p>
+<ul>
+<li>设置开机自动启动。</li>
+</ul>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/88387068.jpg" alt=""></p>
+<p>将运行命令行添加进文件：/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart </p>
+<h4 id="3-6-storage安装"><a href="#3-6-storage安装" class="headerlink" title="3.6 storage安装"></a>3.6 storage安装</h4><p>libevent 、libfastcommon 、同tracker安装编译</p>
+<h4 id="3-7-配置"><a href="#3-7-配置" class="headerlink" title="3.7 配置"></a>3.7 配置</h4><p>安装成功后进入/etc/fdfs目录： </p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/63526394.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">拷贝一份新的storage配置文件：</div><div class="line">cp storage.conf.sample storage.conf</div><div class="line"></div><div class="line">修改storage.conf</div><div class="line">vi storage.conf</div><div class="line">group_name=group1</div><div class="line">base_path=/home/yuqing/FastDFS改为：base_path=/home/FastDFS</div><div class="line">store_path0=/home/yuqing/FastDFS改为：store_path0=/home/FastDFS/fdfs_storage</div><div class="line">#如果有多个挂载磁盘则定义多个store_path，如下</div><div class="line">#store_path1=.....</div><div class="line">#store_path2=......</div><div class="line">tracker_server=192.168.101.3:22122   #配置tracker服务器:IP</div><div class="line">#如果有多个则配置多个tracker</div><div class="line">tracker_server=192.168.101.4:22122</div></pre></td></tr></table></figure>
+<h4 id="3-8-启动"><a href="#3-8-启动" class="headerlink" title="3.8 启动"></a>3.8 启动</h4><p>/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart</p>
+<p>启动的日志显示先停止8931进程（实际环境不是8931）再启动，如下图：</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/82907950.jpg" alt=""></p>
+<p>注意：如果没有显示上图要注意是否正常停止原有进程。</p>
+<ul>
+<li>设置开机自动启动。</li>
+</ul>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/45833863.jpg" alt=""></p>
+<p>将运行命令行添加进文件：/usr/bin/fdfs_storaged /etc/fdfs/storage.conf restart </p>
+<h3 id="4-和nginx的整合"><a href="#4-和nginx的整合" class="headerlink" title="4.和nginx的整合"></a>4.和nginx的整合</h3><p>将FastDFS-nginx-module_v1.16.tar.gz传至/usr/local/下</p>
+<p>cd /usr/local</p>
+<p>tar -zxvf FastDFS-nginx-module_v1.16.tar.gz</p>
+<p>cd FastDFS-nginx-module/src</p>
+<p>修改config文件将/usr/local/路径改为/usr/</p>
+<p><img src="http://ojw4jti3h.bkt.clouddn.com/18-6-6/39766215.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">将FastDFS-nginx-module/src下的mod_FastDFS.conf拷贝至/etc/fdfs/下</div><div class="line">cp mod_FastDFS.conf /etc/fdfs/</div><div class="line"></div><div class="line">并修改mod_FastDFS.conf的内容：</div><div class="line">vi /etc/fdfs/mod_FastDFS.conf</div><div class="line">base_path=/home/FastDFS</div><div class="line">tracker_server=192.168.101.3:22122</div><div class="line">#tracker_server=192.168.101.4:22122（多个tracker配置多行）</div><div class="line">url_have_group_name=true		#url中包含group名称</div><div class="line">store_path0=/home/FastDFS/fdfs_storage   #指定文件存储路径</div><div class="line"></div><div class="line">将libfdfsclient.so拷贝至/usr/lib下</div><div class="line">cp /usr/lib64/libfdfsclient.so /usr/lib/</div><div class="line"></div><div class="line"></div><div class="line">创建nginx/client目录</div><div class="line">mkdir -p /var/temp/nginx/client</div></pre></td></tr></table></figure>
+<p>添加FastDFS-nginx-module模块 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">./configure \</div><div class="line">--prefix=/usr/local/nginx \</div><div class="line">--pid-path=/var/run/nginx/nginx.pid \</div><div class="line">--lock-path=/var/lock/nginx.lock \</div><div class="line">--error-log-path=/var/log/nginx/error.log \</div><div class="line">--http-log-path=/var/log/nginx/access.log \</div><div class="line">--with-http_gzip_static_module \</div><div class="line">--http-client-body-temp-path=/var/temp/nginx/client \</div><div class="line">--http-proxy-temp-path=/var/temp/nginx/proxy \</div><div class="line">--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</div><div class="line">--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</div><div class="line">--http-scgi-temp-path=/var/temp/nginx/scgi \</div><div class="line">--add-module=/root/fastdfs-nginx-module/src</div><div class="line"></div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure>
+<p>新建一个nginx配置文件nginx-fdfs.conf. </p>
+<p>添加server: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       80;</div><div class="line">        server_name  192.168.101.3;</div><div class="line"></div><div class="line">        location /group1/M00/&#123;</div><div class="line">                #root /home/FastDFS/fdfs_storage/data;</div><div class="line">                ngx_fastdfs_module;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：</p>
+<p>server_name指定本机ip</p>
+<p>location /group1/M00/：group1为nginx 服务FastDFS的分组名称，M00是FastDFS自动生成编号，对应store_path0=/home/FastDFS/fdfs_storage，如果FastDFS定义store_path1，这里就是M01</p>
+</blockquote>
+<h3 id="5-附录"><a href="#5-附录" class="headerlink" title="5.附录"></a>5.附录</h3><p>1 基本配置</p>
+<p>disable</p>
+<p>#func：配置是否生效</p>
+<p>#valu：true、false</p>
+<p>disable=false</p>
+<p>bind_addr</p>
+<p>#func：绑定IP</p>
+<p>#valu：IP地址</p>
+<p>bind_addr=192.168.6.102</p>
+<p>port</p>
+<p>#func：服务端口</p>
+<p>#valu：端口整数值</p>
+<p>port=22122</p>
+<p>connect_timeout</p>
+<p>#func：连接超时</p>
+<p>#valu：秒单位正整数值</p>
+<p>connect_timeout=30</p>
+<p>network_timeout</p>
+<p>#func：网络超时</p>
+<p>#valu：秒单位正整数值</p>
+<p>network_timeout=60</p>
+<p>base_path</p>
+<p>#func：Tracker数据/日志目录地址</p>
+<p>#valu：路径</p>
+<p>base_path=/home/michael/fdfs/base4tracker</p>
+<p>max_connections</p>
+<p>#func：最大连接数</p>
+<p>#valu：正整数值</p>
+<p>max_connections=256</p>
+<p>work_threads</p>
+<p>#func：线程数，通常设置CPU数</p>
+<p>#valu：正整数值</p>
+<p>work_threads=4</p>
+<p>store_lookup</p>
+<p>#func：上传文件的选组方式。</p>
+<p>#valu：0、1或2。</p>
+<p># 0：表示轮询</p>
+<p># 1：表示指定组</p>
+<p># 2：表示存储负载均衡（选择剩余空间最大的组）</p>
+<p>store_lookup=2</p>
+<p>store_group</p>
+<p>#func：指定上传的组，如果在应用层指定了具体的组，那么这个参数将不会起效。另外如果store_lookup如果是0或2，则此参数无效。</p>
+<p>#valu：group1等</p>
+<p>store_group=group1</p>
+<p>store_server</p>
+<p>#func：上传服务器的选择方式。(一个文件被上传后，这个storage server就相当于这个文件的storage server源，会对同组的storage server推送这个文件达到同步效果)</p>
+<p>#valu：0、1或2</p>
+<p># 0: 轮询方式（默认）</p>
+<p># 1: 根据ip 地址进行排序选择第一个服务器（IP地址最小者）</p>
+<p># 2: 根据优先级进行排序（上传优先级由storage server来设置，参数名为upload_priority），优先级值越小优先级越高。</p>
+<p>store_server=0</p>
+<p>store_path</p>
+<p>#func：上传路径的选择方式。storage server可以有多个存放文件的base path（可以理解为多个磁盘）。</p>
+<p>#valu：</p>
+<p># 0: 轮流方式，多个目录依次存放文件</p>
+<p># 2: 存储负载均衡。选择剩余空间最大的目录存放文件（注意：剩余磁盘空间是动态的，因此存储到的目录或磁盘可能也是变化的）</p>
+<p>store_path=0</p>
+<p>download_server</p>
+<p>#func：下载服务器的选择方式。</p>
+<p>#valu：</p>
+<p># 0：轮询（默认）</p>
+<p># 1：IP最小者</p>
+<p># 2：优先级排序（值最小的，优先级最高。）</p>
+<p>download_server=0</p>
+<p>reserved_storage_space</p>
+<p>#func：保留空间值。如果某个组中的某个服务器的剩余自由空间小于设定值，则文件不会被上传到这个组。</p>
+<p>#valu：</p>
+<p># G or g for gigabyte</p>
+<p># M or m for megabyte</p>
+<p># K or k for kilobyte</p>
+<p>reserved_storage_space=1GB</p>
+<p>log_level</p>
+<p>#func：日志级别</p>
+<p>#valu：</p>
+<p># emerg for emergency</p>
+<p># alert</p>
+<p># crit for critical</p>
+<p># error</p>
+<p># warn for warning</p>
+<p># notice</p>
+<p># info for information</p>
+<p># debug for debugging</p>
+<p>log_level=info</p>
+<p>run_by_group / run_by_user</p>
+<p>#func：指定运行该程序的用户组</p>
+<p>#valu：用户组名或空</p>
+<p>run_by_group=</p>
+<p>#func：</p>
+<p>#valu：</p>
+<p>run_by_user=</p>
+<p>allow_hosts</p>
+<p>#func：可以连接到tracker server的ip范围。可设定多个值。</p>
+<p>#valu</p>
+<p>allow_hosts=</p>
+<p>check_active_interval</p>
+<p>#func：检测 storage server 存活的时间隔，单位为秒。</p>
+<p>#      storage server定期向tracker server 发心跳，</p>
+<p>#      如果tracker server在一个check_active_interval内还没有收到storage server的一次心跳，</p>
+<p>#      那边将认为该storage server已经下线。所以本参数值必须大于storage server配置的心跳时间间隔。</p>
+<p>#      通常配置为storage server心跳时间间隔的2倍或3倍。</p>
+<p>check_active_interval=120</p>
+<p>thread_stack_size</p>
+<p>#func：设定线程栈的大小。 线程栈越大，一个线程占用的系统资源就越多。</p>
+<p>#      如果要启动更多的线程（V1.x对应的参数为max_connections，V2.0为work_threads），可以适当降低本参数值。</p>
+<p>#valu：如64KB，默认值为64，tracker server线程栈不应小于64KB</p>
+<p>thread_stack_size=64KB</p>
+<p>storage_ip_changed_auto_adjust</p>
+<p>#func：这个参数控制当storage server IP地址改变时，集群是否自动调整。注：只有在storage server进程重启时才完成自动调整。</p>
+<p>#valu：true或false</p>
+<p>storage_ip_changed_auto_adjust=true</p>
+<p>2 同步</p>
+<p>storage_sync_file_max_delay</p>
+<p>#func：同组storage服务器之间同步的最大延迟时间。存储服务器之间同步文件的最大延迟时间，根据实际情况进行调整</p>
+<p>#valu：秒为单位，默认值为1天（24*3600）</p>
+<p>#sinc：v2.0</p>
+<p>storage_sync_file_max_delay=86400</p>
+<p>storage_sync_file_max_time</p>
+<p>#func：存储服务器同步一个文件需要消耗的最大时间，缺省为300s，即5分钟。</p>
+<p>#sinc：v2.0</p>
+<p>storage_sync_file_max_time=300</p>
+<p>sync_log_buff_interval</p>
+<p>#func：同步或刷新日志信息到硬盘的时间间隔。注意：tracker server 的日志不是时时写硬盘的，而是先写内存。</p>
+<p>#valu：以秒为单位</p>
+<p>sync_log_buff_interval=10</p>
+<p>3 trunk 和 slot</p>
+<p>#func：是否使用trunk文件来存储几个小文件</p>
+<p>#valu：true或false</p>
+<p>#sinc：v3.0</p>
+<p>use_trunk_file=false</p>
+<p>#func：最小slot大小</p>
+<p>#valu：&lt;= 4KB，默认为256字节</p>
+<p>#sinc：v3.0</p>
+<p>slot_min_size=256</p>
+<p>#func：最大slot大小</p>
+<p>#valu：&gt;= slot_min_size，当小于这个值的时候就存储到trunk file中。默认为16MB。</p>
+<p>#sinc：v3.0</p>
+<p>slot_max_size=16MB</p>
+<p>#func：trunk file的size</p>
+<p>#valu：&gt;= 4MB，默认为64MB</p>
+<p>#sinc：v3.0</p>
+<p>trunk_file_size=64MB</p>
+<p>4 HTTP 相关</p>
+<p>是否启用 HTTP</p>
+<p>#func：HTTP是否生效</p>
+<p>#valu：true或false</p>
+<p>http.disabled=false</p>
+<p>HTTP 服务器端口号</p>
+<p>#func：tracker server上的http port</p>
+<p>#valu：</p>
+<p>#note：只有http.disabled=false时才生效</p>
+<p>http.server_port=7271</p>
+<p>检查Storage存活状态的间隔时间（心跳检测）</p>
+<p>#func：检查storage http server存活的间隔时间</p>
+<p>#valu：单位为秒</p>
+<p>#note：只有http.disabled=false时才生效</p>
+<p>http.check_alive_interval=30</p>
+<p>心跳检测使用的协议方式</p>
+<p>#func：检查storage http server存活的方式</p>
+<p>#valu：</p>
+<p># tcp：连接到storage server的http端口，不进行request和response。</p>
+<p># http：storage check alive url must return http status 200.</p>
+<p>#note：只有http.disabled=false时才生效</p>
+<p>http.check_alive_type=tcp</p>
+<p>检查 Storage 状态的 URI</p>
+<p>#func：检查storage http server是否alive的uri/url</p>
+<p>#note：只有http.disabled=false时才生效</p>
+<p>http.check_alive_uri=/status.html</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/fastdfs/" rel="tag"># fastdfs</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/05/淘淘商城软件安装-二-nginx的使用/" rel="next" title="淘淘商城软件安装(二)--nginx的使用">
+                <i class="fa fa-chevron-left"></i> 淘淘商城软件安装(二)--nginx的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Wu Qinghua" />
+          <p class="site-author-name" itemprop="name">Wu Qinghua</p>
+           
+              <p class="site-description motion-element" itemprop="description">纪录学习的点滴</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-FastDFS简介"><span class="nav-number">1.</span> <span class="nav-text">1.FastDFS简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-FastDFS架构"><span class="nav-number">2.</span> <span class="nav-text">2.FastDFS架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Tracker集群"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Tracker集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Storage集群"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Storage集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Storage状态收集"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Storage状态收集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-文件上传流程"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 文件上传流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-文件下载流程"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 文件下载流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-FastDFS-Nginx实现文件服务器"><span class="nav-number">3.</span> <span class="nav-text">3.FastDFS+Nginx实现文件服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-下载"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-FastDFS安装环境"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 FastDFS安装环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-tracker编译安装"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 tracker编译安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-配置"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-启动"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-storage安装"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 storage安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-配置"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-启动"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-和nginx的整合"><span class="nav-number">4.</span> <span class="nav-text">4.和nginx的整合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-附录"><span class="nav-number">5.</span> <span class="nav-text">5.附录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wu Qinghua</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://qintongbaba.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://qintongbaba.github.io/2018/06/06/淘淘商城软件安装-三-fastdfs/';
+          this.page.identifier = '2018/06/06/淘淘商城软件安装-三-fastdfs/';
+          this.page.title = '淘淘商城软件安装(三)-fastdfs';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://qintongbaba.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
